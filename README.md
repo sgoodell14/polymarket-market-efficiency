@@ -70,6 +70,6 @@ python src/build_website.py
 
 The build uses portable Quarto 1.9.38 from `.tools/bin/quarto.exe`, or Quarto on PATH. Local preview: `.\.tools\bin\quarto.exe preview website`. The final build renders a staging copy under `.artifacts/` and puts portable output in root `dist/` for hosting; the live preview uses `website/dist/`. All generated output and the local Quarto installation are ignored by Git.
 
-Private review URL: https://polymarket-market-efficiency.arcane-koi-3804.chatgpt.site
+Private review URL: https://polymarket-market-efficiency.sgoodell14.chatgpt.site
 
 The course submission still needs a public URL, a complementary data source, and a larger justified analytical sample. No GitHub repository has been created.
