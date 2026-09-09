@@ -1,0 +1,256 @@
+[
+  {
+    "file": "tag_politics.json",
+    "url": "https://gamma-api.polymarket.com/tags/slug/politics",
+    "fetched_at_utc": "2026-09-09T15:26:06.872059+00:00",
+    "status": 200,
+    "sha256": "8a6d84acac21a7b0302a4367a32d7166f9cbd1d85c3caed77974b622aa134f47"
+  },
+  {
+    "file": "markets_politics.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=2&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=3&order=id&ascending=false&include_tag=true",
+    "fetched_at_utc": "2026-09-09T15:26:10.523316+00:00",
+    "status": 200,
+    "sha256": "3a3000c02be9f5e6e2b0b0029367e95399e1605d4c66fa8e165c564f12cd8412"
+  },
+  {
+    "file": "tag_sports.json",
+    "url": "https://gamma-api.polymarket.com/tags/slug/sports",
+    "fetched_at_utc": "2026-09-09T15:26:10.887175+00:00",
+    "status": 200,
+    "sha256": "6093e5ae8110d1ad85dfde8aa35ea0762730cabbf7f797324eea26a644743e81"
+  },
+  {
+    "file": "markets_sports.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=1&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=3&order=id&ascending=false&include_tag=true",
+    "fetched_at_utc": "2026-09-09T15:26:11.021098+00:00",
+    "status": 200,
+    "sha256": "b5ae5b5275b30ea15b430ac89df478c652b8a41d1f661e719baa218bffd3229f"
+  },
+  {
+    "file": "tag_crypto.json",
+    "url": "https://gamma-api.polymarket.com/tags/slug/crypto",
+    "fetched_at_utc": "2026-09-09T15:26:11.352062+00:00",
+    "status": 200,
+    "sha256": "037e3930df3bffe89ce94033369b25ca5a09fd9b7b344ec4f4b0d8bfd588a37d"
+  },
+  {
+    "file": "markets_crypto.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=21&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=3&order=id&ascending=false&include_tag=true",
+    "fetched_at_utc": "2026-09-09T15:26:11.471339+00:00",
+    "status": 200,
+    "sha256": "f28e914477081b92c9e91acaff7608553496d51a73651f28bb168b773e3cc6b2"
+  },
+  {
+    "file": "trades_4346082_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x78ea3c67e0cfa16073d763db8778463b2b2a787e9c9b3d3b297044662b7b6908&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:12.856715+00:00",
+    "status": 200,
+    "sha256": "b45a254ef68cc97774bae7d952f7c6e7436cc50813c96f6b14aeca28a929520a"
+  },
+  {
+    "file": "prices_4346082.json",
+    "url": "https://clob.polymarket.com/prices-history?market=95080187752363600884925085968164634957352262866840017339148061654490188669485&startTs=1786126201&endTs=1788891001&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:13.185662+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4342936_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xde3a0bfe02d1990325084f5ec59f6b6c46f63c1cb11315daa1cb0f7bd371aa4d&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:13.487890+00:00",
+    "status": 200,
+    "sha256": "d4c1907f85742d7bc66f75a7e5a7444a495591aa90a078040592306ee2bb806d"
+  },
+  {
+    "file": "trades_4342936_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0xde3a0bfe02d1990325084f5ec59f6b6c46f63c1cb11315daa1cb0f7bd371aa4d&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:13.869692+00:00",
+    "status": 200,
+    "sha256": "1b569b7953d6b49c423c7c545477afc78613b7fbc09c301cf0b67a3de7df822c"
+  },
+  {
+    "file": "prices_4342936.json",
+    "url": "https://clob.polymarket.com/prices-history?market=70650493992845483141317426509288616583149832748968072019836468749065395099621&startTs=1786202073&endTs=1788966873&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:16.143029+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4339186_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x48482fd9a3872543534348570ee6421cbc0f1742b0887f1e33126883b9f778cf&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:16.637398+00:00",
+    "status": 200,
+    "sha256": "aac304b95329bf1f2d34100b34468be20e0bef11bb93fce25121ca7dacb1eaf0"
+  },
+  {
+    "file": "trades_4339186_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0x48482fd9a3872543534348570ee6421cbc0f1742b0887f1e33126883b9f778cf&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:17.002136+00:00",
+    "status": 200,
+    "sha256": "9b6db532d1a3fd8bf28800961a42dd1f36cc819cc75c119c89f75ea78fe2f8c8"
+  },
+  {
+    "file": "prices_4339186.json",
+    "url": "https://clob.polymarket.com/prices-history?market=97236330897070950292720830345665491942542609545937117798868834122164571073854&startTs=1786202100&endTs=1788966900&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:17.370215+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4401029_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x26398277329954528e057a091e522ed8bb54a6e5a276199f94b57bb2fb14e978&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:17.686555+00:00",
+    "status": 200,
+    "sha256": "24d93e2a704c70cb25c2014be87cd5ebb3ff93123db87a3c984531ea3c8ff15e"
+  },
+  {
+    "file": "prices_4401029.json",
+    "url": "https://clob.polymarket.com/prices-history?market=44012661518616363242242449855059970815959247985920609112384174677149490018713&startTs=1786176723&endTs=1788941523&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:18.071495+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4398495_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xb0212cdd5301df14b2c330cdf32daa4c78183d2f8d77e4c7a0ee7a7c9e8580a9&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:18.353037+00:00",
+    "status": 200,
+    "sha256": "4c44b308a9c82e40b0c44a2b514e9848156df2ad59156f5f6885776e72f43f20"
+  },
+  {
+    "file": "prices_4398495.json",
+    "url": "https://clob.polymarket.com/prices-history?market=92426861367468735954362926450949130817139571896107567600360093142372127925300&startTs=1786165399&endTs=1788930199&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:18.636780+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4398494_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xc72ad07624b537ac951a06c7d52042319268bf51c97002c16a5ffd9fbb00d7e7&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:19.136111+00:00",
+    "status": 200,
+    "sha256": "86e5574d950410b73b3ab2e64f65969a37b5a700ea7c10fe896b913812afc853"
+  },
+  {
+    "file": "prices_4398494.json",
+    "url": "https://clob.polymarket.com/prices-history?market=33384579389331859094693631783399030228755085586890994582115504899925224003228&startTs=1786165608&endTs=1788930408&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:19.469510+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4398673_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x95bec14329ca297078b0f7049991fa900d50a80d37d4b38cda2d131f94d016e0&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:19.786300+00:00",
+    "status": 200,
+    "sha256": "da3717b8240b7263de2aec53896f98ac1a2d8bbe24e794172ca42bfb7391f596"
+  },
+  {
+    "file": "prices_4398673.json",
+    "url": "https://clob.polymarket.com/prices-history?market=111906511733262317637977162187205962442561685364348291883119205475545181710883&startTs=1786191727&endTs=1788956527&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:20.178726+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4368452_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x40956a8fe96f3f1fada3f59a83bd0171b50614e10e1d54ae2a4dc9ccdf572345&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:20.419469+00:00",
+    "status": 200,
+    "sha256": "f86e454b186e6a782fe217d5d798b1a073e2507b181be3563e5150e8dabab175"
+  },
+  {
+    "file": "prices_4368452.json",
+    "url": "https://clob.polymarket.com/prices-history?market=61784669423644379094720123418593426992204144814257085110658993309960786230177&startTs=1786123485&endTs=1788888285&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:20.786260+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "trades_4366568_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xf9149b74a7ee0f1be198bd5950204b69d5b8c024381a4c81d6ff868c37c64008&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:21.086049+00:00",
+    "status": 200,
+    "sha256": "571a14c2728fabd6728dccfc564c3f8e70d6a90d78b01481df76f86537cfd6b9"
+  },
+  {
+    "file": "trades_4366568_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0xf9149b74a7ee0f1be198bd5950204b69d5b8c024381a4c81d6ff868c37c64008&takerOnly=false&end=1788967566",
+    "fetched_at_utc": "2026-09-09T15:26:21.517686+00:00",
+    "status": 200,
+    "sha256": "533d95f8523a3087399bb30d9d85a10673757f5bae30446111106e6eb0e2e46c"
+  },
+  {
+    "file": "prices_4366568.json",
+    "url": "https://clob.polymarket.com/prices-history?market=13904554410557973265511810052122904485905790003749592364347731248490956631691&startTs=1786202488&endTs=1788967288&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:26:22.202774+00:00",
+    "status": 400,
+    "error": "HTTP Error 400: Bad Request",
+    "sha256": "baf70cca3486fc0f9ace319d684f96473d44168dab85e9ff5be4d0e6fe836210"
+  },
+  {
+    "file": "wallet_activity_0.json",
+    "url": "https://data-api.polymarket.com/activity?limit=100&offset=0&user=0x510f4963b66b1b18505faab74b0bb943d1dda43c&start=1&end=1788967566&sortBy=TIMESTAMP&sortDirection=DESC",
+    "fetched_at_utc": "2026-09-09T15:26:22.742262+00:00",
+    "status": 200,
+    "sha256": "96d7b35550ba799be39f24677cfc6de5f8ec6f89175bd99f7aa0b407ab1773b1"
+  },
+  {
+    "file": "wallet_activity_1.json",
+    "url": "https://data-api.polymarket.com/activity?limit=100&offset=100&user=0x510f4963b66b1b18505faab74b0bb943d1dda43c&start=1&end=1788967566&sortBy=TIMESTAMP&sortDirection=DESC",
+    "fetched_at_utc": "2026-09-09T15:26:23.486875+00:00",
+    "status": 200,
+    "sha256": "0b968e632319a1ea893f1e7c53b204efac5db528d37b9f8925bdbd9d58bea34c"
+  },
+  {
+    "file": "wallet_markets_0.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0x005a7b286f2b785a3a1f0e1fe0e88b93ce26f2e3297e83fd95ceff82a9170c78&condition_ids=0x0076a8a65cc1325b187decc6e0f42dfa1c4628fc7fb4d7e83a065d1af34eff20&condition_ids=0x02a8918bb36b9834d4c67f25d058d97d7a196215b45eefb2c4d6ee9ca58e77e3&condition_ids=0x0826654c14085b354a43b7e345a0dcc735f4e345b4343ad24b71c7cfeea49b07&condition_ids=0x0a3976a78785ed96ac78b7e7cea482f87a84e3bbe930543a1fb15e9226bbc6a6&condition_ids=0x0afae26f98016659731e6cd559011a1dbe44472557d7318b3f3a3af8aee0bced&condition_ids=0x0de040b7a9ef0bfb078bc916cf5f72a87cec8f8e80c61bdb409a05cb3d2736d1&condition_ids=0x0ee8a95d2b781b41b48656f0528b00d531bd13a8fa3b1e40c1a65ab2938005c2&condition_ids=0x121337d4fe059f4930e5e68131b79cce76b0d30c0e645ec6521680ad9ccd8092&condition_ids=0x1812d2849a19a65648c62848339f864be4057e4b887be1ee3cee2d91a1f03aaf&condition_ids=0x1b52d0becf2890d16450386b62f3abba63e0ddf0ab7653258dc1b99aa4560198&condition_ids=0x1c27970809d0ec4e22757cef8628026108f91712bd6318092b65767351957dc0&condition_ids=0x1c6cd9ac4d80b4b8cf44889b8d6ea261242d6f2ec27c69854e6469a4477cbc5b&condition_ids=0x1cea6c0f01f34ac811c11897bf1b6bd837236f754c4487c1c351aeb686b0b20d&condition_ids=0x1e69d243d667a44cc310c5a3c9ca97cb17a202fb4231c5ddbb74717f5bb4e49e&condition_ids=0x21415c4bda5e5cb44d68288621e225606aaa8f377cb0caebece043628da9ed1b&condition_ids=0x21eaf49fa4aa033760979ec42752d821afbe07d0e14a11e9c816a31092938f09&condition_ids=0x21ee027a604ded6a8a0ae8aa659568cb42d78e61157d9b91ca658b249fe44662&condition_ids=0x223c92aa804e0209ea37985a19542239709b51ead6fe8f232f4f46327c4c66a5&condition_ids=0x223fe79ad38e49e02a8e935947d2dc06c210aed1fe1d671cad3cd6146565b06b&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:26:24.053694+00:00",
+    "status": 200,
+    "sha256": "44c6135850465e9e36f4d69b63ce2a22816e94b2f9fa07c07c27d6ebd88d3e57"
+  },
+  {
+    "file": "wallet_markets_1.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0x2371ca77fc832c1dbb15274fd22ca0c47b9440b83a0eda040b603cf7b6d356c6&condition_ids=0x2526d7ca0fec313070d85f6ef4d016996c854df0cd356cdd7a93f9a2463c0107&condition_ids=0x2b5a7f1bfd6795b65a7b0c309e19fa74028328db537eb5f492d2d205b3f5dac2&condition_ids=0x2d412dc9b221d98d86157d54385b719b82c29c01b1d132251f38333f5991538a&condition_ids=0x2eb13e5f6f903744e7bf0a60fc0c3d8eec919ea98e5ca33e3dc2202b17510b97&condition_ids=0x320a0116959f7573f87212ce61e323438862689cdb4dc5e38b3a9f0fbd1cbed4&condition_ids=0x32904a5d455a80fe672a60806ab2c5904d7737f7d9d510abc0c35e1a9290f919&condition_ids=0x33ab55946142814865caa37baef6c381375628853d0acece5b8f486798e6fd47&condition_ids=0x3468ba59ce3b4756f8cdc725e86409b17fdc3bb62025fe16cf6ae8e176f21ed2&condition_ids=0x3762a0256255c8e035611449cf7b047271a2296f225cb023e5ba71c51dadb719&condition_ids=0x3fdbf094f8138abd539a10020eb3e78ccb6e3041a920a2e98f98f79f132d5e08&condition_ids=0x40b5723c8572f3c61e5bd5423ead0bee10813cadadc0d6ba974666917fc6a297&condition_ids=0x40ce87dc8756e9f36aa6540bcf8e9af2e344c1aff80100a25e84a112477518a8&condition_ids=0x4237699947e038d2809742fe60f92d2b3c632ad9d18660c5928312a4ca5f82dd&condition_ids=0x43559958169302fad8cf565b7abbdf5982fb3842915c4ae7bc5c8a0ef21dc2b1&condition_ids=0x43ea0a5e562090c727906756f0d067b8917df6cab8ceea85298c3b76d109e005&condition_ids=0x4b12df717683997aec03544c9b5eea7873f366627f3ca5a7a4e4a02615e89ecb&condition_ids=0x5285d337b5600a2181707fac1505909c143f73f37773a647fc74e295c4731768&condition_ids=0x54af32cf8e72660c3a3290e3f1205c21ec2af9027e2d74fa80a9caac1d620033&condition_ids=0x5677fd9626cd467761e1c9eeeff2aa6302a9539e0676e6be61f6a38d6bc2ba27&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:26:24.819789+00:00",
+    "status": 200,
+    "sha256": "1662af74d0c8dc8cc8413baa3f97ce8d899be820b08677dcda0a361faa2bf2fb"
+  },
+  {
+    "file": "wallet_markets_2.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0x59a3326e6eea1961622c3b0dd3f08239c0842ce10859355f7a05210be75b8d17&condition_ids=0x5a9d44eeeccc54b66243d143014eda86b1ade100dab45e7c7d3924da8db9f1c0&condition_ids=0x5b3509fe2e4e1a5cfd447152243d988a443a905898be18dadf4f68b78eef1c2e&condition_ids=0x5d1e8a08b738d682ce49308c73f0a83ae192476cc9472cb82cc989e4d83a7e7f&condition_ids=0x607ecc84f1b92e42bbf1e5d855f49d0949111dca5ff1502d8970154a4a34c2f3&condition_ids=0x6114306f724135bd1db2f5f3169386decf18f618653c196ef0a6c1afd27f4c73&condition_ids=0x621862d30f742c40bc56ae8d528de82088fa05794063117c6db779a4d71af622&condition_ids=0x62cf9f20cd870e990e8f369e96d3a57b82caa931e248355e843239a7ee7fd211&condition_ids=0x6678c47120967c0a480eee4e169a0174df305f4f0ddf771baf0cc84c48310213&condition_ids=0x6c088216b5bac19bfbbadb0998721b2b84d5296b77aa8880d65fd9a26cf37ae5&condition_ids=0x70fb6f25cc46d2457b502f4481bc8adb6c9714428157a4c0bee5858f00b4c6fc&condition_ids=0x710067bd7b1713e5d1b07d4c449a77ab7e504c0ae3244b337b115f5f7661b9ca&condition_ids=0x77b0380be9f46471b5383fd5fd0730d666b852c3c1fcc61529e0699a62f45d47&condition_ids=0x7d09dcc608f04f7d5ebac72b3ab7a2d2037a3b5db1e454d7c5cc6e00fc8762ad&condition_ids=0x7db2a28c75c9df1376814c6c428f824d8536d4429c70aea4a9025a98e607b9cc&condition_ids=0x7dcab926292de58ece64ccc6dfdc14da9dd57775e5abf5b49fad7aea285fd1bc&condition_ids=0x7f2199a97efbf4f1ebfa7d54e65941f5db7a5a9280326bd4a4daa198e5f2765d&condition_ids=0x8009fd51e7efee9dbe65fff72655801fd78130943ccc969a7e90a2b6b595a94e&condition_ids=0x82242178219bd94ad18de2d5287c6a1f883fff7bd333cf04fc309124a2a175d6&condition_ids=0x82d159168d963d780cdf010d136b4d015509230fe020896e22b74ceb28a8bf00&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:26:26.302636+00:00",
+    "status": 200,
+    "sha256": "11245ee3a90e669281cdbe328d4d406f2b6fee56dbb7ed158839ace178bd5bca"
+  },
+  {
+    "file": "wallet_markets_3.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0x86f68e092daa7907e4da9ea8f8ad25bb45a4d7292fb01c3c36d09410b5d172f8&condition_ids=0x882e64dc124cc228b0c4e6ba442385506883d566b85ad8d8050d07b365f6445e&condition_ids=0x8ac035f347e31dec359c8167e38e161b8a1a168f31104d2580d21e6e57555ea5&condition_ids=0x90b0498bb8e4db39c7f81e5706296337afd3f264c259e62953bae3eecbef1cee&condition_ids=0x917b070cd100acb5e6f4bafbf36f35af5ac047390b2916d05d836adf97a9f293&condition_ids=0x9646f3291bd173172836caf5801593fd2d7041925879e26cc03f5e590314f695&condition_ids=0x97fab9580d6fc5b917118a310362770b2069fb74b2fb6eec83d734c5c6a32eec&condition_ids=0x99961adf25541e8d4f775375b1d80fbe12644b2e1999ed768be7ce977d8c56bf&condition_ids=0x9a585a32ff96b9f339de2a961668233479986c8e07c21c2e2d0da185a67c2f81&condition_ids=0x9a89274dff8f22d194a9a1e4c79a55af820a6bbc00aaeb836910a60938ab8275&condition_ids=0x9e0777794e4f7cd9b86833723714d00984286e69a52e661826082f5db0a6429c&condition_ids=0xa0192d11031455f486dd13d43438c815e5ba135e2595039991a7d09a6b438989&condition_ids=0xa253d2b7b74ba430bac2e74f887c668a712e526999643ec2ac3064f33b9c6bdd&condition_ids=0xa526fc837cb8824074152805e508daa44017fd4b0729fe3d6f0fc69aa8cedd13&condition_ids=0xa8ad6a1a4662e901e0d24b7f98d03a06a533e34848673e8ef3647bb59dabc9fd&condition_ids=0xac6175a1d7be1f3b7b2f47d1c2ee4194cc453ee3d3a112a75eccecd21423fc8c&condition_ids=0xb2513789e0b6d6a76b9c9f5f7c22dd3afa23d701e678fb81029dab7a7eab805a&condition_ids=0xb50cac02e382e56c7b3c6074263874477b055fe729ce5bddbc5f53a7a9443aca&condition_ids=0xbc0070bd88b113d9beedbae5efd78df0e605ca029aff8ef470c881010c923a24&condition_ids=0xbc43a765b1fb2a7ffabf7d57cc64be3754a07f6dbbb657130b520875f204c772&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:26:27.370669+00:00",
+    "status": 200,
+    "sha256": "a4d914671f9351ae8cd8c0e1b94366b12f64e75cdf507aa75bf9f880001862fa"
+  },
+  {
+    "file": "wallet_markets_4.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0xbc5ac2c8097ecd6e2db6a2beb512b24628d4a88f58cc21b7bbcb31070c7946f3&condition_ids=0xbc5f8cd5ae321a4f7a24f0e2b71272e7238bebdb2b0c3d53bbd04fc99d37b083&condition_ids=0xbdcd7621c6836784f3a8f1999da4a3e82f47cc56d555d19462abdaeb4344318f&condition_ids=0xbf73e8c4250a6c5945eeadb9b96fafaae07343266a691981bb16c424101769db&condition_ids=0xc379c4b420b00afd99e427ccc93da241459fd858d79d61190ad091ae114185b7&condition_ids=0xc650cdd779de25fa35662844c26aca46afeaf1c3aafa621d8c531ed70291a0c8&condition_ids=0xc863dec2ea4ec5bc48059fc7ef81b49a0e8053a69391e3a864c5d57e47098dbd&condition_ids=0xcaa47a1f2a6f221054d4ac42258c02b040c0e2064674e7cd0995f64ff9765617&condition_ids=0xccc84033ab481e4c1ed49fce3889e54a9f6c127b819a3bc17bbf2359d1e4c2bd&condition_ids=0xcf3526a3ef08df208f1d9c79936eeba9e3bec39bf261f6af74547c305a9d51fa&condition_ids=0xd5a1ab02e3d4b6975cfbc0cd8c445085fd28626e96b4b0566feb1b985a525fa2&condition_ids=0xd5af3448f6f8c199750a0358ed7fed28aab38bb0c2448bc90d42b465eebc5716&condition_ids=0xd657e8b7b922ac5a1abd36cd00cd884c09deec00684b12a76a73734f2a1b919f&condition_ids=0xd6d535745b71cf76fe0e5517588b7bc5c9b9572075ba4e444055f75d98e05bbd&condition_ids=0xd797439ae592962f8b8e166e2c560691f4a125f1c5a7433044c51d70df421c1f&condition_ids=0xd8a6aa2d540a25cd765b020e4b05246011ebd204bae199830e11b59ae5ddd48e&condition_ids=0xd8df09c7fd30a3e8cd46d0583f46b3ae3e5bab0f94128d44a5f3323054efb2c9&condition_ids=0xdcf6c7adc634b1b02eb7b0b2011f7fa7876f0626515b63900229192fedada588&condition_ids=0xdf4fe5c5ec10e0434a9d11ba3c9168d7a665db1b4c4000214ed84f83f34e927f&condition_ids=0xdfea8851512360fb70c4b4ed29ed369b6dbcdfc58b2493b66cba65faab622129&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:26:27.802757+00:00",
+    "status": 200,
+    "sha256": "7a00cb469bac6f54def96574aa0f6411993509ae833b1f3acdef99a32136346c"
+  },
+  {
+    "file": "wallet_markets_5.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0xe14c3b340fbf6c8ae31210644a4217efb54876ac5a8935fef71af3c5c3c1d41c&condition_ids=0xe23e003a3c7f8601e49fe33071489cce63c2585e2e6f87fa7ea4af4db49c1d76&condition_ids=0xe5a05c166e325511be081f20147b54212341ee353840c61d8e6cbd7b3ba4ec2c&condition_ids=0xe65c38b7d4e1786d6f713d425f6a918930ee0ebeab2d4bfec11af1178b19fa04&condition_ids=0xe6f43b58c977048e954f71297d4b2ad4f4f9828b636c6ef0f5da75f871d33e17&condition_ids=0xe707037f0224353550ddbde6975bf28c2653afe4c7ffc797bc751cfcbd2efe57&condition_ids=0xe7f3817790c96deec9e1f4256e41bfc30b464be2336c5a69c7569a7e64feb8c1&condition_ids=0xe9d1325c6ae29987b64c32f6b341bbf1187082bb28dc8e36b1e2b969275dbcc0&condition_ids=0xecb947e4e1fdb9ec7e90beec70aad2489b14c54786b36db5beda6f0489e35e50&condition_ids=0xefa25c3fe5e01937afc901c2bfd8c76d0c335bd07bb08a49dfb8559507cb587e&condition_ids=0xf7b1075b4c0a1dd5e4b337a3475411f80db2bb76aced198eea4c15fb323ef84f&condition_ids=0xf7ed66f708de5ed6f1896615f25266eab92cdff43fba9d4d77cbe7ca4efcbb78&condition_ids=0xfa3ac1ebd4bf33d87b9e432b12ffd3df680676abb5269a56eb70fad3261b944a&condition_ids=0xfb0f94798731472121e3cea8c3eb4213beaa10e5faf320274eda7e6f324fd550&condition_ids=0xfc39ed0c33038844d0e68d082f1b3aedcdfb54e04cb143179627368fd02e66f5&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:26:28.320303+00:00",
+    "status": 200,
+    "sha256": "9abad2aabac7805c2ca7cecd943eb0205615e09368b93a3f9e1c743359589f8f"
+  }
+]

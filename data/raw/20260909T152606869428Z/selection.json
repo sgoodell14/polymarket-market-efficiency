@@ -1,0 +1,59 @@
+{
+  "run_id": "20260909T152606869428Z",
+  "cutoff_timestamp": 1788967566,
+  "selection_rule": "Latest IDs per politics/sports/crypto tag; closed/resolved; volume >= 1000",
+  "wallet": "0x510f4963b66b1b18505faab74b0bb943d1dda43c",
+  "wallet_rule": "Most frequent wallet in sampled market trade rows",
+  "market_trade_coverage": {
+    "0x78ea3c67e0cfa16073d763db8778463b2b2a787e9c9b3d3b297044662b7b6908": {
+      "rows": 72,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xde3a0bfe02d1990325084f5ec59f6b6c46f63c1cb11315daa1cb0f7bd371aa4d": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    },
+    "0x48482fd9a3872543534348570ee6421cbc0f1742b0887f1e33126883b9f778cf": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    },
+    "0x26398277329954528e057a091e522ed8bb54a6e5a276199f94b57bb2fb14e978": {
+      "rows": 29,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xb0212cdd5301df14b2c330cdf32daa4c78183d2f8d77e4c7a0ee7a7c9e8580a9": {
+      "rows": 44,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xc72ad07624b537ac951a06c7d52042319268bf51c97002c16a5ffd9fbb00d7e7": {
+      "rows": 49,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0x95bec14329ca297078b0f7049991fa900d50a80d37d4b38cda2d131f94d016e0": {
+      "rows": 4,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0x40956a8fe96f3f1fada3f59a83bd0171b50614e10e1d54ae2a4dc9ccdf572345": {
+      "rows": 3,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xf9149b74a7ee0f1be198bd5950204b69d5b8c024381a4c81d6ff868c37c64008": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    }
+  },
+  "wallet_activity_coverage": {
+    "rows": 200,
+    "stop_reason": "sample_cap",
+    "full_history_verified": false
+  }
+}

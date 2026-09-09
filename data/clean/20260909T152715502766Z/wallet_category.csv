@@ -1,0 +1,10 @@
+wallet,category,sample_num_trades,sample_num_buy_trades,sample_num_markets,sample_volume_usdc,sample_avg_entry_probability,profit,win_rate,roi,performance_status,sample_first_trade_utc,sample_last_trade_utc,full_wallet_history_verified
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Business;Technology,2,1,1,53.498919953338,0.0368276014,,,,not_estimable_from_partial_activity_and_inventory,2026-09-08T05:46:55+00:00,2026-09-08T05:51:58+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Climate,2,1,1,13.44780000175,0.0346685175,,,,not_estimable_from_partial_activity_and_inventory,2026-09-08T07:08:27+00:00,2026-09-08T21:01:16+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Crypto,30,7,19,110.34667000009097,0.022245749645275564,,,,not_estimable_from_partial_activity_and_inventory,2026-09-06T15:03:16+00:00,2026-09-09T12:57:15+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Economy;Finance,1,1,1,0.52,0.026000000000000002,,,,not_estimable_from_partial_activity_and_inventory,2026-09-08T13:07:33+00:00,2026-09-08T13:07:33+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Economy;Politics,1,1,1,7.1981100103080005,0.0298577651,,,,not_estimable_from_partial_activity_and_inventory,2026-09-07T19:51:06+00:00,2026-09-07T19:51:06+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Geopolitics,4,2,2,42.60993001860201,0.01,,,,not_estimable_from_partial_activity_and_inventory,2026-09-06T15:12:07+00:00,2026-09-09T06:08:19+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Geopolitics;Politics,1,0,1,26.002399999999998,,,,,not_estimable_from_partial_activity_and_inventory,2026-09-09T05:50:22+00:00,2026-09-09T05:50:22+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Politics,46,46,1,15.819698999999988,0.0009999999999999994,,,,not_estimable_from_partial_activity_and_inventory,2026-09-06T14:45:46+00:00,2026-09-06T17:09:19+00:00,False
+0x7c9e0b03d7505dad7e87777cd282628f75b2db3d,Sports,36,22,7,227.7482680116669,0.039161718766294304,,,,not_estimable_from_partial_activity_and_inventory,2026-09-06T16:02:13+00:00,2026-09-09T05:43:22+00:00,False

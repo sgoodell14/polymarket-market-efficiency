@@ -1,0 +1,76 @@
+{
+  "run_id": "20260909T153138473505Z",
+  "cutoff_timestamp": 1788967898,
+  "selection_rule": "Latest IDs per politics/sports/crypto tag plus one older listing per tag; closed/resolved; volume >= 1000",
+  "older_listing_rule": "startDate <= cutoff - 45 days; endDate >= cutoff - 30 days; latest ID",
+  "price_rule": "First outcome token; 6-hour windows ending 30/7/1 days before closedTime; fidelity 60 minutes; skip before startDate",
+  "wallet": "0x7c9e0b03d7505dad7e87777cd282628f75b2db3d",
+  "wallet_rule": "Most frequent wallet in sampled market trade rows",
+  "market_trade_coverage": {
+    "0x78ea3c67e0cfa16073d763db8778463b2b2a787e9c9b3d3b297044662b7b6908": {
+      "rows": 72,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xde3a0bfe02d1990325084f5ec59f6b6c46f63c1cb11315daa1cb0f7bd371aa4d": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    },
+    "0x48482fd9a3872543534348570ee6421cbc0f1742b0887f1e33126883b9f778cf": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    },
+    "0x1d8f9398b0412678865cfc50aea7d49025b35e54a8a4fe1a223db45447e4138a": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    },
+    "0x26398277329954528e057a091e522ed8bb54a6e5a276199f94b57bb2fb14e978": {
+      "rows": 29,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xb0212cdd5301df14b2c330cdf32daa4c78183d2f8d77e4c7a0ee7a7c9e8580a9": {
+      "rows": 44,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xc72ad07624b537ac951a06c7d52042319268bf51c97002c16a5ffd9fbb00d7e7": {
+      "rows": 49,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0xfb749ba3ec9120763a28161a1c900b8f4e508168ffcc9aa4d6737a308f7e1e6d": {
+      "rows": 64,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0x95bec14329ca297078b0f7049991fa900d50a80d37d4b38cda2d131f94d016e0": {
+      "rows": 4,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0x40956a8fe96f3f1fada3f59a83bd0171b50614e10e1d54ae2a4dc9ccdf572345": {
+      "rows": 3,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    },
+    "0x14af2fdd9261c15e19633f9e4199e37cadf36a66cb365185d62deeb02e0a1a44": {
+      "rows": 200,
+      "stop_reason": "sample_cap",
+      "full_history_verified": false
+    },
+    "0x13178ce83741883342e46ba645bc6bd8417633ce4c22bfbbe40b4070672c86be": {
+      "rows": 113,
+      "stop_reason": "short_page",
+      "full_history_verified": false
+    }
+  },
+  "wallet_activity_coverage": {
+    "rows": 200,
+    "stop_reason": "sample_cap",
+    "full_history_verified": false
+  }
+}

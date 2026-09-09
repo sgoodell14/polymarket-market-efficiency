@@ -1,0 +1,429 @@
+{
+  "run_id": "20260909T152715502766Z",
+  "markets": 12,
+  "joined_market_trade_rows": 1178,
+  "distinct_sample_wallets": 443,
+  "wallet_activity_trade_rows_joined": 123,
+  "wallet_category_rows": 9,
+  "resolved_labels": 12,
+  "raw_category_missing": 12,
+  "multiple_domain_markets": 3,
+  "trade_stop_reasons": {
+    "short_page": 8,
+    "sample_cap": 4
+  },
+  "price_coverage": {
+    "30": {
+      "market_not_open": 11,
+      "available": 1
+    },
+    "7": {
+      "market_not_open": 10,
+      "available": 2
+    },
+    "1": {
+      "market_not_open": 7,
+      "available": 5
+    }
+  },
+  "duplicate_candidates_retained": {
+    "trades_*_*.json": 4,
+    "wallet_activity_*.json": 0
+  },
+  "rejected_rows": [
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 72,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 75,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 77,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 78,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 79,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 80,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 81,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 82,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 83,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 84,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 85,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 87,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 88,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 89,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 90,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 91,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 92,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 93,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 94,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 95,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 97,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 98,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_0.json",
+      "source_row": 99,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 0,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 1,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 2,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 3,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 4,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 5,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 6,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 7,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 8,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 9,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 10,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 11,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 13,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 14,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 15,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 23,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 26,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 27,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 28,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 29,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 45,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 48,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 50,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 62,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 63,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 66,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 67,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 69,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 70,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 72,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 76,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 77,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 78,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 82,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 83,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 84,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 87,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 91,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 92,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 94,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 97,
+      "reason": "market_not_joined"
+    },
+    {
+      "source_file": "wallet_activity_1.json",
+      "source_row": 99,
+      "reason": "market_not_joined"
+    }
+  ],
+  "api_errors": [],
+  "wallet_category_counts": {
+    "Business;Technology": 2,
+    "Climate": 2,
+    "Crypto": 30,
+    "Economy;Finance": 1,
+    "Economy;Politics": 1,
+    "Geopolitics": 4,
+    "Geopolitics;Politics": 1,
+    "Politics": 46,
+    "Sports": 36
+  },
+  "example_market": {
+    "market_id": "4346082",
+    "condition_id": "0x78ea3c67e0cfa16073d763db8778463b2b2a787e9c9b3d3b297044662b7b6908",
+    "question": "Will Mike Winkelmann (Beeple) post about $LAPTOP by September 30?",
+    "category": "Crypto;Politics",
+    "category_source": "exact_tag_slug_mapping_v1",
+    "raw_category": null,
+    "tag_slugs": "biden;crypto;crypto-culture;hunter-biden;laptop;memecoins;mention-markets;politics;s-laptop",
+    "resolution": "Yes",
+    "resolution_source": "gamma_resolved_and_one_hot_prices",
+    "final_outcome": 1,
+    "forecast_outcome": "Yes",
+    "start_date_utc": "2026-09-07T19:40:36Z",
+    "scheduled_end_date_utc": "2026-10-01T03:59:00Z",
+    "closed_time_utc": "2026-09-08T18:10:01+00:00",
+    "total_volume_reported": 2334.23244,
+    "sample_trade_rows": 72,
+    "sample_number_traders": 24,
+    "sample_volume_usdc": 1802.7483169923844,
+    "sample_trader_concentration_hhi": 0.29943917299486683,
+    "sample_avg_trade_size_shares": 64.83979,
+    "sample_largest_trade_shares": 359.95,
+    "sample_first_trade_utc": "2026-09-08T07:21:13+00:00",
+    "sample_last_trade_utc": "2026-09-08T18:09:46+00:00",
+    "trade_stop_reason": "short_page",
+    "full_trade_history_verified": false,
+    "price_30_days_before": null,
+    "price_30d_observed_at_utc": null,
+    "price_30d_age_seconds": null,
+    "price_30d_status": "market_not_open",
+    "price_7_days_before": null,
+    "price_7d_observed_at_utc": null,
+    "price_7d_age_seconds": null,
+    "price_7d_status": "market_not_open",
+    "price_1_days_before": null,
+    "price_1d_observed_at_utc": null,
+    "price_1d_age_seconds": null,
+    "price_1d_status": "market_not_open"
+  },
+  "example_trade": {
+    "market_id": "3029440",
+    "condition_id": "0x13178ce83741883342e46ba645bc6bd8417633ce4c22bfbbe40b4070672c86be",
+    "wallet": "0x54a80b25396fb4ae193a018334f49b1b22f752fd",
+    "category": "Crypto",
+    "timestamp": 1784998786,
+    "timestamp_utc": "2026-07-25T16:59:46+00:00",
+    "side": "BUY",
+    "outcome": "No",
+    "outcome_index": 1,
+    "asset_id": "108663457396485825789306998137659084561349201649377958127574381186033559773294",
+    "price": 0.998,
+    "size_shares": 15.55,
+    "notional_usdc": 15.5189,
+    "transaction_hash": "0x0854ecb02d562c596c747c8a5a85594b45be0b5eb87d5616539afa7b447a54a8",
+    "source_file": "trades_3029440_0.json",
+    "source_row": 0
+  }
+}

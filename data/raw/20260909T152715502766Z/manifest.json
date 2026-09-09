@@ -1,0 +1,268 @@
+[
+  {
+    "file": "tag_politics.json",
+    "url": "https://gamma-api.polymarket.com/tags/slug/politics",
+    "fetched_at_utc": "2026-09-09T15:27:15.518713+00:00",
+    "status": 200,
+    "sha256": "8a6d84acac21a7b0302a4367a32d7166f9cbd1d85c3caed77974b622aa134f47"
+  },
+  {
+    "file": "markets_politics.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=2&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=3&order=id&ascending=false&include_tag=true",
+    "fetched_at_utc": "2026-09-09T15:27:15.636755+00:00",
+    "status": 200,
+    "sha256": "3a3000c02be9f5e6e2b0b0029367e95399e1605d4c66fa8e165c564f12cd8412"
+  },
+  {
+    "file": "markets_politics_older.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=2&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=1&order=id&ascending=false&include_tag=true&start_date_max=2026-07-26T15%3A27%3A15%2B00%3A00&end_date_min=2026-08-10T15%3A27%3A15%2B00%3A00",
+    "fetched_at_utc": "2026-09-09T15:27:15.752675+00:00",
+    "status": 200,
+    "sha256": "34d860475223d4724241fc491850271ef592eb22626a719523d756f9559a54fe"
+  },
+  {
+    "file": "tag_sports.json",
+    "url": "https://gamma-api.polymarket.com/tags/slug/sports",
+    "fetched_at_utc": "2026-09-09T15:27:17.853040+00:00",
+    "status": 200,
+    "sha256": "6093e5ae8110d1ad85dfde8aa35ea0762730cabbf7f797324eea26a644743e81"
+  },
+  {
+    "file": "markets_sports.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=1&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=3&order=id&ascending=false&include_tag=true",
+    "fetched_at_utc": "2026-09-09T15:27:17.936409+00:00",
+    "status": 200,
+    "sha256": "b5ae5b5275b30ea15b430ac89df478c652b8a41d1f661e719baa218bffd3229f"
+  },
+  {
+    "file": "markets_sports_older.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=1&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=1&order=id&ascending=false&include_tag=true&start_date_max=2026-07-26T15%3A27%3A15%2B00%3A00&end_date_min=2026-08-10T15%3A27%3A15%2B00%3A00",
+    "fetched_at_utc": "2026-09-09T15:27:18.132590+00:00",
+    "status": 200,
+    "sha256": "7b208501f5fa94abbf8429c38a93ce98b31ce65fcadb91801ec2cc1959cc0207"
+  },
+  {
+    "file": "tag_crypto.json",
+    "url": "https://gamma-api.polymarket.com/tags/slug/crypto",
+    "fetched_at_utc": "2026-09-09T15:27:20.053612+00:00",
+    "status": 200,
+    "sha256": "037e3930df3bffe89ce94033369b25ca5a09fd9b7b344ec4f4b0d8bfd588a37d"
+  },
+  {
+    "file": "markets_crypto.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=21&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=3&order=id&ascending=false&include_tag=true",
+    "fetched_at_utc": "2026-09-09T15:27:20.171255+00:00",
+    "status": 200,
+    "sha256": "f28e914477081b92c9e91acaff7608553496d51a73651f28bb168b773e3cc6b2"
+  },
+  {
+    "file": "markets_crypto_older.json",
+    "url": "https://gamma-api.polymarket.com/markets?tag_id=21&closed=true&uma_resolution_status=resolved&volume_num_min=1000&limit=1&order=id&ascending=false&include_tag=true&start_date_max=2026-07-26T15%3A27%3A15%2B00%3A00&end_date_min=2026-08-10T15%3A27%3A15%2B00%3A00",
+    "fetched_at_utc": "2026-09-09T15:27:20.571730+00:00",
+    "status": 200,
+    "sha256": "425d92085b361941ae3253eb37c8eea7a9a564141d5307453b8372b013e5b1d9"
+  },
+  {
+    "file": "trades_4346082_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x78ea3c67e0cfa16073d763db8778463b2b2a787e9c9b3d3b297044662b7b6908&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:22.586207+00:00",
+    "status": 200,
+    "sha256": "b45a254ef68cc97774bae7d952f7c6e7436cc50813c96f6b14aeca28a929520a"
+  },
+  {
+    "file": "trades_4342936_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xde3a0bfe02d1990325084f5ec59f6b6c46f63c1cb11315daa1cb0f7bd371aa4d&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:23.219634+00:00",
+    "status": 200,
+    "sha256": "d4c1907f85742d7bc66f75a7e5a7444a495591aa90a078040592306ee2bb806d"
+  },
+  {
+    "file": "trades_4342936_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0xde3a0bfe02d1990325084f5ec59f6b6c46f63c1cb11315daa1cb0f7bd371aa4d&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:23.586169+00:00",
+    "status": 200,
+    "sha256": "1b569b7953d6b49c423c7c545477afc78613b7fbc09c301cf0b67a3de7df822c"
+  },
+  {
+    "file": "prices_4342936_1d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=70650493992845483141317426509288616583149832748968072019836468749065395099621&startTs=1788858873&endTs=1788880473&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:24.169487+00:00",
+    "status": 200,
+    "sha256": "9f8132e2ad98598b0d35eaefe58e2b868bf5cfcbb058a94664e60e59a1cac230"
+  },
+  {
+    "file": "trades_4339186_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x48482fd9a3872543534348570ee6421cbc0f1742b0887f1e33126883b9f778cf&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:24.536222+00:00",
+    "status": 200,
+    "sha256": "aac304b95329bf1f2d34100b34468be20e0bef11bb93fce25121ca7dacb1eaf0"
+  },
+  {
+    "file": "trades_4339186_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0x48482fd9a3872543534348570ee6421cbc0f1742b0887f1e33126883b9f778cf&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:24.986026+00:00",
+    "status": 200,
+    "sha256": "9b6db532d1a3fd8bf28800961a42dd1f36cc819cc75c119c89f75ea78fe2f8c8"
+  },
+  {
+    "file": "prices_4339186_1d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=97236330897070950292720830345665491942542609545937117798868834122164571073854&startTs=1788858900&endTs=1788880500&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:25.385092+00:00",
+    "status": 200,
+    "sha256": "47ab3599b4db620dd464f758ff20ea35266a16b50ef5ce19d6df1e0bb5fd87c6"
+  },
+  {
+    "file": "trades_3093334_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x1d8f9398b0412678865cfc50aea7d49025b35e54a8a4fe1a223db45447e4138a&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:25.702704+00:00",
+    "status": 200,
+    "sha256": "e8bcec6656593064afa73b369d84780e8b2b86bd9b78b0bf1dd6b50a168fd5b6"
+  },
+  {
+    "file": "trades_3093334_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0x1d8f9398b0412678865cfc50aea7d49025b35e54a8a4fe1a223db45447e4138a&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:26.119396+00:00",
+    "status": 200,
+    "sha256": "e82057a269ba9cc10fc062282717db076d42770f9a79854ceb9f22f25833f89a"
+  },
+  {
+    "file": "prices_3093334_30d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=38714119439404106302972492485329196841151064566582021985293927113515226088434&startTs=1786169926&endTs=1786191526&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:26.502609+00:00",
+    "status": 200,
+    "sha256": "0079011fd2d1e382e49361a6f3708a98429aa69bd4eb239838470554054c361b"
+  },
+  {
+    "file": "prices_3093334_7d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=38714119439404106302972492485329196841151064566582021985293927113515226088434&startTs=1788157126&endTs=1788178726&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:26.802847+00:00",
+    "status": 200,
+    "sha256": "5335bedaa8e38a29e90af62fbffa37710bd8e40b4e33567d8b1de935f5beeb85"
+  },
+  {
+    "file": "prices_3093334_1d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=38714119439404106302972492485329196841151064566582021985293927113515226088434&startTs=1788675526&endTs=1788697126&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:27.135980+00:00",
+    "status": 200,
+    "sha256": "ba6376e6d868c22edcd7621c42e34fe5e06368617ecd5e8747cbfdb1400a0869"
+  },
+  {
+    "file": "trades_4401029_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x26398277329954528e057a091e522ed8bb54a6e5a276199f94b57bb2fb14e978&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:27.432125+00:00",
+    "status": 200,
+    "sha256": "24d93e2a704c70cb25c2014be87cd5ebb3ff93123db87a3c984531ea3c8ff15e"
+  },
+  {
+    "file": "trades_4398495_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xb0212cdd5301df14b2c330cdf32daa4c78183d2f8d77e4c7a0ee7a7c9e8580a9&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:27.769487+00:00",
+    "status": 200,
+    "sha256": "4c44b308a9c82e40b0c44a2b514e9848156df2ad59156f5f6885776e72f43f20"
+  },
+  {
+    "file": "trades_4398494_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xc72ad07624b537ac951a06c7d52042319268bf51c97002c16a5ffd9fbb00d7e7&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:28.201486+00:00",
+    "status": 200,
+    "sha256": "86e5574d950410b73b3ab2e64f65969a37b5a700ea7c10fe896b913812afc853"
+  },
+  {
+    "file": "trades_3100014_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xfb749ba3ec9120763a28161a1c900b8f4e508168ffcc9aa4d6737a308f7e1e6d&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:28.502723+00:00",
+    "status": 200,
+    "sha256": "88d9b4f5af1191bbf7ddf9aecb4a3a3e7724c52fa210e271985fc93ba3d0bfc2"
+  },
+  {
+    "file": "prices_3100014_7d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=81105037888764326950899019873300369701356733087059871099048298647405699483616&startTs=1786908733&endTs=1786930333&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:28.886084+00:00",
+    "status": 200,
+    "sha256": "39ad7f0914259eb700dd5e2aa378591cd96c09257e8eb7924b8f22e0e17d64d7"
+  },
+  {
+    "file": "prices_3100014_1d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=81105037888764326950899019873300369701356733087059871099048298647405699483616&startTs=1787427133&endTs=1787448733&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:29.209671+00:00",
+    "status": 200,
+    "sha256": "a5c5d4e45f1bb5cd7c7e3b2b5ea8845007665a11ff07cea2a71105434b5f0391"
+  },
+  {
+    "file": "trades_4398673_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x95bec14329ca297078b0f7049991fa900d50a80d37d4b38cda2d131f94d016e0&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:29.452413+00:00",
+    "status": 200,
+    "sha256": "da3717b8240b7263de2aec53896f98ac1a2d8bbe24e794172ca42bfb7391f596"
+  },
+  {
+    "file": "trades_4368452_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x40956a8fe96f3f1fada3f59a83bd0171b50614e10e1d54ae2a4dc9ccdf572345&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:29.836203+00:00",
+    "status": 200,
+    "sha256": "f86e454b186e6a782fe217d5d798b1a073e2507b181be3563e5150e8dabab175"
+  },
+  {
+    "file": "trades_4366568_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0xf9149b74a7ee0f1be198bd5950204b69d5b8c024381a4c81d6ff868c37c64008&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:30.119007+00:00",
+    "status": 200,
+    "sha256": "571a14c2728fabd6728dccfc564c3f8e70d6a90d78b01481df76f86537cfd6b9"
+  },
+  {
+    "file": "trades_4366568_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0xf9149b74a7ee0f1be198bd5950204b69d5b8c024381a4c81d6ff868c37c64008&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:30.479956+00:00",
+    "status": 200,
+    "sha256": "533d95f8523a3087399bb30d9d85a10673757f5bae30446111106e6eb0e2e46c"
+  },
+  {
+    "file": "trades_3029440_0.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=0&market=0x13178ce83741883342e46ba645bc6bd8417633ce4c22bfbbe40b4070672c86be&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:30.819296+00:00",
+    "status": 200,
+    "sha256": "8dfb7347bf7b510b42d30d4561ace7d943245bd935e65986d2648dec937e793c"
+  },
+  {
+    "file": "trades_3029440_1.json",
+    "url": "https://data-api.polymarket.com/trades?limit=100&offset=100&market=0x13178ce83741883342e46ba645bc6bd8417633ce4c22bfbbe40b4070672c86be&takerOnly=false&end=1788967635",
+    "fetched_at_utc": "2026-09-09T15:27:31.183825+00:00",
+    "status": 200,
+    "sha256": "6e76be92e85a54a896b3205ccd014ea56c0231e54614410434c33af38931cec1"
+  },
+  {
+    "file": "prices_3029440_1d.json",
+    "url": "https://clob.polymarket.com/prices-history?market=78423296503963723739064283312890026953778459701557886376608171970985684969246&startTs=1784898226&endTs=1784919826&fidelity=60",
+    "fetched_at_utc": "2026-09-09T15:27:31.530639+00:00",
+    "status": 200,
+    "sha256": "f7601668d459b9c7366fe95b4e146bcaef3a2786bc3c60fb255af9a8ce8905db"
+  },
+  {
+    "file": "wallet_activity_0.json",
+    "url": "https://data-api.polymarket.com/activity?limit=100&offset=0&user=0x7c9e0b03d7505dad7e87777cd282628f75b2db3d&start=1&end=1788967635&sortBy=TIMESTAMP&sortDirection=DESC",
+    "fetched_at_utc": "2026-09-09T15:27:31.869611+00:00",
+    "status": 200,
+    "sha256": "7ebff4c543d1c3f5959cf6b42098aafe3866e15bfc01885c1405d330e9c0db03"
+  },
+  {
+    "file": "wallet_activity_1.json",
+    "url": "https://data-api.polymarket.com/activity?limit=100&offset=100&user=0x7c9e0b03d7505dad7e87777cd282628f75b2db3d&start=1&end=1788967635&sortBy=TIMESTAMP&sortDirection=DESC",
+    "fetched_at_utc": "2026-09-09T15:27:32.447134+00:00",
+    "status": 200,
+    "sha256": "77d1cddad216d120ba267966aa5117a336cab938a33d5bad798a3726c028da33"
+  },
+  {
+    "file": "wallet_markets_0.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0x032e40c71875723c5878c4385458f17aa5a6e90f6bb5c92fd75cf13a5a8ea3d4&condition_ids=0x052776dbb92aa02fdb1f21a415a52cc422f2fd996eda91f717a1d7e1a751b633&condition_ids=0x0800eeedda0095fceb054629b0afcba25d092c090298d12395f296e1dade207c&condition_ids=0x0bbbcca922e19937c88530c715742a6c4c5d951e3e91e2c37d3053ed6e820c81&condition_ids=0x0e0be1206fd204317858133e740e85d7ffcc141dd1fc91fdca660770aded0ab0&condition_ids=0x0f10553969ee33e16052fd14dec9c15cd276bea50876f247ee5e8c22eabadfe2&condition_ids=0x15e8e337c1b6eba93721c73f97d4e058e8140867457878afb1f66a9ff827d507&condition_ids=0x216ca1afdf1fbc84e4262b211a30a7169121e70e53c2c690a3f65be4a0529226&condition_ids=0x22781a6f2893cd8544f16ced1e0309ebdc4a910ada6b085fd8566482acb0ef81&condition_ids=0x27e94e914a015f944449dbd2e49bbe2e36f32cc3176b23dcbdccd94c5d905ac5&condition_ids=0x2b4c48fee6abf0782b1b9e3f4388f32b028d559e34dbad32c7755c9265514e7c&condition_ids=0x3bc39e987416d6af54a6d0929cf80d50de710a20da3bbe78fe4f5bcdb1c565a2&condition_ids=0x4c1755f59c7b91256d44ffd39ca80eb0500911db19af6df711eaaf307a90c21b&condition_ids=0x52cbfbcbd57ffbeacc1425799c4a560cf53dec0f662a968bc5d8bb72e148890e&condition_ids=0x56bb2f0ee548d63a240c7dae1c4d64cf78c46c8bb743908517edb9f84b9d3e5f&condition_ids=0x5a4a654036fc16de8dd023594c5e2d2f4f27e24f4aeec5738e7b2cd465d57b9a&condition_ids=0x7780567b279501c6757c7cdb4843e168dc5c3c6e98f270e0f6a1e2ab6a605aa4&condition_ids=0x7d9ea4a4c1eb915053ab5457ff92aa19ea18effa53080334844b2cc59d793a39&condition_ids=0x822de855538c164628c5567391fbd5906ec5af97c05a8f92845ebe609959b3d9&condition_ids=0x8ad765a6dbac66fe9760cb31efed411dca71897d736fd2a2823be478926ec8a1&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:27:32.969299+00:00",
+    "status": 200,
+    "sha256": "2ddb211f2b5b1d3772b9c4eb8694b735b5a39c972cb9e6e224b9919e500ca1be"
+  },
+  {
+    "file": "wallet_markets_1.json",
+    "url": "https://gamma-api.polymarket.com/markets?condition_ids=0x95f41e6f6c8bc899fda186967cdc6359f5eca12dc9fe48372cd95383a38f995c&condition_ids=0x9ddae4ff01088555d2a7f99abf31532627c97e7452ec2a423f15da4076cce215&condition_ids=0xa0728c5221ceec3cd1a6de7d8b54fb671385d355794f4da6c9cc8e2fa4d56aab&condition_ids=0xa7a915b449e52646dbd1863015f19a925aed5974b259b5c1418034aa82af32da&condition_ids=0xad485c0cfb6058e791ffd719ee3a99bf8ea241975704b5960041ec0fe017dadf&condition_ids=0xae074c234f1a96110ed755251295b11f990eafebef41cb4829600f93af37d4e7&condition_ids=0xb1d7745a48bfca30e337914cfcf7d00d011c9472c2e5b0db8c0008a9103b5e65&condition_ids=0xba30e5d26c0a2086c7c4bf464fe5c8bf0378a3395f687c571c2d09bc42769db8&condition_ids=0xc095fac589c6c2fb6ad6f39d54181c4e6b4debf3d5db916e9f60e5f5e502ae53&condition_ids=0xc10ee0b05781ed0f6f0c262ae9e45fe0f3126f9aaeaf8bd5bd329c7a8de79dc0&condition_ids=0xc15a7548e3f5c17dd61cebeba2f105ce6a8c36e5dce50331ad308b26094c5a78&condition_ids=0xc4d9910f44f0480a5f3d818cb65e5ad0151bcde9336fea4c009674fa3b93418a&condition_ids=0xcb48a1fa12467e355927760680a2cb43575fb136f3a57c238920dc7707891cd4&condition_ids=0xd7b890aede07d9713e4bfe60c3f7dc7b81c63eef06092a11a169794d6d74979a&condition_ids=0xd9fc21018631d192536fe101a2fcc4610c623fc752af22e3d41da78c5739a2cd&condition_ids=0xdfbf9a3a78f35e487782f4809fdc9c888be737c0c0d30d739794b2ca2cdd4545&condition_ids=0xe00760a84cc7e5601bd84f4c99c3da844ac86254832cb6a9699134c9ee5d2983&condition_ids=0xe2d7af6dcea0934472bd9a4c5daa0e5a3a81e855a00a752e81c58c751202c5e5&condition_ids=0xf7dcc0fdd663fe8a5228652ff2112300eee723d28194472db938c64b65634b40&condition_ids=0xf9cd02190956913d1ef634e85c71e218e6ce153c1d389bfea4722b077e7952c5&include_tag=true&limit=100",
+    "fetched_at_utc": "2026-09-09T15:27:33.347861+00:00",
+    "status": 200,
+    "sha256": "2ecd5c12ad7709ff90772c601fcea1c2bfb727a89bf9e66f56121de4d20681da"
+  }
+]

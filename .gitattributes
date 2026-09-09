@@ -1,0 +1,5 @@
+# Preserve captured response bytes across checkouts for manifest hashes.
+data/raw/** -text -diff
+*.py text eol=lf
+*.md text eol=lf
+*.ipynb text eol=lf

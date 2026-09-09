@@ -1,0 +1,2 @@
+# Python 3.11+ standard library is sufficient for the collector, cleaner, and tests.
+# A Jupyter-compatible editor/kernel is needed only to open the exploration notebook.
