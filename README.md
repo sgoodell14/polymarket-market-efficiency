@@ -35,8 +35,8 @@ data/                      # Raw responses and clean tables, separated by run
   raw/
   clean/
 docs/                      # Findings, field definitions, assignment checklist
-figures/                   # Reserved for EDA figures
-website/                   # Reserved for the Quarto course website
+figures/                   # Reproducible pilot figures and data examples
+website/                   # Quarto source, course pages, and linked downloads
 tests/                     # Resolution, joins, and historical-price checks
 ```
 
@@ -57,6 +57,19 @@ The sample is deliberately small and nonrepresentative. Market statistics prefix
 
 Raw response bodies are preserved unchanged. Each run's `manifest.json` records request URLs, retrieval times, HTTP status, and SHA-256 hashes. CSV rows point back to raw files and zero-based source row numbers.
 
-## Website plan
+## Course website
 
-Quarto + GitHub Pages is the intended route. The [website plan](website/README.md) lists all required navigation tabs. Website publication, the topic introduction, the final 10 questions, and full EDA are the next stage. This repository is local; a GitHub remote has not been created.
+The Quarto website now contains the Introduction, ten provisional research questions, DataPrep_EDA with ten descriptive pilot figures, and all required later-module pages. The later analyses remain explicitly pending. A private Sites deployment is used for review; the static output remains compatible with GitHub Pages.
+
+Edit `website/index.qmd` for the introduction, `_quarto.yml` for navigation, and `theme.scss` for styling. `src/prepare_website.py` generates the DataPrep_EDA page, figures, and downloads from the fixed reviewed capture; edit that script to change generated content.
+
+```powershell
+python -m pip install -r requirements-website.txt
+python src/build_website.py
+```
+
+The build uses portable Quarto 1.9.38 from `.tools/bin/quarto.exe`, or Quarto on PATH. Local preview: `.\.tools\bin\quarto.exe preview website`. The final build renders a staging copy under `.artifacts/` and puts portable output in root `dist/` for hosting; the live preview uses `website/dist/`. All generated output and the local Quarto installation are ignored by Git.
+
+Private review URL: https://polymarket-market-efficiency.arcane-koi-3804.chatgpt.site
+
+The course submission still needs a public URL, a complementary data source, and a larger justified analytical sample. No GitHub repository has been created.

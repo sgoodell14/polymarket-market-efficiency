@@ -1,7 +1,7 @@
-# Course website: next stage
+# Course website
 
-Intended platform: Quarto + GitHub Pages.
+This is a Quarto website. Edit the `.qmd` files as Markdown. `_quarto.yml` defines the required course navigation; `theme.scss` defines the shared appearance.
 
-Required navigation: Introduction, DataPrep_EDA, Clustering, PCA, NaiveBayes, DecTrees, SVMs, Regression, NN, Conclusions.
+The project has a local portable Quarto under `../.tools/`. From the repository root, `python src/build_website.py` prepares the reviewed data downloads and figures, renders every page, and copies the static output to `../dist` relative to this folder. The same static output can be served with Sites or GitHub Pages.
 
-The data feasibility check comes first. This folder reserves the website location; no course website has been built or published yet. The introduction and final 10 questions are deliberately deferred until the dataset scope is settled. See [assignment checklist](../docs/assignment_checklist.md) and [feasibility findings](../docs/data_feasibility.md).
+The first version presents an introduction, ten research questions, the pilot data and ten descriptive figures. Later analysis pages explicitly remain pending. Public course submission and additional data collection are separate next steps.

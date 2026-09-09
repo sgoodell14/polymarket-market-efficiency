@@ -6,13 +6,16 @@ The supplied assignment is broader than the requested first-stage data proof. It
 - [x] Create a local repository and document the research concept.
 - [x] Collect data with Python and a public API; preserve code, raw responses, and request provenance.
 - [x] Build prototype market and wallet-category tables; document limitations.
-- [ ] Create and publish the course website with Introduction, Conclusions, DataPrep_EDA, Clustering, PCA, NaiveBayes, DecTrees, SVMs, Regression, and NN navigation links.
-- [ ] Write at least two topic-focused introduction paragraphs, one image, and 10 research questions. The eventual final introduction requires five paragraphs with images.
+- [x] Build the Quarto course website with all ten required navigation links.
+- [ ] Make the reviewed website publicly accessible for course submission.
+- [x] Draft two topic-focused introduction paragraphs, an explanatory image, and 10 provisional research questions. The eventual final introduction requires five paragraphs with images.
 - [ ] Add a complementary data source and enlarge the sample after validating coverage and taxonomy.
-- [ ] Explain how, where, and why the data were gathered, with source URLs and concrete GET examples.
-- [ ] Perform and explain EDA and cleaning together, with at least 10 appropriate figures, readable axes, titles, color, and two explanatory sentences each.
-- [ ] Include small raw and cleaned data images; link all raw data and all code.
-- [ ] Explain unavailable fields and define a justified analysis subset; do not invent missing observations.
+- [x] Explain the pilot collection with source URLs and concrete GET examples.
+- [x] Present ten descriptive pilot figures with readable axes, titles, color, and two explanatory sentences each.
+- [ ] Expand the EDA and cleaning to the larger research sample.
+- [x] Include small raw and cleaned data images; link the pilot raw data, clean tables, notebook, and source code.
+- [x] Explain unavailable fields without inventing missing observations.
+- [ ] Define and collect a justified analysis subset.
 - [ ] Proofread in third person; the introduction should explain the topic and its significance rather than models or implementation.
 - [ ] Submit one website URL in a .docx named with the student's name and Project A1.
 

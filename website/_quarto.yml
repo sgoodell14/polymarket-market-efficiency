@@ -1,0 +1,74 @@
+project:
+  type: website
+  output-dir: dist
+  render:
+    - index.qmd
+    - DataPrep_EDA.qmd
+    - Clustering.qmd
+    - PCA.qmd
+    - NaiveBayes.qmd
+    - DecTrees.qmd
+    - SVMs.qmd
+    - Regression.qmd
+    - NN.qmd
+    - Conclusions.qmd
+  resources:
+    - assets/**
+    - downloads/**
+    - .nojekyll
+website:
+  title: "Market Efficiency"
+  description: "Information discovery, market calibration, and trader specialization in prediction markets."
+  site-url: "https://polymarket-market-efficiency.arcane-koi-3804.chatgpt.site"
+  search: false
+  page-navigation: true
+  navbar:
+    background: "#11283f"
+    foreground: "#ffffff"
+    title: "MARKET EFFICIENCY"
+    right:
+      - text: "Introduction"
+        href: index.qmd
+      - text: "Explore the data"
+        href: DataPrep_EDA.qmd
+  sidebar:
+    style: docked
+    background: "#f0f4f8"
+    title: "THE RESEARCH"
+    contents:
+      - text: "Introduction"
+        href: index.qmd
+      - text: "DataPrep_EDA"
+        href: DataPrep_EDA.qmd
+      - text: "Clustering"
+        href: Clustering.qmd
+      - text: "PCA"
+        href: PCA.qmd
+      - text: "NaiveBayes"
+        href: NaiveBayes.qmd
+      - text: "DecTrees"
+        href: DecTrees.qmd
+      - text: "SVMs"
+        href: SVMs.qmd
+      - text: "Regression"
+        href: Regression.qmd
+      - text: "NN"
+        href: NN.qmd
+      - text: "Conclusions"
+        href: Conclusions.qmd
+  page-footer:
+    left: "Information Discovery & Market Efficiency"
+    right: "Polymarket pilot - September 2026"
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    toc: true
+    toc-title: "On this page"
+    title-block-banner: false
+    code-copy: true
+    smooth-scroll: false
+    link-external-newwindow: true
+    anchor-sections: true
+    fig-format: png
+    fig-dpi: 160
+    lang: en

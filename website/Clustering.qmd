@@ -1,0 +1,21 @@
+---
+title: "Clustering"
+---
+
+::: {.eyebrow}
+Later course module
+:::
+
+This analysis has not been completed.
+
+Explore whether markets or traders form meaningful groups.
+
+## Before this analysis
+
+The next collection stage must establish a suitable market cohort, historical coverage, and feature definitions. Any predictive comparison will need a clear forecast cutoff so later trades and resolved outcomes cannot enter earlier predictors.
+
+## Planned evidence
+
+This page will contain the research question, the prepared data, the analysis, and an interpretation of its results. Code and data links will accompany the completed work.
+
+[Review the current dataset and limitations](DataPrep_EDA.qmd).

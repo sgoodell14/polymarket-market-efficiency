@@ -7,3 +7,10 @@ __pycache__/
 !.env.example
 website/_site/
 website/.quarto/
+
+# Local website tools, generated output, and hosting archives
+.tools/
+dist/
+website/dist/
+website/.quarto/
+.artifacts/
