@@ -19,7 +19,7 @@ project:
 website:
   title: "Market Efficiency"
   description: "Information discovery, market calibration, and trader specialization in prediction markets."
-  site-url: "https://polymarket-market-efficiency.sgoodell14.chatgpt.site"
+  site-url: "https://sgoodell14.github.io/polymarket-market-efficiency/"
   search: false
   page-navigation: true
   navbar:

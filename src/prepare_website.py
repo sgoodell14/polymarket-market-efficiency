@@ -188,14 +188,6 @@ def main():
         for path in sorted(RAW.iterdir()):
             if path.is_file(): archive.write(path, arcname=f"{RUN}/{path.name}")
     shutil.copy2(RAW / "manifest.json", WEB / "downloads/raw-manifest.json")
-    with zipfile.ZipFile(WEB / "downloads/source-code.zip", "w", zipfile.ZIP_DEFLATED) as archive:
-        for path in source_files: archive.write(path, arcname=str(path.relative_to(ROOT)))
-        archive.write(ROOT / "requirements.txt", "requirements.txt")
-        archive.write(ROOT / "requirements-website.txt", "requirements-website.txt")
-        for pattern in ("*.qmd", "*.yml", "*.scss"):
-            for path in sorted(WEB.glob(pattern)):
-                archive.write(path, arcname=str(path.relative_to(ROOT)))
-
     market_table = "\n".join(f"| {m['market_id']} | {m['question'].replace('|', '/')} | {m['category'].replace(';', ' + ')} | {m['resolution']} |" for m in markets)
     joined_pages = "\n".join(pages)
     content = f"""---
@@ -300,6 +292,14 @@ All linked tables refer to capture `{RUN}`. Public raw API responses include wal
 A complementary source, a larger research sample, and the later course analyses remain to be developed. [Current conclusions](Conclusions.qmd) distinguish the established data joins from the research questions still open.
 """
     (WEB / "DataPrep_EDA.qmd").write_text(content, encoding="utf-8", newline="\n")
+
+    with zipfile.ZipFile(WEB / "downloads/source-code.zip", "w", zipfile.ZIP_DEFLATED) as archive:
+        for path in source_files: archive.write(path, arcname=str(path.relative_to(ROOT)))
+        archive.write(ROOT / "requirements.txt", "requirements.txt")
+        archive.write(ROOT / "requirements-website.txt", "requirements-website.txt")
+        for pattern in ("*.qmd", "*.yml", "*.scss"):
+            for path in sorted(WEB.glob(pattern)):
+                archive.write(path, arcname=str(path.relative_to(ROOT)))
     print(f"Prepared 10 pilot figures, raw/clean examples, and downloads from {RUN}.")
 
 

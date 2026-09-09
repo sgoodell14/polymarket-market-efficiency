@@ -7,7 +7,7 @@ The supplied assignment is broader than the requested first-stage data proof. It
 - [x] Collect data with Python and a public API; preserve code, raw responses, and request provenance.
 - [x] Build prototype market and wallet-category tables; document limitations.
 - [x] Build the Quarto course website with all ten required navigation links.
-- [ ] Make the reviewed website publicly accessible for course submission.
+- [x] Publish the reviewed website on GitHub Pages: https://sgoodell14.github.io/polymarket-market-efficiency/.
 - [x] Draft two topic-focused introduction paragraphs, an explanatory image, and 10 provisional research questions. The eventual final introduction requires five paragraphs with images.
 - [ ] Add a complementary data source and enlarge the sample after validating coverage and taxonomy.
 - [x] Explain the pilot collection with source URLs and concrete GET examples.

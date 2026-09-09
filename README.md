@@ -59,7 +59,7 @@ Raw response bodies are preserved unchanged. Each run's `manifest.json` records 
 
 ## Course website
 
-The Quarto website now contains the Introduction, ten provisional research questions, DataPrep_EDA with ten descriptive pilot figures, and all required later-module pages. The later analyses remain explicitly pending. A private Sites deployment is used for review; the static output remains compatible with GitHub Pages.
+The Quarto website now contains the Introduction, ten provisional research questions, DataPrep_EDA with ten descriptive pilot figures, and all required later-module pages. The later analyses remain explicitly pending. The website is published with GitHub Pages from this repository.
 
 Edit `website/index.qmd` for the introduction, `_quarto.yml` for navigation, and `theme.scss` for styling. `src/prepare_website.py` generates the DataPrep_EDA page, figures, and downloads from the fixed reviewed capture; edit that script to change generated content.
 
@@ -70,6 +70,10 @@ python src/build_website.py
 
 The build uses portable Quarto 1.9.38 from `.tools/bin/quarto.exe`, or Quarto on PATH. Local preview: `.\.tools\bin\quarto.exe preview website`. The final build renders a staging copy under `.artifacts/` and puts portable output in root `dist/` for hosting; the live preview uses `website/dist/`. All generated output and the local Quarto installation are ignored by Git.
 
-Private review URL: https://polymarket-market-efficiency.sgoodell14.chatgpt.site
+Website: [Polymarket Market Efficiency](https://sgoodell14.github.io/polymarket-market-efficiency/)
 
-The course submission still needs a public URL, a complementary data source, and a larger justified analytical sample. No GitHub repository has been created.
+Repository: [sgoodell14/polymarket-market-efficiency](https://github.com/sgoodell14/polymarket-market-efficiency)
+
+Every push to `main` runs `.github/workflows/pages.yml`: install Python and Quarto, rebuild the site from the saved reviewed data, then deploy `dist/` to GitHub Pages. It does not collect new API data. The workflow can also be started manually from the repository's Actions tab. Build or deployment failures appear there, and the last successful site remains available.
+
+The course submission still needs a complementary data source and a larger justified analytical sample.
