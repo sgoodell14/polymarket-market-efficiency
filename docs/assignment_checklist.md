@@ -8,7 +8,7 @@ The supplied assignment is broader than the requested first-stage data proof. It
 - [x] Build prototype market and wallet-category tables; document limitations.
 - [x] Build the Quarto course website with all ten required navigation links.
 - [x] Publish the reviewed website on GitHub Pages: https://sgoodell14.github.io/polymarket-market-efficiency/.
-- [x] Draft two topic-focused introduction paragraphs, an explanatory image, and 10 provisional research questions. The eventual final introduction requires five paragraphs with images.
+- [ ] Write two topic-focused introduction paragraphs, add an explanatory image, and develop 10 research questions. The Introduction page has been cleared for the author to write. The eventual final introduction requires five paragraphs with images.
 - [ ] Add a complementary data source and enlarge the sample after validating coverage and taxonomy.
 - [x] Explain the pilot collection with source URLs and concrete GET examples.
 - [x] Present ten descriptive pilot figures with readable axes, titles, color, and two explanatory sentences each.

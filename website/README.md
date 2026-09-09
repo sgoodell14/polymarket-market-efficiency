@@ -4,7 +4,7 @@ This is a Quarto website. Edit the `.qmd` files as Markdown. `_quarto.yml` defin
 
 The project has a local portable Quarto under `../.tools/`. From the repository root, `python src/build_website.py` prepares the reviewed data downloads and figures, renders every page, and copies the static output to `../dist` relative to this folder. GitHub Actions runs this same build and publishes the output to GitHub Pages on every push to `main`.
 
-The first version presents an introduction, ten research questions, the pilot data and ten descriptive figures. Later analysis pages explicitly remain pending. Additional data collection and the final course submission remain next steps.
+The Introduction page is blank for the author to write. The data page presents the pilot data and ten descriptive figures. Later analysis pages explicitly remain pending. Additional data collection and the final course submission remain next steps.
 
 Live site: https://sgoodell14.github.io/polymarket-market-efficiency/
 

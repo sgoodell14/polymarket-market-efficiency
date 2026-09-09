@@ -59,7 +59,7 @@ Raw response bodies are preserved unchanged. Each run's `manifest.json` records 
 
 ## Course website
 
-The Quarto website now contains the Introduction, ten provisional research questions, DataPrep_EDA with ten descriptive pilot figures, and all required later-module pages. The later analyses remain explicitly pending. The website is published with GitHub Pages from this repository.
+The Quarto website contains an Introduction page ready for the author to write, DataPrep_EDA with ten descriptive pilot figures, and all required later-module pages. The later analyses remain explicitly pending. The website is published with GitHub Pages from this repository.
 
 Edit `website/index.qmd` for the introduction, `_quarto.yml` for navigation, and `theme.scss` for styling. `src/prepare_website.py` generates the DataPrep_EDA page, figures, and downloads from the fixed reviewed capture; edit that script to change generated content.
 
