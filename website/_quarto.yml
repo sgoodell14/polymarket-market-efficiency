@@ -4,6 +4,7 @@ project:
   render:
     - index.qmd
     - DataPrep_EDA.qmd
+    - replacement-ledger.qmd
     - Clustering.qmd
     - PCA.qmd
     - NaiveBayes.qmd

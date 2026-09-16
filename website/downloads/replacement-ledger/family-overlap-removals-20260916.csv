@@ -1,0 +1,94 @@
+market_id,topic,question,event_family_id,family_size,representative_market_id,selection_hash,disposition
+563772,Politics,Will Zohran Mamdani win Staten Island in the 2025 New York City Mayoral General Election?,us:nyc:mayor:2025,7,588920,1884c724806ea00e01ce21301a0c90c9653456bb13383f880e5403ece9967cc6,replace_family_overlap
+1570168,Politics,Will Tisza win 130+ seats in the Hungarian National Assembly in this election?,hu:parliament:2026,7,1570885,3365b756a351b7ea3cf4aa651ea69cee57493fc22c6f48891f9ebd926cd34f54,replace_family_overlap
+578634,Politics,Will the Patient Focus (PF) win a seat in Norwegian Election?,no:parliament:2025,12,586339,bd6cc7366e1b203fe1232ebf12bf9649b3fd3f4456a6192eee7f28bce8c7074a,replace_family_overlap
+3409050,Politics,Will Peggy Flanagan win Dakota County in the Minnesota Democratic Senate primary?,election:mn-senate-dem:2026-primary,2,2938013,0e9f3412ae4bc905d4d5d1bba317d550801b0c67c9dd6fb0e1dec1f7d847ae96,replace_family_overlap
+530746,Politics,Will Stačilo! win the most seats in the next Czech parliamentary election?,cz:parliament:2025,5,580898,12a340c475a130d2d72c0c649da72313badb65448c9f1240e234f05a3265489b,replace_family_overlap
+1353145,Politics,Will turnout in the Bangladesh parliamentary election be 90% or higher?,bd_parliament_2026,2,949286,3a8f3be2499d82d56bd044c38ff6f5bfd52b3733c1b06fccdef54255493a27b2,replace_family_overlap
+1666599,Politics,Will TISZA – Respect and Freedom Party (TISZA) finish with the third-most seats in the next Hungarian parliamentary election?,hu:parliament:2026,7,1570885,0a05cbb6a1c6297f38d1a2eb9f6e5e4e42260155772dbaf850d4e91bd7f9b189,replace_family_overlap
+1231100,Politics,Will Laura Virginia Fernández Delgado win the first round by 2–4%?,cr_president_2026_round1,3,676453,0a1265acacc66b3699e53d1d24e6b07463a52b58ce27044b39d4e7fafed5da88,replace_family_overlap
+1065660,Politics,Will Luís Marques Mendes win between 18% and 20% of votes in the first round?,pt:presidential:2026,9,1182060,213253d0bb91d9c858d72fa1449749e5c4ac1792f8818557739679270b4bd62c,replace_family_overlap
+608423,Politics,Will Zohran Mamdani win by 30% or more?,us:nyc:mayor:2025,7,588920,98fcd54fe6d7eff0a4b4d245d3a93212db29ceb53fc5a8150c2851b97ef020d2,replace_family_overlap
+578612,Politics,Will the Labour Party (Ap) win 27% or more of vote in Norwegian election?,no:parliament:2025,12,586339,5a9820e6781ae49df17f0a7175262c1f6493e32ef6eca089f19ed0f3ae835c39,replace_family_overlap
+620109,Politics,Netherlands Parliamentary Election: GL-PvdA vs CDA,nl:parliament:2025,4,641171,f187a2294d31cf6afbf5d8cc4eef7d3335d2c182a9d8e199a265d3a6c1102d00,replace_family_overlap
+551981,Politics,Will Zellnor Myrie win second place in the 2025 NYC mayoral election?,us:nyc:mayor:2025,7,588920,335694b91a92110dd454d09b93dac80ad6737ac4629c7271677279ea11b9795d,replace_family_overlap
+1578761,Politics,Will TISZA win 54%+ of the national list votes in the 2026 Hungarian Parliamentary election?,hu:parliament:2026,7,1570885,482359be84ed4b88974e21d9dae04ead59434bc2dcd81d37c08beef8a42794f1,replace_family_overlap
+1231335,Politics,Will turnout in the second round of the 2026 Portuguese presidential election be at least 56%?,pt:presidential:2026,9,1182060,0a290f01e5dd9d4294ef8a17bd35d327c4096ce4d36aca738dbfd3a38207d40b,replace_family_overlap
+579262,Politics,Which Bloc Wins most seats in Norway election?,no:parliament:2025,12,586339,b15439229bec3c9ec1b11378c32e3648078945906acadc13ebdca22fba6ea5e3,replace_family_overlap
+580897,Politics,Will Motoristé get more than 9% of the vote in the Czech election?,cz:parliament:2025,5,580898,087fba6b7b064ce64031326ff1c7f25cf9d1171bec1256fecd14d99c6636f556,replace_family_overlap
+701387,Politics,Will Anca Alexandrescu finish third in the 2025 Bucharest mayoral by-election?,ro:bucharest:mayor:2025,6,799377,10f33ebef4ffd4ed91c17cbd350f12e76d90352da3e1db8f0450629657951d54,replace_family_overlap
+578688,Politics,Will the red bloc win less than 78 seats in the Norwegian election?,no:parliament:2025,12,586339,6047344ac7cccf2ccbf3203be6b784fd0341b827f673b100abe5569eaaa87a77,replace_family_overlap
+648706,Politics,Netherlands Parliamentary Election: FVD vs SP,nl:parliament:2025,4,641171,4209df910653cca9c8fdd2b57b3b0f37167c11e55d5ed79510a08c91d3a7772b,replace_family_overlap
+2929029,Politics,Greater Manchester Mayoral Election: Restore receives 10%+ first preference votes?,uk_greater_manchester_mayor_2026,2,2607856,fa68c4f2c5ab764ecb682319f1fe456247b4b4098be3c64d9f6d864d578564b5,replace_family_overlap
+578613,Politics,Will the Progress Party (FrP) win 22% or more of vote in Norwegian election?,no:parliament:2025,12,586339,118af789453ffd8c87c358904adea3d520dc804bba556a94b07578be3d6dd206,replace_family_overlap
+648709,Politics,Netherlands Parliamentary Election: DENK vs BBB,nl:parliament:2025,4,641171,391f446f5a36b7d1ad06d9c44e3ac9c1ca1c2539e9f07558c553803441f66cd4,replace_family_overlap
+739866,Politics,Will Anca Alexandrescu get less than 5% of the vote in the Bucharest Mayoral election?,ro:bucharest:mayor:2025,6,799377,102b54884515a23e672a0e094e9014e7ee1db827debfb6d4c1fd597018b18578,replace_family_overlap
+1181997,Politics,Will Luís Marques Mendes win 3rd place in the 1st round of the 2026 Portugal presidential election?,pt:presidential:2026,9,1182060,03fe58ceaf5ab426f5f2c76366588dad795f1233526eff0b79911d21688ab251,replace_family_overlap
+586349,Politics,Will the Labour Party (Ap) win more than 55 seats in the Norwegian election?,no:parliament:2025,12,586339,4105ef4047392246d32cbad58c45bb772df5548c3f894c78f7aa0234beb0ecf0,replace_family_overlap
+739833,Politics,Will Daniel Băluță get between 30% and 35% of the vote in the Bucharest Mayoral election?,ro:bucharest:mayor:2025,6,799377,1bd2bf53418da7c9be85b7b0348e8cc884ab8dbd12985cf8bc8d9038d719e213,replace_family_overlap
+1065703,Politics,Will André Ventura win between 16% and 18% of votes in the first round?,pt:presidential:2026,9,1182060,1ede5978ae44a24bf355c933e8004052850a794af1cdb746989da3238801e904,replace_family_overlap
+579457,Politics,Will Ap win the second most seats in the Norway election?,no:parliament:2025,12,586339,0af73810893aafed45c16d92c63adf62d81f73be0eb20bdf62fc26b3f07c1d96,replace_family_overlap
+1230748,Politics,Will Reiwa Shinsengumi win the third-most seats in the 2026 Japanese general election?,election:japan-house:2026,4,1235153,0f8d7c72bad33e5190b6e5f0df662d829c591ac5ed199f1d5f4f6f703474fbb6,replace_family_overlap
+580556,Politics,Will SPD get more than 16% of the vote in the Czech election?,cz:parliament:2025,5,580898,0d8c7b72a8628e292ac499ad53dc57082bdff32419e6d9f34ab643445bbdb8fc,replace_family_overlap
+1065686,Politics,Will António José Seguro win more than 22% of votes in the first round?,pt:presidential:2026,9,1182060,5b60ad6ab4aa0e0a3c9fe39ddc72655351273ba444d071eac4321b8521670ec2,replace_family_overlap
+1503697,Politics,Will Fidesz–KDNP win the most national list votes in the 2026 Hungarian parliamentary election?,hu:parliament:2026,7,1570885,34713afbe3672ee127bd4c59d83a24f6c740ec87f84d19fd95a5d1839fc68f40,replace_family_overlap
+578698,Politics,Green Party (MDG) wins 4% or more of vote in Norwegian election?,no:parliament:2025,12,586339,3a4d009b30c28388c41ce59da9c2f3f488c7a40c532e6554925d5a9850ba336d,replace_family_overlap
+1223154,Politics,Will António José Seguro win the second round by 0–10%?,pt:presidential:2026,9,1182060,05246755d1bf449f307980e4be41f5613328805e0656a296a18f0132f469028a,replace_family_overlap
+580917,Politics,Starostové (STAN) wins 10% or more of vote in Czech election?,cz:parliament:2025,5,580898,6b07ad82714d455e0aed141131bee356883772b134686c03e5e3fbe5a50aa8a9,replace_family_overlap
+739807,Politics,Will Ciprian Ciucu get between 15% and 20% of the vote in the Bucharest Mayoral election?,ro:bucharest:mayor:2025,6,799377,1fff20651c11c22b4441f53a0550223546ca5afd757402dc70fadff3331e74ba,replace_family_overlap
+1088787,Politics,Will turnout in the first round of the 2026 Portuguese presidential election be at least 50%?,pt:presidential:2026,9,1182060,11c6532468d3ee228472335d6665b27ec8043a1ddeb0156b3b9421c97bb164f0,replace_family_overlap
+589087,Politics,Will Zohran Mamdani get between 50% and 60% of the vote in 2025 NYC mayoral election?,us:nyc:mayor:2025,7,588920,5ff249b515bec5af3367017c7973ccfdeb2ec4d42cfeaee1f25bfb9d5557006e,replace_family_overlap
+1737001,Politics,Will We Continue the Change – Democratic Bulgaria (PP–DB) finish third in the 2026 Bulgarian parliamentary election?,bulgaria-parliament-2026-04-19,4,1742065,1c8fefffe6b2b0b2669d95bc0f801526d0d7233b838326d90871ea6d0c7cca6a,replace_family_overlap
+578966,Politics,Will the blue bloc win between 87 and 89 seats in the Norwegian election?,no:parliament:2025,12,586339,07bc1a65114b125287e50676ea001c3ed97930da345ebfcd986b2b5e78d54d09,replace_family_overlap
+810599,Politics,Will turnout in the first round of the 2026 Portuguese presidential election be at least 44%?,pt:presidential:2026,9,1182060,22eabc02ba8c29a090a7385cc18dedc8f4e52c5318b76cedce65077a2a504cf8,replace_family_overlap
+589095,Politics,Will Andrew Cuomo get more than 35% of the vote in 2025 NYC mayoral election?,us:nyc:mayor:2025,7,588920,7308b2079afa948db9720f825e1854585447f4cc2e01d866a12bdd2aa08e0cd4,replace_family_overlap
+1737537,Politics,"Will Morality, Unity, Honour (MECh) win at least one seat in the 2026 Bulgarian parliamentary election?",bulgaria-parliament-2026-04-19,4,1742065,481935a0afe4414bfe0b0d73fbdafc525ed2c78ae08177e4c544399e73e03367,replace_family_overlap
+578701,Politics,Christian Democratic Party (KrF) wins 4% or more of vote in Norwegian election?,no:parliament:2025,12,586339,caa7b0ab3e57eafbd70ab277e404fe89c146721e55fe4bfd54ba95718ff952a5,replace_family_overlap
+811289,Politics,Will turnout in the first round of the 2026 Costa Rican Presidential Election be between 58% and 60%?,cr_president_2026_round1,3,676453,16f0cf0167bf808016bf15d46d71d3b00cb960b74f84a39b0fd642167b84cb29,replace_family_overlap
+1328387,Politics,Will any candidate win the Texas Republican Senate Primary outright? ,us:tx:senate:rep-primary:2026,2,703517,c59b1f353da8ff29d07de5874eba7aedb8aff40f928957c881f394e1b7ba9b50,replace_family_overlap
+579468,Politics,Will Ap win the fourth most seats in the Norway election?,no:parliament:2025,12,586339,107d1dce0be08a1cc856e4f331d38d43133b38d473c576ef0b1c627afe4dc3ca,replace_family_overlap
+1336703,Politics,Will the Centrist Reform Alliance win between 75 and 99 seats in the 2026 Japanese general election?,election:japan-house:2026,4,1235153,043507871eb803e91b309d2ddeb3e979cd79a5d96a79c39a4f1ce0e5cbdc6b31,replace_family_overlap
+2446677,Politics,Will Abelardo de la Espriella win the second round of the 2026 Colombian presidential election by 15%+?,co_president_2026,3,2037910,41a95d2c9513afafdc5448fa44adac6a198087a9ea07a9a294e34eb65995ba01,replace_family_overlap
+657975,Politics,Will Zohran Mamdani win by 15–20%?,us:nyc:mayor:2025,7,588920,5ba7241cb8f2d42d7bfa49355255454bd9ec1e7ae8edc21f32d3049ecac882a9,replace_family_overlap
+1503860,Politics,Will Fidesz-KDNP win the national list vote in the 2026 Hungarian Parliamentary election by 0-3%?,hu:parliament:2026,7,1570885,10f2d77fe7c4ae2c6bf16040ae404d888a2908ecd6d12a6f436b332615dd59f6,replace_family_overlap
+704729,Politics,Bucharest Mayoral Election: Any Candidate Gets >50% of the Vote?,ro:bucharest:mayor:2025,6,799377,62e21e10827ed53a61aa9a07e9631f7ce0c97e12432fa46aeebcc53a41e0e2ad,replace_family_overlap
+1796139,Politics,Hungary Election: TISZA wins a constitutional majority?,hu:parliament:2026,7,1570885,736fa90fa30daad0606911ab2f5a7d38a7235acf41c8c480d210af3c3ba24bb2,replace_family_overlap
+1235117,Politics,Will the Liberal Democratic Party win between 235 and 249 seats in the 2026 Japanese snap general election?,election:japan-house:2026,4,1235153,0647d6008566f58ed52afff36d3ef82eff82de1c2f378c108a69ade588e3bd0e,replace_family_overlap
+2370364,Politics,Will Iván Cepeda win between 30% and 35% of votes in the first round of the 2026 Colombian election?,co_president_2026,3,2037910,17479fec853db95e07be946e561e0c59e22f92cf25327382754a0efe215d1b77,replace_family_overlap
+1736937,Politics,Will Velichie (Velichie) finish second in the 2026 Bulgarian parliamentary election?,bulgaria-parliament-2026-04-19,4,1742065,34afaf9c2f462a9baa5eaa8cd1d51cf41db6a4040116ef1210f234dd3df3c8e9,replace_family_overlap
+2243882,Economics,Will annual inflation be 4.1% in May?,us:cpi:2026-05,4,2242445,22f50138359b461677f8c27f71c99b11c0ca31b4bb7743270605677b54339b75,replace_family_overlap
+2925167,Economics,Will Core CPI YoY be 2.7% in July?,us:cpi:2026-07,5,2925099,0a6db727f53bd0241a24647e0e761097d00fb6b66b9c59429496634eba849797,replace_family_overlap
+575287,Economics,Will the August 2025 unemployment rate be 4.2%?,us:employment:2025-08,3,569252,85721221ba0f3c45f4d2ca80cdc6c7b9c117e616553b9f9c452d3c881b4f3089,replace_family_overlap
+612382,Economics,Will monthly inflation be between 1.5% and 1.7% in September?,ar:ipc:2025-09,2,608746,43666e284715ba40f5c10bab1856b0e19d88ef5b07336f26bcb55436527355ad,replace_family_overlap
+575237,Economics,Will annual inflation increase by 3.0% or more in August?,us:cpi:2025-08,2,575240,1c911b85a9a9b7a069009fa5b23b3efb16ec29a38d76a79201c404a0c9d29228,replace_family_overlap
+533850,Economics,Negative GDP growth in Q3 2025?,us:bea:gdp:2025q3,3,570836,380dba061b560b425f00f5fc7c21111363951c844745a70726102d9905e8390a,replace_family_overlap
+542538,Economics,Fed decreases interest rates by 25 bps after September 2025 meeting?,us:fomc:2025-09-17,2,576090,22ef64087ec444c322c7459467fc76dbf7bada14ff813afaab0377dd70174fbf,replace_family_overlap
+654422,Economics,Negative GDP growth in Q4 2025?,us:bea:gdp:2025q4,3,654427,b8350903622d24e6c843fea75fef4a716d1615713a88df9509816bdac13184fa,replace_family_overlap
+2356112,Economics,Will Core CPI MoM be 0.3% in May?,us:cpi:2026-05,4,2242445,203a5fd88a4dd22c8e252ac8e9bcb18b01c6a26a3d0499bf8de4928f071f289a,replace_family_overlap
+2925108,Economics,Will a dozen eggs cost between $1.50–$1.75 in July?,us:cpi:2026-07,5,2925099,37a2613060e998bd4117674e032f837df97c7a5e14726dd62d86626e37720006,replace_family_overlap
+1517750,Economics,Will the US lose between 0 and 50k jobs in March?,us:employment:2026-03,2,1374350,49a6767377242f8d6d93c5690deac752b3d2f98242ada2ad521a9491ba20a614,replace_family_overlap
+576878,Economics,Will US GDP growth in 2025 be between 1.0% and 1.5%?,us:bea:gdp:2025q4,3,654427,23abb39df284d99c895869e9f0d8c58eee45a24654f597508692978270146275,replace_family_overlap
+1366299,Economics,Will the February 2026 unemployment rate be ≤4.0%?,us:employment:2026-02,2,1366276,1eac6af772e63125820cc0eed632018336dbe75c50d5ff34ac127135987e38fb,replace_family_overlap
+594316,Economics,Will annual inflation increase by 3.2% in September?,us:cpi:2025-09,3,594293,494b925c270af3284c3f8351da0ddd8e097127de7da77f1c42300f4c64065cec,replace_family_overlap
+1937956,Economics,Will annual inflation increase by 3.5% in April?,us:cpi:2026-04,3,1938100,1422148ffedf97aedfa1436fd4fa15cd1627eeae0747e12403970b9ec96bd37d,replace_family_overlap
+958480,Economics,Will the Eurozone's annual inflation increase by ≥2.4% in December?,economic:eurozone-hicp:2025-12,2,958459,2b69642ee936ec2ae11de8feb49ad2a4c9cdfb65d613d8668cacf2115cfd010b,replace_family_overlap
+680537,Economics,Will annual inflation increase by ≥3.2% in November?,us:cpi:2025-11,2,701409,6126ac649aa8875a073611b237851441c6f720531f4587810eccc1afdf431b6a,replace_family_overlap
+2925073,Economics,Will annual inflation be 3.2% in July?,us:cpi:2026-07,5,2925099,2686e27c174950cc8bb4d04ac5ab7d32bc5adb52d16306ebfd11df3030e473b1,replace_family_overlap
+1144347,Economics,Will the US add more than 125k jobs in January?,us:employment:2026-01,2,1144323,4b62390acab9f6d3a23fb6c3a2b23d3cef4d01f6f7dbf8df276e64688330418a,replace_family_overlap
+569254,Economics,August jobs report prints negative?,us:employment:2025-08,3,569252,d03afcdf91efb7dbb8a63129596306de5dcffdb1d097c4dcb89b19b179f0131b,replace_family_overlap
+533852,Economics,5% GDP contraction in Q3 2025?  ,us:bea:gdp:2025q3,3,570836,362b4deadb58503db480097970ae5af63d2eb05901409115bed0d1e319617410,replace_family_overlap
+964810,Economics,Will a dozen eggs cost between $3.25–3.50 in January?,us:cpi:2026-01,3,1185718,0b6794f5a6a16b1303744070ae41dcba9f422eb45be9e1376b05bc78ddd46970,replace_family_overlap
+2555750,Economics,Will a dozen eggs cost between $1.50–$1.75 in June?,us:cpi:2026-06,3,2491383,253342620105227db69dff4fa9d833020ac1326eaf659cf4924485e382f585a3,replace_family_overlap
+553810,Economics,Fed decreases interest rates by 50+ bps after October 2025 meeting?,us:fomc:2025-10-29,2,601703,29c7d309af18ed0ec5b4b753b066d08487169fc98cea73362ae2a8360ce01c6b,replace_family_overlap
+1937992,Economics,Will monthly inflation increase by 0.7% in April?,us:cpi:2026-04,3,1938100,0579d8807fc06bf4d5f33cde80d92bf5354fafd2755f5cba8113cf286b228305,replace_family_overlap
+3251539,Economics,Will Core PCE YoY be 3.1% in July?,economic:us-pce:2026-07,2,3251545,0e0b091e7443f0b9bcdfe0e5d8b1a6eb99006345b62245cc13c8f0c543e7dc9c,replace_family_overlap
+906972,Economics,Will the Fed decrease interest rates by 50+ bps after the June 2026 meeting?,us:fomc:2026-06-17,2,2118773,42e32e99a0f6bc64299b9d4cab3cf80ee53be11ac70073452859b4b1087d9582,replace_family_overlap
+594155,Economics,Will monthly inflation increase by 0.3% in September?,us:cpi:2025-09,3,594293,31d38fa0a11fdaffb0bc50f7ac03a2029acb8baf9478b1d4de6528d40b0ede47,replace_family_overlap
+2190108,Economics,Will the US add between 0 and 50k jobs in May?,us:employment:2026-05,2,2190055,13490a679b36c238e3544cee5027c47b26f966dd20440015218bbc7b87ae9334,replace_family_overlap
+2810510,Economics,Will Core CPI MoM be 0.6% or more in July?,us:cpi:2026-07,5,2925099,384d7bc2bcdb6c0b0edc8b92e80a678b5b9dfbc5c6f39d2abd4a9562b0b81860,replace_family_overlap
+1846494,Economics,Will the US add at least 250k jobs in April?,us:employment:2026-04,2,1845946,1ffdbea9d90732c721e1ebd1576d198d1057ff5defe318ecf5bca73876e444a6,replace_family_overlap
+948976,Economics,Will the US add between 25k and 50k jobs in December?,us:employment:2025-12,2,948962,1fb95064f02900ef1dc044fe54d71ab054cf9e1e61bdd28487cab5b4e886db41,replace_family_overlap
+2491378,Economics,Will annual inflation be 4.3% in June?,us:cpi:2026-06,3,2491383,1ccbee65b87807d17f9a11276eaa90e14c4c174cd2bd14ea6aff3d81ca6ecc45,replace_family_overlap
+2356041,Economics,Will Core CPI YoY be 2.4% or less in May?,us:cpi:2026-05,4,2242445,204d0144b685ec11438438a8b6cdc251f9810298ace9d8b4c7fdcef09f9cb271,replace_family_overlap
+601699,Economics,No change in Fed interest rates after January 2026 meeting?,us:fomc:2026-01-28,2,915375,1ee3c99f3069dc7be2e4de5e1d62a2e7415b6f4cce18fe26f93c02ed47ecac9a,replace_family_overlap
+969660,Economics,Will annual inflation increase by ≤2.8% in January?,us:cpi:2026-01,3,1185718,223f39100d7a78114d4f32d085ba6e356d4246a7769ff4732dbb93ab37394ab2,replace_family_overlap

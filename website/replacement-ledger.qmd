@@ -1,0 +1,37 @@
+---
+title: "Candidate replacement ledger"
+---
+
+This page collects the saved records of candidate replacement attempts and exclusion reasons for the Polymarket study. The records below are a September 16, 2026 snapshot, preserved in their original CSV format. Open the downloads in a spreadsheet to inspect individual candidates.
+
+## Replacement rule {#replacement-rule}
+
+1. Stay within the same topic and try the original sampling month first, following the saved random reserve ordering.
+2. If no eligible candidates remain in that month, try the nearest available month within September 2025-August 2026. If two months are equally close, try the earlier month first.
+3. Preserve the saved random rank within each month. Record attempted candidates, including skips and their reasons.
+4. Replacement forecasts must pass scope, event-family, timing and historical-data checks before final acceptance.
+
+The sampling month is the original catalog-based sampling stratum; it can differ from the event month established during the audit. Replacements can change the original monthly balance.
+
+## Candidate attempts {#candidate-attempts}
+
+The ledgers are organized by review batch. Each row records an attempted candidate, its reserve rank, a decision and the recorded reason. Column names vary slightly between batches.
+
+| Review batch | Download |
+| --- | --- |
+| Initial replacements and pilot follow-up | [Candidate attempts (CSV)](downloads/replacement-ledger/initial-replacement-attempts.csv) |
+| September 15 scope review: 58 replacements | [Candidate attempts (CSV)](downloads/replacement-ledger/scope-replacement-attempts-20260915.csv) |
+| September 15 broader audit: 10 replacements | [Candidate attempts (CSV)](downloads/replacement-ledger/ten-replacement-attempts-20260915.csv) |
+| September 15 full audit: 12 replacements | [Candidate attempts (CSV)](downloads/replacement-ledger/twelve-replacement-attempts-20260915.csv) |
+| September 16 distinct-event-family replacements | [Candidate attempts (CSV)](downloads/replacement-ledger/family-replacement-attempts-20260916.csv) |
+
+**How to read historical decisions:** these are records of decisions at each selection stage. A label such as `scope_eligible_timing_pending` records what was known then; it does not mean that the candidate remains pending today. Selection alone was not final forecast validation. The same candidate can appear in more than one attempt or review batch, so the number of rows is not the number of accepted markets.
+
+## Exclusion and event-family records
+
+- [Individual exclusion reasons and replacement references (CSV)](downloads/replacement-ledger/exclusion-log.csv). Some replacement-status fields retain their historical checkpoint values.
+- [Contracts removed to retain one contract per real-world event family (CSV)](downloads/replacement-ledger/family-overlap-removals-20260916.csv). These are sampling-design removals and do not imply that the underlying contracts were invalid.
+
+The latest completed cohort contains 565 contracts from 565 distinct event families: 200 Sports, 200 Politics and 165 Economics. The September 16 family review retained 496 representatives and added 69 validated reserves. The screened Economics reserve was exhausted; this is not a claim that every possible eligible market on Polymarket was enumerated. The main EDA draft still identifies its earlier numerical checkpoint while the writing is updated.
+
+[Return to Data Preparation & EDA](DataPrep_EDA.qmd#exclusions-and-reserve-replacements).
