@@ -4,7 +4,6 @@ import os
 import stat
 import subprocess
 from pathlib import Path
-from prepare_website import main as prepare
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,7 +19,11 @@ def remove_generated(path):
 
 
 def main():
-    prepare()
+    # Word-authored pages and their selected figures are already staged. The old
+    # pilot generator would overwrite the author's DataPrep_EDA prose.
+    if not (ROOT / 'website/writing-transfer.json').exists():
+        from prepare_website import main as prepare
+        prepare()
     portable = ROOT / ".tools/bin/quarto.exe"
     executable = str(portable) if portable.exists() else shutil.which("quarto")
     if not executable:

@@ -2,4 +2,24 @@
 title: "Introduction"
 ---
 
-<!-- Write your introduction here. -->
+## Research questions
+
+1. To what extent do market probabilities demonstrate crowd wisdom through accurate, well-calibrated forecasts?
+
+2. Are higher-volume markets more accurate or better calibrated?
+
+3. How does the number of unique active wallets relate to forecast accuracy and calibration?
+
+4. Do markets dominated by a few wallets differ from markets with more evenly distributed trading activity?
+
+5. Do anomalous trades or unusually large trades contain information about eventual outcomes beyond the current market probability?
+
+6. Are frequent price reversals, abrupt jumps or changes in volatility associated with forecast accuracy?
+
+7. Are more aggressive trading or liquidity-provision patterns associated with more accurate forecasts?
+
+8. Does calibration or systematic overestimation or underestimation differ by market topic?
+
+9. How does a wallet's prior experience within a topic relate to the accuracy of its later trading signals?
+
+10. Can a model using market characteristics improve on the market probability when forecasting outcomes in later markets?

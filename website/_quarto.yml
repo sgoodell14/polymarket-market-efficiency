@@ -58,7 +58,7 @@ website:
         href: Conclusions.qmd
   page-footer:
     left: "Information Discovery & Market Efficiency"
-    right: "Polymarket pilot - September 2026"
+    right: "Polymarket research - September 2026"
 format:
   html:
     theme: [cosmo, theme.scss]

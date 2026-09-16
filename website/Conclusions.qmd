@@ -2,20 +2,6 @@
 title: "Conclusions"
 ---
 
-::: {.eyebrow}
-Current evidence - Pilot stage
-:::
+Conclusions are still being developed.
 
-## What has been established
-
-Public Polymarket responses can be joined across market metadata, outcome labels, trade records, and one wallet's activity. The reviewed pilot contains 12 resolved markets, 1,178 market trade rows, and 188 joined wallet trade records. This establishes the availability of useful empirical material.
-
-## What remains open
-
-The pilot does not establish that prediction markets are well calibrated, that high-volume markets are more accurate, or that particular traders have skill. The history is bounded, the category tags overlap, and the market sample emphasizes short-lived listings. Wallet profit, win rate, and ROI have not been estimated.
-
-## Next evidence needed
-
-The next stage will select longer-running resolved markets, retrieve more complete histories, review the category mapping, and define a defensible pre-event forecast cutoff. Those checks will determine which research questions the larger dataset can support.
-
-[Inspect the pilot evidence](DataPrep_EDA.qmd).
+[Read the data preparation and exploratory analysis](DataPrep_EDA.qmd).

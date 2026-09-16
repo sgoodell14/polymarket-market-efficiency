@@ -1,0 +1,16 @@
+{
+  "source": "docs/writing/website_writing_template.docx",
+  "source_sha256": "3e34303ce4db497a2aab77ac04f743e35277e35f927a21966efce029be55c57f",
+  "transferred_at_utc": "2026-09-16T17:17:35.286443+00:00",
+  "narrative_source": "saved_word_document",
+  "figures_checkpoint": "20260916_v1",
+  "current_data_checkpoint": "20260916_v2",
+  "counts_reconciliation_deferred_by_user": true,
+  "archive": "docs/writing/transfers/20260916T171735Z_3e34303ce4",
+  "pages": [
+    "index.qmd",
+    "DataPrep_EDA.qmd",
+    "Conclusions.qmd"
+  ],
+  "figure_count": 10
+}
