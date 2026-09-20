@@ -1,7 +1,7 @@
 {
   "source": "docs/writing/website_writing_template.docx",
-  "source_sha256": "92aa59e4ae76aaccbc88f289492bf768e37521c3c4975987b9c071cddbeb3624",
-  "transferred_at_utc": "2026-09-20T13:13:19.905750+00:00",
+  "source_sha256": "b1ca39b5297787047ff7f3673288db5b4898f45e8917ca6bfd5807b36f35c108",
+  "transferred_at_utc": "2026-09-20T13:24:05.329564+00:00",
   "narrative_source": "saved_word_document",
   "figures_checkpoint": "20260916_v2",
   "figure_text_source": "saved_word_document",
@@ -19,7 +19,7 @@
   },
   "current_data_checkpoint": "20260916_v2",
   "counts_reconciliation_deferred_by_user": true,
-  "archive": "docs/writing/transfers/20260920T131319Z_92aa59e4ae",
+  "archive": "docs/writing/transfers/20260920T132405Z_b1ca39b529",
   "pages": [
     "index.qmd",
     "DataPrep_EDA.qmd",

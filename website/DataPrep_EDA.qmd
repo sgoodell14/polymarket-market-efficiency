@@ -82,11 +82,11 @@ Linked References: [Candidate Ledger](downloads/current/candidate-ledger-complet
 
 ### Market Exclusions & Reserve Replacements {#exclusions-and-reserve-replacements}
 
-Individual market evidence reviews resulted in 94 sample exclusions.  Excluded markets following individual audits were replaced using the established random reserve ordering within the same topic and month, where possible.  If no eligible candidates remained in that month, candidates were drawn from the nearest available month within the study period.  Replacement candidates passed evidence reviews before acceptance.  Exclusion rationale and replacement attempts remain recorded.
+Individual market evidence reviews resulted in 94 sample exclusions due to eligibility or insufficient evidence (wrong event type, outside study dates, outcome determined prior to cutoff, etc.); an additional 93 were excluded due to overlapping real-world event families.  Excluded markets following individual audits were replaced using the established random reserve ordering within the same topic and month, where possible.  If no eligible candidates remained in that month, candidates were drawn from the nearest available month within the study period.  Replacement candidates passed evidence reviews before acceptance.  Exclusion rationale and replacement attempts remain recorded.
 
 Reserve markets from the initial distinct market population backfilled excluded Sports and Politics samples to the stated goal of 200 contracts.  Eligibility requirements yielded only 165 Economics observations within September 2025–August 2026.  No additional qualifying event families remained in the reserve pool.
 
-The final evidence reviews left 565 contracts in the cohort: 200 Sports, 200 Politics and 165 Economics, each with distinct real-world event families (Figure 1).  The automated and individual exclusions introduce bias towards scheduled event markets and markets with more easily verifiable outcomes.  Replacements drawn from other months contributed to an uneven monthly distribution of Politics and Economics markets in the final sample (Figure 2).
+The final evidence reviews left 565 contracts in the cohort: 200 Sports, 200 Politics and 165 Economics, each with distinct real-world event families (Figure 1).  The preliminary and individual exclusions could introduce bias towards scheduled event markets and markets with more easily verifiable outcomes.  Replacements drawn from other months contributed to an uneven monthly distribution of Politics and Economics markets in the final sample (Figure 2).
 
 ## Cleaning & Data Quality Checks
 
@@ -100,7 +100,7 @@ Linked References: [Repeat Test Code](downloads/current/trade-record-check-code.
 
 ### Empty Transaction Histories
 
-67 markets returned no trades in their collected pre-cutoff windows: 64 Sports, two Politics and one Economics (Figure 3).  Each was retained as lack of recent activity is relevant to market behavior.  As a result, however, average trade size and wallet concentration are undefined and therefore not included in these 67 markets.
+67 markets returned no trades in their collected pre-cutoff windows: 64 Sports, two Politics and one Economics (Figure 3).  Each was retained as lack of recent activity is relevant to market behavior.  As a result, however, average trade size and wallet concentration are undefined and therefore not observable in the forecast window for these 67 markets.
 
 ### Varying Outcome Alternatives
 
@@ -158,7 +158,7 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 03 No returned trades in the collected window
 
-![The collected windows contain no returned trades for 64 of 200 Sports markets (32.0%), two of 200 Politics markets (1.0%) and one of 165 Economics markets (0.6%): 67 markets in total. A zero count does not mean that a market had no trading before the window or during the final 24 hours.](assets/eda_20260917_final_refresh/06_zero_trade_windows.png){fig-alt="Bar chart of zero-returned-trade windows in the final sample. Sports 64 of 200, 32.0%; Politics 2 of 200, 1.0%; Economics 1 of 165, 0.6%. Total 67 of 565."}
+![The collected windows contain no returned trades for 64 of 200 Sports markets, two of 200 Politics markets and one of 165 Economics markets; 67 markets in total. A zero count does not mean that a market had no trading before the window or during the final 24 hours.](assets/eda_20260917_final_refresh/06_zero_trade_windows.png){fig-alt="Bar chart of zero-returned-trade windows in the final sample. Sports 64 of 200, 32.0%; Politics 2 of 200, 1.0%; Economics 1 of 165, 0.6%. Total 67 of 565."}
 
 ### Figure 04 Number of event options
 
