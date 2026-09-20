@@ -150,11 +150,11 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 01 Market pool, replacements and final cohort
 
-![The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. 2 Sports, 111 Politics and 71 Economics selections required replacements after the audits and event-family review. The final cohort contains 200 Sports, 200 Politics and 165 Economics contracts.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
+![The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. 2 Sports, 111 Politics and 71 Economics selections required replacements after individual audits. The final cohort contains 200 Sports, 200 Politics and 165 Economics contracts.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
 
 ### Figure 02 Audited event months
 
-![Twenty-nine markets have an event month different from their saved sampling month. The original draw was balanced across available months; event-date corrections, event-family replacements and available reserves changed the final distribution.](assets/eda_20260917_final_refresh/02_event_month.png){fig-alt="Stacked monthly counts for the final 565 markets, September 2025 through August 2026. Topic totals are Sports 200, Politics 200 and Economics 165. March 2026 has the largest total, 97 markets."}
+![Twenty-nine markets have an event month different from their saved sampling month. The original draw was balanced across available months; event-date corrections, event-family de-duplication and available reserves changed the final distribution.](assets/eda_20260917_final_refresh/02_event_month.png){fig-alt="Stacked monthly counts for the final 565 markets, September 2025 through August 2026. Topic totals are Sports 200, Politics 200 and Economics 165. March 2026 has the largest total, 97 markets."}
 
 ### Figure 03 No returned trades in the collected window
 
@@ -166,7 +166,7 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 05 Very large trade records
 
-![For this descriptive screen, very large means above the pooled 99.9th percentile of shares ($20,539.68). This whale flag returned 156 BUY/SELL records. Economics accounts for 110 of the 113 transactions, including 92 in the April 2026 Fed no-change market and 15 in the July Fed cut market. These observations come from the collected pre-cutoff windows, not full market lifetimes.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
+![“Very large” refers to trades pooled 99.9th percentile of total value ($20,539.68). This whale flag returned 156 BUY/SELL records. Economics accounts for 110 of the 113 transactions, including 92 in the April 2026 Fed no-change market and 15 in the July Fed cut market. These observations come from the collected pre-cutoff windows, not full market lifetimes.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
 
 ### Figure 06 Collection window length by topic
 
@@ -178,7 +178,7 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 08 Distinct wallets per market
 
-![The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a logarithmic scale, with equal area for each topic.  Multiple wallets can be held by a single trader.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
+![The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a log scale, with equal area for each topic.  Multiple wallets can be held by a single trader.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
 
 ### Figure 09 Wallets shared across topics
 

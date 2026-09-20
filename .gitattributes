@@ -3,3 +3,6 @@ data/raw/** -text -diff
 *.py text eol=lf
 *.md text eol=lf
 *.ipynb text eol=lf
+
+# Reader downloads have published SHA-256 hashes; retain their exact bytes.
+website/downloads/current/** -text -diff
