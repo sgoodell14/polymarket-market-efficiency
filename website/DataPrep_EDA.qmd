@@ -48,7 +48,7 @@ Linked References: [Sampling Code](downloads/current/sampling-code.zip "ZIP: cur
 
 ### Individual Market Evidence Reviews
 
-Following the automated checks, each contract was reviewed individually for each market.
+Following the preliminary checks, each contract was reviewed individually for each market.
 
 **Contract Clarification:** Market resolution rules were reviewed rather than relying on the title or topic tag.  Reviews confirmed the topic, the exact outcome, and uncertainty at the time of the proposed market forecast cutoff.  Contracts were also reviewed to identify those involving the same real-world event.  Sports were limited to match/series outcome contracts, politics were confirmed to be election outcomes, and economics to scheduled release or policy announcements.
 
