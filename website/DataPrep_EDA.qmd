@@ -26,7 +26,7 @@ The following example request retrieves metadata for market 691922:
 GET https://gamma-api.polymarket.com/markets/691922?
 ```
 
-Market condition IDs and outcome-token IDs were obtained from the Gamma API.  Trades for both outcomes were requested from the Data API using each market's condition ID.  CLOB price history was requested using the first outcome's token ID.  When responses exceeded the configured 1,000-row limit, requests intervals were split into smaller, non-overlapping windows.
+Market condition IDs and outcome-token IDs were obtained from the Gamma API.  Trades for both outcomes were requested from the Data API using each market's condition ID.  CLOB price history was requested using the first outcome's token ID.  When responses reached the configured 1,000-row limit, requests intervals were split into smaller, non-overlapping windows.
 
 ::: {.section-references}
 Linked References: [API Requests](downloads/current/api-requests-and-code.zip "ZIP: current collection code and request index for the current cohort"), [Raw Market Metadata](downloads/current/raw-market-metadata.zip "ZIP: saved Gamma metadata for the 565 current markets"), [Raw Transaction Data](downloads/current/raw-transactions.zip "ZIP: current retained trade windows in original API fields; 155,177 rows"), [Raw Pricing Data](downloads/current/raw-prices.zip "ZIP: current hourly windows and eight separate finer cutoff responses")
@@ -34,7 +34,7 @@ Linked References: [API Requests](downloads/current/api-requests-and-code.zip "Z
 
 ### Forecast Time & Trading Window
 
-Trade and price-history requests covered up to seven days, ending 24 hours before each market’s reviewed event boundary (Table 2).  This historical trading window and cutoff boundary were employed to compare across a consistent lead time and avoid prices that already reflect a known outcome.  For 194 markets, the available history was shorter as markets were listed less than seven days before the cutoff (Figure 6).  The forecast price was identified as the latest price at or no more than 6 hours before the cutoff.  If no price history was available in the configured hourly observations, one-minute requests were made for that same six-hour period (Figure 10).
+Trade and price-history requests covered up to seven days, ending 24 hours before each market’s reviewed event boundary (Table 2).  This historical trading window and cutoff boundary were employed to compare across a consistent lead time and avoid prices that already reflect a known outcome.  For 194 markets, the available history was shorter as markets were listed less than seven days before the cutoff (Figure 6).  The forecast price was identified as the latest price at or no more than 6 hours before the cutoff.  If no hourly price was available within six hours before the forecast cutoff, one-minute requests were made for that same six-hour period (Figure 10).
 
 ## Sampling and Market Selection
 
@@ -66,7 +66,7 @@ All times were converted to UTC to account for international events.  The foreca
 
 **Data Availability**: The market remained open and pricing observations were observed within 6 hours of the forecast cutoff.
 
-All replacement rationale and attempts were recorded in a candidate ledger.  Exclusion examples and rationale for each topic are listed below.
+The linked candidate ledger records the replacement attempts, decisions and rationale for the final replacement round.  Exclusion examples for each topic are listed below.
 
 | **Topic** | **Market** **(ID)** | **Reason for Exclusion** |
 | --- | --- | --- |
@@ -92,7 +92,7 @@ The final evidence reviews left 565 contracts in the cohort: 200 Sports, 200 Pol
 
 ### Repeat Trade Records
 
-Identical returned trade rows were flagged but retained in the dataset.  One transaction may be completed via several fills with the same wallet, timestamp, price and size.  In three examined transactions, retaining repeated rows preserved BUY vs SELL transaction consistency, supporting their retention.
+Identical returned trade rows were flagged but retained in the dataset.  One transaction may be completed via several fills with the same wallet, timestamp, price and size.  In three examined transactions, retaining repeated rows preserved BUY vs SELL transaction totals, supporting their retention.
 
 ::: {.section-references}
 Linked References: [Repeat Test Code](downloads/current/trade-record-check-code.zip "ZIP: current full-cohort trade-direction and repeated-row diagnostic code")
@@ -150,7 +150,7 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 01 Market pool, replacements and final cohort
 
-![The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. 2 Sports, 111 Politics and 71 Economics selections required replacements after individual audits. The final cohort contains 200 Sports, 200 Politics and 165 Economics contracts.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
+![The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. 2 Sports, 111 Politics and 71 Economics selections required replacements after individual audits. 35 Economic slots remain unfilled.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
 
 ### Figure 02 Audited event months
 
@@ -166,7 +166,7 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 05 Very large trade records
 
-![“Very large” refers to trades pooled 99.9th percentile of total value ($20,539.68). This whale flag returned 156 BUY/SELL records. Economics accounts for 110 of the 113 transactions, including 92 in the April 2026 Fed no-change market and 15 in the July Fed cut market. These observations come from the collected pre-cutoff windows, not full market lifetimes.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
+![“Very large” refers to trades pooled 99.9th percentile of total dollars value (price x shares). The threshold flagged 156 records across 113 transactions. A single transaction can contain multiple flagged records.  These observations are restricted to the collected pre-cutoff windows.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
 
 ### Figure 06 Collection window length by topic
 
@@ -178,7 +178,7 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ### Figure 08 Distinct wallets per market
 
-![The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a log scale, with equal area for each topic.  Multiple wallets can be held by a single trader.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
+![The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a log scale, with equal area for each topic.  Multiple wallets can be held by a single trader. Markets without returned records are omitted.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
 
 ### Figure 09 Wallets shared across topics
 
