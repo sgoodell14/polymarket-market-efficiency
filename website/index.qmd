@@ -1,6 +1,34 @@
 ---
-title: "Introduction"
+title: "Crowd Forecasting"
+subtitle: "Accuracy and Information on Polymarket"
+body-classes: page-introduction
+toc: true
+toc-depth: 2
 ---
+
+::: {.intro-opening}
+
+{{< include _includes/introduction-pew.qmd >}}
+
+Prediction markets allow traders to buy and sell contracts tied to future or otherwise uncertain outcomes spanning sports, pop culture, politics, weather, and economic announcements.  A standard binary contract pays $1 if the selected outcome occurs and $0 if it does not.  A price of $0.80 is therefore associated with a market-implied probability of 80% for the respective outcome.  Markets such as Kalshi and Polymarket have become household names as [combined monthly trading volume](https://www.pewresearch.org/short-reads/2026/05/27/trading-volume-on-prediction-markets-has-soared-in-recent-months/) on the two platforms increased from less than $5 billion in September 2025 to approximately $24 billion in April 2026.  The “wisdom of crowds” is the idea that forecast accuracy can benefit from input across a variety of decentralized and diverse sources (Wolfers & Zitzewitz, 2004).  Prediction market companies have announced data partnerships with [television news platforms](https://news.kalshi.com/p/kalshi-cnn-prediction-market-partnership), [financial publications](https://www.businesswire.com/news/home/20260107511213/en/Polymarket-and-Dow-Jones-Publisher-of-The-Wall-Street-Journal-Announce-Exclusive-Prediction-Market-Partnership), and [sports partnerships](https://www.nhl.com/news/nhl-announces-landmark-multiyear-partnerships-with-kalshi-polymarket).  The rapidly expanding public exposure to prediction market data—especially among those who do not participate directly—motivates research on how reliable contract prices can express uncertainty.
+
+:::
+
+::: {.intro-headlines}
+
+{{< include _includes/introduction-nyt.qmd >}}
+
+{{< include _includes/introduction-cbs.qmd >}}
+
+:::
+
+Prior to the emergence of global prediction markets, Berg et al. (2008) found that election forecasts derived from trading on the University of Iowa’s prediction market were closer to final vote shares than polling estimates in 74% of the comparisons.  Subsequent studies focused on how characteristics of an individual market impacted accuracy and market distortion.  Page and Clemen (2013) noted how pricing calibration increased as the market neared expiration, while longer-term forecasts were vulnerable to “favorite–longshot bias”—the tendency to overprice unlikely outcomes at the expense of likely outcomes.  More recently, Le (2026) analyzed differences in calibration between topics; political implied probability was underconfident, leaning closer to 50% than observed outcomes justified.  In a working paper, Gómez-Cram et al. (2026) investigate how information aggregated by prediction markets is concentrated among a few wallets, identifying a skilled subset—approximately 3% of accounts—whose trading was associated with moving prices towards eventual outcomes.
+
+::: {.intro-study}
+
+This study investigates how accurately prediction markets forecast real-world events, how their reliability varies across topics and different trading behaviors, and how these patterns can help improve forecast of future prediction market outcomes.  Sampled markets include 565 Polymarket contracts—200 Sports, 200 Politics, and 165 Economics—covering events between September 2025 and August 2026.  The sample includes scheduled matches, election outcomes, and economic releases/policy announcements, retaining one contract per real-world event to avoid giving a single event extra weight.  Forecasts are evaluated at a consistent cutoff 24 hours before each event boundary, with trading and price histories covering up to seven days ending at that cutoff.  Building on earlier research, the study will assess forecast accuracy and examine dynamics involving market topic, trading activity, and the number of participating wallets.
+
+:::
 
 ## Research questions
 
@@ -23,3 +51,15 @@ title: "Introduction"
 9. How does a wallet's prior experience within a topic relate to the accuracy of its later trading signals?
 
 10. Can a model using market characteristics improve on the market probability when forecasting outcomes in later markets?
+
+## References {.unlisted}
+
+Berg, J. E., Nelson, F. D., & Rietz, T. A. (2008). Prediction market accuracy in the long run. *International Journal of Forecasting, 24*(2), 285–300.
+
+Gómez-Cram, R., Guo, Y., Jensen, T. I., & Kung, H. (2026). *Prediction market accuracy: Crowd wisdom or informed minority?* [Working paper]. SSRN.
+
+Le, N. A. (2026). *Decomposing crowd wisdom: Domain-specific calibration dynamics in prediction markets* (Version 2) [Preprint]. arXiv.
+
+Page, L., & Clemen, R. T. (2013). Do prediction markets produce well-calibrated probability forecasts? *The Economic Journal, 123*(568), 491–513.
+
+Wolfers, J., & Zitzewitz, E. (2004). Prediction markets. *Journal of Economic Perspectives, 18*(2), 107–126.

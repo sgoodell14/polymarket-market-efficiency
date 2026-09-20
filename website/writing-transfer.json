@@ -1,16 +1,42 @@
 {
   "source": "docs/writing/website_writing_template.docx",
-  "source_sha256": "3e34303ce4db497a2aab77ac04f743e35277e35f927a21966efce029be55c57f",
-  "transferred_at_utc": "2026-09-16T17:17:35.286443+00:00",
+  "source_sha256": "3c2c919dc283695f17740eccbaa44ea4fe572ee713c7df6f6dbe08213a70d5e7",
+  "transferred_at_utc": "2026-09-20T12:16:35.103189+00:00",
   "narrative_source": "saved_word_document",
-  "figures_checkpoint": "20260916_v1",
+  "figures_checkpoint": "20260916_v2",
+  "figure_text_source": "saved_word_document",
+  "word_figure_ids": {
+    "01": "01",
+    "02": "02",
+    "03": "06",
+    "04": "03",
+    "05": "04",
+    "06": "05",
+    "07": "07",
+    "08": "08",
+    "09": "11",
+    "10": "12"
+  },
   "current_data_checkpoint": "20260916_v2",
   "counts_reconciliation_deferred_by_user": true,
-  "archive": "docs/writing/transfers/20260916T171735Z_3e34303ce4",
+  "archive": "docs/writing/transfers/20260920T121635Z_3c2c919dc2",
   "pages": [
     "index.qmd",
     "DataPrep_EDA.qmd",
     "Conclusions.qmd"
   ],
-  "figure_count": 10
+  "figure_count": 10,
+  "figure_overrides_applied": [
+    "01",
+    "02",
+    "06",
+    "03",
+    "04",
+    "05",
+    "07",
+    "08",
+    "11",
+    "12"
+  ],
+  "figures_section": "Exploratory Visualizations"
 }

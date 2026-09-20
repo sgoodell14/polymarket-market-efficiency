@@ -1,0 +1,141 @@
+{
+  "EDA Notebook and Data": {
+    "target": "downloads/current/eda-notebook-and-data.zip",
+    "title": "ZIP: current notebook, all required data, supporting evidence, code and run instructions"
+  },
+  "API Requests": {
+    "target": "downloads/current/api-requests-and-code.zip",
+    "title": "ZIP: current collection code and request index for the current cohort",
+    "previous_targets": [
+      "downloads/references/20260916-v2/api-requests-and-code.zip"
+    ]
+  },
+  "Raw Market Metadata": {
+    "target": "downloads/current/raw-market-metadata.zip",
+    "title": "ZIP: saved Gamma metadata for the 565 current markets",
+    "previous_targets": [
+      "downloads/references/20260916-v2/raw-market-metadata.zip"
+    ]
+  },
+  "Raw Transaction Data": {
+    "target": "downloads/current/raw-transactions.zip",
+    "title": "ZIP: current retained trade windows in original API fields; 155,177 rows",
+    "previous_targets": [
+      "downloads/references/20260916-v2/raw-transactions.zip"
+    ]
+  },
+  "Raw Pricing Data": {
+    "target": "downloads/current/raw-prices.zip",
+    "title": "ZIP: current hourly windows and eight separate finer cutoff responses",
+    "previous_targets": [
+      "downloads/references/20260916-v2/raw-prices.zip"
+    ]
+  },
+  "Sampling code": {
+    "target": "downloads/current/sampling-code.zip",
+    "title": "ZIP: current sampling and family replacement source code",
+    "previous_targets": [
+      "downloads/references/20260916-v2/sampling-code-and-inputs.zip"
+    ]
+  },
+  "Candidate Ledger": {
+    "target": "downloads/current/candidate-ledger-completed-20260916.csv",
+    "title": "CSV: latest completed replacement round, including final acceptances and recorded skips",
+    "previous_targets": [
+      "downloads/references/20260916-v2/candidate-ledger-completed-20260916.csv",
+      "downloads/references/20260916-v2/candidate-ledgers.zip"
+    ]
+  },
+  "Repeat Test Code": {
+    "target": "downloads/current/trade-record-check-code.zip",
+    "title": "ZIP: current full-cohort trade-direction and repeated-row diagnostic code"
+  },
+  "Repeat Legitimacy Test Code": {
+    "target": "downloads/current/trade-record-check-code.zip",
+    "title": "ZIP: current full-cohort trade-direction and repeated-row diagnostic code",
+    "previous_targets": [
+      "downloads/references/20260916-v2/repeated-record-check.zip"
+    ]
+  },
+  "EDA Code": {
+    "target": "downloads/current/cleaning-code.zip",
+    "title": "ZIP: current table preparation and validation source code with field definitions",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaning-code-and-validation.zip"
+    ]
+  },
+  "Cleaned Market Table": {
+    "target": "downloads/current/cleaned-markets.csv",
+    "title": "CSV: 565 current market rows",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaned-markets.csv"
+    ]
+  },
+  "Cleaned Trades Table": {
+    "target": "downloads/current/cleaned-trades.zip",
+    "title": "ZIP: current trades CSV and field definitions; 155,177 rows",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaned-trades.zip"
+    ]
+  },
+  "Cleaned Price History Table": {
+    "target": "downloads/current/cleaned-price-history.zip",
+    "title": "ZIP: current price-history CSV and field definitions; 75,061 rows",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaned-price-history.zip"
+    ]
+  },
+  "Cleaning Code": {
+    "target": "downloads/current/cleaning-code.zip",
+    "title": "ZIP: current table preparation and validation source code with field definitions",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaning-code-and-validation.zip"
+    ]
+  },
+  "Data Cleaning Code": {
+    "target": "downloads/current/cleaning-code.zip",
+    "title": "ZIP: current table preparation and validation source code with field definitions",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaning-code-and-validation.zip"
+    ]
+  },
+  "Cleaning and Preparation Code": {
+    "target": "downloads/current/cleaning-code.zip",
+    "title": "ZIP: current table preparation and validation source code with field definitions",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaning-code-and-validation.zip"
+    ]
+  },
+  "Data Prep/Cleaning Code": {
+    "target": "downloads/current/cleaning-code.zip",
+    "title": "ZIP: current table preparation and validation source code with field definitions",
+    "previous_targets": [
+      "downloads/references/20260916-v2/cleaning-code-and-validation.zip"
+    ]
+  },
+  "EDA Visualization Notebook": {
+    "target": "downloads/current/eda-visualization-notebook.ipynb",
+    "title": "Jupyter notebook: current executed EDA; uses project Parquet tables and supporting files",
+    "previous_targets": [
+      "downloads/references/20260916-v2/eda-visualization-notebook.ipynb"
+    ]
+  },
+  "Trade fields example": {
+    "target": "assets/cleaning-snapshots/01_trade_fields_before_after.png",
+    "title": "Before and after: selected actual fields from saved and prepared data"
+  },
+  "Repeated rows example": {
+    "target": "assets/cleaning-snapshots/02_repeated_row_flags.png",
+    "title": "Selected repeated-row flags from the prepared trades table",
+    "previous_targets": [
+      "assets/cleaning-snapshots/02_repeated_rows_before_after.png"
+    ]
+  },
+  "Empty history example": {
+    "target": "assets/cleaning-snapshots/03_empty_history_flags.png",
+    "title": "Selected empty-history flags and summaries from the prepared markets table",
+    "previous_targets": [
+      "assets/cleaning-snapshots/03_empty_history_before_after.png"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+```{=html}
+<a aria-label="Read the Pew Research Center analysis of prediction-market trading volume (opens in a new tab)" class="intro-media-card intro-media-pew intro-inline-pew" href="https://www.pewresearch.org/short-reads/2026/05/27/trading-volume-on-prediction-markets-has-soared-in-recent-months/" rel="noopener noreferrer" target="_blank">
+<img alt="Pew Research Center chart: combined monthly global trading volume on Kalshi and Polymarket rises rapidly from mid-2025 to about 24 billion dollars in April 2026." height="331" src="assets/introduction/pew-trading-volume.png" width="303"/>
+<span class="intro-media-source">Pew Research Center <span aria-hidden="true">↗</span></span>
+</a>
+```

@@ -15,18 +15,22 @@ project:
     - Conclusions.qmd
   resources:
     - assets/**
-    - downloads/**
+    - downloads/current/**
     - .nojekyll
 website:
-  title: "Market Efficiency"
+  title: "Crowd Forecasting"
+  favicon: assets/brand-mark.svg
   description: "Information discovery, market calibration, and trader specialization in prediction markets."
   site-url: "https://sgoodell14.github.io/polymarket-market-efficiency/"
   search: false
   page-navigation: true
+  bread-crumbs: false
   navbar:
-    background: "#11283f"
-    foreground: "#ffffff"
-    title: "MARKET EFFICIENCY"
+    background: "#faf9f6"
+    foreground: "#202c29"
+    logo: assets/brand-mark.svg
+    logo-alt: "Project mark"
+    title: "Crowd Forecasting — Accuracy and Information on Polymarket <span class='navbar-author'>| Sam Goodell</span>"
     right:
       - text: "Introduction"
         href: index.qmd
@@ -34,35 +38,45 @@ website:
         href: DataPrep_EDA.qmd
   sidebar:
     style: docked
-    background: "#f0f4f8"
-    title: "THE RESEARCH"
+    background: "#faf9f6"
     contents:
-      - text: "Introduction"
-        href: index.qmd
-      - text: "DataPrep_EDA"
-        href: DataPrep_EDA.qmd
-      - text: "Clustering"
-        href: Clustering.qmd
-      - text: "PCA"
-        href: PCA.qmd
-      - text: "NaiveBayes"
-        href: NaiveBayes.qmd
-      - text: "DecTrees"
-        href: DecTrees.qmd
-      - text: "SVMs"
-        href: SVMs.qmd
-      - text: "Regression"
-        href: Regression.qmd
-      - text: "NN"
-        href: NN.qmd
-      - text: "Conclusions"
-        href: Conclusions.qmd
+      - section: "The study"
+        contents:
+          - text: "Introduction"
+            href: index.qmd
+          - text: "DataPrep_EDA"
+            href: DataPrep_EDA.qmd
+      - section: "Later modules"
+        contents:
+          - text: "Clustering"
+            href: Clustering.qmd
+          - text: "PCA"
+            href: PCA.qmd
+          - text: "NaiveBayes"
+            href: NaiveBayes.qmd
+          - text: "DecTrees"
+            href: DecTrees.qmd
+          - text: "SVMs"
+            href: SVMs.qmd
+          - text: "Regression"
+            href: Regression.qmd
+          - text: "NN"
+            href: NN.qmd
+          - text: "Conclusions"
+            href: Conclusions.qmd
   page-footer:
-    left: "Information Discovery & Market Efficiency"
-    right: "Polymarket research - September 2026"
+    left: "Crowd Forecasting"
+    right: "Accuracy and Information on Polymarket"
 format:
   html:
+    filters:
+      - filters/table-layout.lua
     theme: [cosmo, theme.scss]
+    grid:
+      sidebar-width: 235px
+      body-width: 850px
+      margin-width: 210px
+      gutter-width: 2.3rem
     toc: true
     toc-title: "On this page"
     title-block-banner: false

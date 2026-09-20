@@ -1,0 +1,6 @@
+```{=html}
+<a aria-label="Read the New York Times article about prediction-market traders (opens in a new tab)" class="intro-media-card intro-media-nyt" href="https://www.nytimes.com/2026/05/26/magazine/polymarket-prediction-wall-street.html" rel="noopener noreferrer" target="_blank">
+<img alt="The Average Guys Outsmarting Wall Street on Prediction Markets. How prediction market sharps have made millions wagering on everything from war to Rotten Tomatoes." height="295" src="assets/introduction/nyt-prediction-markets.png" width="833"/>
+<span class="intro-media-source">The New York Times <span aria-hidden="true">↗</span></span>
+</a>
+```

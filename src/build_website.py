@@ -3,6 +3,8 @@ import shutil
 import os
 import stat
 import subprocess
+import hashlib
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +26,17 @@ def main():
     if not (ROOT / 'website/writing-transfer.json').exists():
         from prepare_website import main as prepare
         prepare()
+    else:
+        # Rendering figures is not a Word import. Make saved prose drift visible
+        # without overwriting either the author's document or the staged pages.
+        from transfer_website_writing import read_saved_document
+        receipt = json.loads((ROOT / 'website/writing-transfer.json').read_text(encoding='utf-8'))
+        word_path = ROOT / receipt['source']
+        if word_path.exists():
+            word_hash = hashlib.sha256(read_saved_document(word_path)).hexdigest()
+            if word_hash != receipt['source_sha256']:
+                print('NOTICE: Saved Word changes have not been imported. This build uses the last transferred text. '
+                      'Run src/transfer_website_writing.py to sync the saved writing.', flush=True)
     portable = ROOT / ".tools/bin/quarto.exe"
     executable = str(portable) if portable.exists() else shutil.which("quarto")
     if not executable:

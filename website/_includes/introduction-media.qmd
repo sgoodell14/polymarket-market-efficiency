@@ -1,0 +1,16 @@
+```{=html}
+<div class="intro-media" aria-label="Selected coverage of prediction markets">
+  <a class="intro-media-card intro-media-nyt" href="https://www.nytimes.com/2026/05/26/magazine/polymarket-prediction-wall-street.html" target="_blank" rel="noopener noreferrer" aria-label="Read the New York Times article about prediction-market traders (opens in a new tab)">
+    <img src="assets/introduction/nyt-prediction-markets.png" width="833" height="295" alt="The Average Guys Outsmarting Wall Street on Prediction Markets. How prediction market sharps have made millions wagering on everything from war to Rotten Tomatoes.">
+    <span class="intro-media-source">The New York Times <span aria-hidden="true">↗</span></span>
+  </a>
+  <a class="intro-media-card intro-media-pew" href="https://www.pewresearch.org/short-reads/2026/05/27/trading-volume-on-prediction-markets-has-soared-in-recent-months/" target="_blank" rel="noopener noreferrer" aria-label="Read the Pew Research Center analysis of prediction-market trading volume (opens in a new tab)">
+    <img src="assets/introduction/pew-trading-volume.png" width="303" height="331" alt="Pew Research Center chart: combined monthly global trading volume on Kalshi and Polymarket rises rapidly from mid-2025 to about 24 billion dollars in April 2026.">
+    <span class="intro-media-source">Pew Research Center <span aria-hidden="true">↗</span></span>
+  </a>
+  <a class="intro-media-card intro-media-cbs" href="https://www.cbsnews.com/news/polymarket-predictions-accuracy-shayne-coplan-60-minutes/" target="_blank" rel="noopener noreferrer" aria-label="Read the CBS News interview with Polymarket's CEO (opens in a new tab)">
+    <img src="assets/introduction/cbs-prediction-accuracy.png" width="576" height="205" alt="CBS News, 60 Minutes Overtime: Polymarket CEO says his prediction market is the most accurate thing we have as mankind right now. November 30, 2025.">
+    <span class="intro-media-source">CBS News · 60 Minutes <span aria-hidden="true">↗</span></span>
+  </a>
+</div>
+```

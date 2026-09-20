@@ -1,7 +1,8 @@
 ---
 title: "Conclusions"
+toc: false
 ---
 
-Conclusions are still being developed.
-
-[Read the data preparation and exploratory analysis](DataPrep_EDA.qmd).
+::: {.eyebrow}
+Later course module
+:::

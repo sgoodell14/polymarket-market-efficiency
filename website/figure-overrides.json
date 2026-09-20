@@ -1,0 +1,52 @@
+{
+  "01": {
+    "source": "figures/eda_20260917_sample_flow/01_sample_composition.png",
+    "asset": "assets/eda_20260917_sample_flow/01_sample_composition.png",
+    "alt": "Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."
+  },
+  "07": {
+    "source": "figures/eda_20260917_activity_distribution/07_account_activity.png",
+    "asset": "assets/eda_20260917_activity_distribution/07_account_activity.png",
+    "alt": "Three aligned bar charts show the share of markets in six dollar ranges by topic. 61% of Sports markets with activity fall below $1000, compared with 45% of Politics and 42% of Economics. Denominators are 136 Sports, 198 Politics and 164 Economics markets; zero-activity windows are omitted."
+  },
+  "03": {
+    "alt": "Heatmap of underlying event options. Sports: 165 two options, 35 three or more, zero unverified or overlapping. Politics: 2 two options, 17 three or more, 177 count not verified, 4 overlapping. Economics: 1 two options, 163 three or more, 1 count not verified, zero overlapping.",
+    "source": "figures/eda_20260917_event_options/03_event_options.png",
+    "asset": "assets/eda_20260917_event_options/03_event_options.png"
+  },
+  "08": {
+    "alt": "Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted.",
+    "source": "figures/eda_20260917_wallet_density/08_wallet_density.png",
+    "asset": "assets/eda_20260917_wallet_density/08_wallet_density.png"
+  },
+  "05": {
+    "alt": "Three 100-percent stacked bars compare full seven-day and shorter collection windows. Sports: 21.5% full and 78.5% shorter. Politics: 87.5% full and 12.5% shorter. Economics: 92.7% full and 7.3% shorter.",
+    "source": "figures/eda_20260917_window_duration/05_window_duration.png",
+    "asset": "assets/eda_20260917_window_duration/05_window_duration_solid_shades.png"
+  },
+  "04": {
+    "alt": "Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million.",
+    "source": "figures/eda_20260917_large_trades/04_large_trade_records.png",
+    "asset": "assets/eda_20260917_large_trades/04_large_trade_records.png"
+  },
+  "11": {
+    "alt": "Horizontal bars showing wallets also seen in another topic: Sports 291 of 5009 (5.8%), Politics 1409 of 7536 (18.7%), Economics 1368 of 11337 (12.1%). Overall 1477 of 22291 unique addresses appear in multiple topics (6.6%).",
+    "source": "figures/eda_20260917_wallet_overlap/11_wallet_overlap.png",
+    "asset": "assets/eda_20260917_wallet_overlap/11_wallet_overlap.png"
+  },
+  "02": {
+    "alt": "Stacked monthly counts for the final 565 markets, September 2025 through August 2026. Topic totals are Sports 200, Politics 200 and Economics 165. March 2026 has the largest total, 97 markets.",
+    "source": "figures/eda_20260917_final_refresh/02_event_month.png",
+    "asset": "assets/eda_20260917_final_refresh/02_event_month.png"
+  },
+  "06": {
+    "alt": "Bar chart of zero-returned-trade windows in the final sample. Sports 64 of 200, 32.0%; Politics 2 of 200, 1.0%; Economics 1 of 165, 0.6%. Total 67 of 565.",
+    "source": "figures/eda_20260917_final_refresh/06_zero_trade_windows.png",
+    "asset": "assets/eda_20260917_final_refresh/06_zero_trade_windows.png"
+  },
+  "12": {
+    "alt": "Topic-colored points show forecast-price ages for 200 Sports, 200 Politics and 165 Economics markets. Every observation is between 9 seconds and 5 hours 59 minutes 1 second before cutoff. Eight finer-query snapshots are marked with diamonds, and a dashed line marks the six-hour maximum.",
+    "source": "figures/eda_20260917_final_refresh/12_snapshot_freshness.png",
+    "asset": "assets/eda_20260917_final_refresh/12_snapshot_freshness.png"
+  }
+}

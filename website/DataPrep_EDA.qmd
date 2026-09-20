@@ -2,19 +2,19 @@
 title: "Data Preparation & EDA"
 ---
 
-**Draft checkpoint.** The text and figures below retain the earlier 589-contract analysis while revisions are in progress. The updated cohort contains 565 distinct event families: 200 Sports, 200 Politics and 165 Economics. The September 2025-August 2026 study period is unchanged.
+## Data Sources & Scope
 
-## Data sources and study scope
+This study examines a sample of 565 trading markets for scheduled sports matches, election outcomes, and economic releases or policy decisions on Polymarket from September 1, 2025 through August 31, 2026.
 
-This study examines a sample of 589 trading markets for scheduled sports matches, election outcomes, and economic releases or policy decisions on Polymarket from September 1, 2025 through August 31, 2026.
-
-### Data sources
+### Data Sources
 
 | **Source** | **Information collected** |
 | --- | --- |
 | [Gamma API](https://gamma-api.polymarket.com) | Market question, identifiers, tags, event listings, outcome tokens and resolution metadata |
 | [Data API](https://data-api.polymarket.com) | Public wallet addresses, BUY/SELL, outcome, price, share size, timestamp and transaction hash |
 | [CLOB API](https://clob.polymarket.com) | Historical prices for the selected outcome token |
+
+Table 1: API sources, links, and information included in each
 
 Request records store the exact URL, retrieval time, response status and content hash to allow the prepared tables to be traced back to their source.
 
@@ -26,147 +26,168 @@ The following example request retrieves metadata for market 691922:
 GET https://gamma-api.polymarket.com/markets/691922?
 ```
 
-Trade data was requested for both outcomes in each market using the condition ID (Gamma API).  For each market, the first outcome was selected to request transaction data (Data API).  That outcome’s corresponding token ID was then used to request that outcome’s pricing history (CLOB API).
+Market condition IDs and outcome-token IDs were obtained from the Gamma API.  Trades for both outcomes were requested from the Data API using each market's condition ID.  CLOB price history was requested using the first outcome's token ID.  When responses exceeded the configured 1,000-row limit, requests intervals were split into smaller, non-overlapping windows.
+
+::: {.section-references}
+Linked References: [API Requests](downloads/current/api-requests-and-code.zip "ZIP: current collection code and request index for the current cohort"), [Raw Market Metadata](downloads/current/raw-market-metadata.zip "ZIP: saved Gamma metadata for the 565 current markets"), [Raw Transaction Data](downloads/current/raw-transactions.zip "ZIP: current retained trade windows in original API fields; 155,177 rows"), [Raw Pricing Data](downloads/current/raw-prices.zip "ZIP: current hourly windows and eight separate finer cutoff responses")
+:::
+
+### Forecast Time & Trading Window
+
+Trade and price-history requests covered up to seven days, ending 24 hours before each market’s reviewed event boundary (Table 2).  This historical trading window and cutoff boundary were employed to compare across a consistent lead time and avoid prices that already reflect a known outcome.  For 194 markets, the available history was shorter as markets were listed less than seven days before the cutoff (Figure 6).  The forecast price was identified as the latest price at or no more than 6 hours before the cutoff.  If no price history was available in the configured hourly observations, one-minute requests were made for that same six-hour period (Figure 10).
 
 ## Sampling and Market Selection
 
 ### Sampling the Market Population
 
-Using Polymarket’s topic tags and the Sports moneyline filter, the initial inventory identified 178,618 distinct markets with scheduled end dates between September 1, 2025 and August 31, 2026.  Prio to sampling, a series of preliminary filters were applied to the market population, including relevant topic tags, binary contracts, a market recorded resolution, and market availability at least 24 hours prior to the listed event timing.  Records were de-duplicated by market ID and event ID to ensure the omission of competing outcomes.  A reproducible random sample of 600 markets—200 per topic—was drawn from the subset.  Sampling was balanced across available months.
+Using Polymarket’s topic tags and the Sports “moneyline” filter, the initial inventory identified 178,618 distinct markets with scheduled end dates between September 1, 2025 and August 31, 2026.  Prior to sampling, a series of preliminary filters were applied to the market population, excluding irrelevant topic tags, non-binary contracts, and markets without a recorded resolution or availability at least 24 hours prior to the listed event timing.  Repeated listings of the same market were consolidated using its unique market ID to ensure each contract appeared only once.  A random sample of 600 markets—200 per topic—was drawn from the subset.  Initial sampling was balanced throughout the available months.
 
-### Individual Market Audits
+::: {.section-references}
+Linked References: [Sampling Code](downloads/current/sampling-code.zip "ZIP: current sampling and family replacement source code")
+:::
 
-Following the automated checks, the following criteria were reviewed individually for each market.
+### Individual Market Evidence Reviews
 
-**Contract Clarification:** Market resolution rules were reviewed rather than reliance on the title or topic tag.  Reviews confirmed inclusion within the topic, the exact outcome, and uncertainty at the time of the proposed market forecast cutoff.  Sports were limited to win/loss contracts, politics were confirmed to be election outcomes, and economics to scheduled release or policy announcements.
+Following the automated checks, each contract was reviewed individually for each market.
 
-**Event Timing:** Polymarket’s closing timestamp did not always align with the date or time the event occurred.  Each market’s boundary was independently verified according to the market type.
+**Contract Clarification:** Market resolution rules were reviewed rather than relying on the title or topic tag.  Reviews confirmed the topic, the exact outcome, and uncertainty at the time of the proposed market forecast cutoff.  Contracts were also reviewed to identify those involving the same real-world event.  Sports were limited to match/series outcome contracts, politics were confirmed to be election outcomes, and economics to scheduled release or policy announcements.
 
-- Sports: match or series start
+**Event Timing:** This study focused on scheduled events so forecasts could be compared at a consistent time before each event.  Polymarket’s closing timestamp did not always match the relevant real-world event boundary, so market rules and supporting sources were reviewed to establish the boundaries in Table 2.
 
-- Politics: final scheduled poll close
+| **Topic** | **Event Boundary** |
+| --- | --- |
+| Sports | Match or series start time |
+| Politics | Final scheduled poll close time |
+| Economics | Verified release or policy announcement timing |
 
-- Economics: verified release or policy announcement timing
+Table 2: Defined market boundaries by topic
 
-All times were converted to UTC to account for international events.  The forecast cutoff was set to 24 hours prior to the event’s verified boundary.
+All times were converted to UTC to account for international events.  The forecast cutoff was reset to 24 hours prior to the event’s verified boundary.
 
-**Data Availability:** The market remained open and pricing observations were observed within 6 hours of the forecast cutoff
+**Data Availability**: The market remained open and pricing observations were observed within 6 hours of the forecast cutoff.
 
-### Exclusions and reserve replacements
+All replacement rationale and attempts were recorded in a candidate ledger.  Exclusion examples and rationale for each topic are listed below.
 
-Markets that were excluded following individual audits were replaced using the saved reserve ordering within the same topic and month where possible, followed by the documented nearest-month rule.  Replacement candidates had to pass review before acceptance.  Replacement reasons and attempts remain recorded.
+| **Topic** | **Market** **(ID)** | **Reason for Exclusion** |
+| --- | --- | --- |
+| Sports | Reds vs Dodgers (580661) | The listed end date on this was September, but the game occurred on August 26, before the study window. |
+| Politics | Will Anamaria Gavrilă win the Romanian presidential election? (519081) | The candidate withdrew before the proposed forecast cutoff. The election also occurred in May 2025, outside the study window. |
+| Economics | Will a dozen eggs cost between $4.00–4.25 in October? (654410) | The specified October 2025 egg-price observation was not published. |
 
-The final evidence reviews covered 105 held cases and supported 94 for inclusion. The remaining 11 were omitted without replacements, leaving 589 contracts: 199 Sports, 191 Politics and 199 Economics. These contracts belong to 496 real-world event families. Evidence availability and the original sampling design limit how broadly the findings can be generalized.
+Table 3: Examples of excluded markets with rationale
 
-## Forecast windows and prepared tables
+::: {.section-references}
+Linked References: [Candidate Ledger](downloads/current/candidate-ledger-completed-20260916.csv "CSV: latest completed replacement round, including final acceptances and recorded skips")
+:::
 
-### The forecast time
+### Market Exclusions & Reserve Replacements {#exclusions-and-reserve-replacements}
 
-Each forecast is measured 24 hours before the accepted event boundary. The selected price is the latest valid observation at or before that cutoff and no more than six hours old. The six-hour freshness rule limits the age of the observation; it does not move the forecast to six hours before the event.
+Individual market evidence reviews resulted in 94 sample exclusions.  Excluded markets following individual audits were replaced using the established random reserve ordering within the same topic and month, where possible.  If no eligible candidates remained in that month, candidates were drawn from the nearest available month within the study period.  Replacement candidates passed evidence reviews before acceptance.  Exclusion rationale and replacement attempts remain recorded.
 
-The trading and price-history window covers up to seven days ending at the forecast cutoff. Later-listed markets have shorter windows. The final 24 hours before the event are outside this history window. There are 198 shortened windows, so observed activity needs to be interpreted alongside the actual duration.
+Reserve markets from the initial distinct market population backfilled excluded Sports and Politics samples to the stated goal of 200 contracts.  Eligibility requirements yielded only 165 Economics observations within September 2025–August 2026.  No additional qualifying event families remained in the reserve pool.
 
-### Collection limits and recovery
+The final evidence reviews left 565 contracts in the cohort: 200 Sports, 200 Politics and 165 Economics, each with distinct real-world event families (Figure 1).  The automated and individual exclusions introduce bias towards scheduled event markets and markets with more easily verifiable outcomes.  Replacements drawn from other months contributed to an uneven monthly distribution of Politics and Economics markets in the final sample (Figure 2).
 
-When a trade response reaches the 1,000-row request limit, the collector splits the interval and queries smaller windows. It assembles nonoverlapping child windows instead of adding overlapping parent and child responses. The retained histories exhaust the queried API windows; this is a retrieval check, not independent proof of complete blockchain coverage.
+## Cleaning & Data Quality Checks
 
-Seven selected cutoff forecasts use finer price queries because the hourly history did not supply a qualifying snapshot. All 589 selected prices meet the cutoff and six-hour freshness rules. The finer snapshots remain separate from the hourly price-path table.
+### Repeat Trade Records
 
-### Three prepared tables
+Identical returned trade rows were flagged but retained in the dataset.  One transaction may be completed via several fills with the same wallet, timestamp, price and size.  In three examined transactions, retaining repeated rows preserved BUY vs SELL transaction consistency, supporting their retention.
+
+::: {.section-references}
+Linked References: [Repeat Test Code](downloads/current/trade-record-check-code.zip "ZIP: current full-cohort trade-direction and repeated-row diagnostic code")
+:::
+
+### Empty Transaction Histories
+
+67 markets returned no trades in their collected pre-cutoff windows: 64 Sports, two Politics and one Economics (Figure 3).  Each was retained as lack of recent activity is relevant to market behavior.  As a result, however, average trade size and wallet concentration are undefined and therefore not included in these 67 markets.
+
+### Varying Outcome Alternatives
+
+Every sampled contract had two outcomes (typically *Yes* and *No*).  Many contracts represented one of several bets on the same event family—for example, separate Yes/No contacts on which candidate would win an election.  Some contracts belonged to groups of overlapping questions (for instance, questions asking whether the Conservative Party would win at least 300 seats or at least 400 seats could both resolve Yes).  The number of possible outcomes for each underlying event was recorded where available to provide context when comparing forecasts (Figure 4).
+
+### Activity Definitions
+
+Trading activity was measured as the summation of price multiplied by share size.  These totals measure account-level activity and include both BUY and SELL side volume.  Unique wallet counts represent distinct addresses and serve as a proxy for individual traders; however, one person may control multiple wallets.
+
+### General EDA and Prepared Tables
+
+Standardization steps include:
+
+- Market and token IDs stored as text to preserve exact values
+
+- Wallet addresses and transaction hashes formatted in lowercase
+
+- Column names unified across the prepared tables
+
+- Timestamps converted to UTC
+
+Inconsistent outcome labels were mapped to consistent names using outcome token identifiers, preserving original labels.  Repeated trade rows were flagged but retained.  Additional columns explain missing values, including average trade size and wallet concentration when no trades were returned, and the number of event alternatives when that count could not be established.
 
 | **Table** | **Rows** | **Granularity** |
 | --- | --- | --- |
-| Markets | 589 | One contract with its forecast, outcome, metadata and descriptive summaries |
-| Trades | 296,851 | One returned account-level trading record |
-| Price history | 78,576 | One observed price for the first outcome token |
+| Markets | 565 | One contract with its forecast, outcome, metadata and descriptive summaries |
+| Trades | 155,177 | One returned account-level trading record |
+| Price history | 75,061 | One observed price for the first outcome token |
 
-The preparation assigns explicit data types, keeps long identifiers as text, expresses times in UTC, and preserves source file hashes and original row indices. Original trade prices, quantities and timestamps remain unchanged. The tables contain outcome labels and later audit context as well as pre-cutoff measurements, so they are not an automatic model-input matrix.
+Table 4: Descriptions of the three tables prepared following extraction and cleaning
 
-## Cleaning and data quality
+The tables include trading and price measurements from the up-to-seven-day window ending at the forecast cutoff, along with final outcomes and audit information.
 
-### Repeated trade records
+::: {.section-references}
+Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv "CSV: 565 current market rows"), [Cleaned Trades Table](downloads/current/cleaned-trades.zip "ZIP: current trades CSV and field definitions; 155,177 rows"), [Cleaned Price History Table](downloads/current/cleaned-price-history.zip "ZIP: current price-history CSV and field definitions; 75,061 rows"), [Data Prep/Cleaning Code](downloads/current/cleaning-code.zip "ZIP: current table preparation and validation source code with field definitions")
+:::
 
-Identical returned trade rows are flagged and retained. One transaction may contain several fills with the same wallet, timestamp, price and size. A follow-up on three selected transactions found that retaining repeated rows preserved directional share balance, whereas collapsing them broke that balance. This supports possible legitimate separate fills; it does not establish the identity of every record.
+### Before and After Data Snapshots
 
-A separate sensitivity view keeps one occurrence of each exact repeated dictionary. It removes 1,377 occurrences in that hypothetical scenario and may remove legitimate activity. It is not the primary dataset or a corrected fill ledger.
+[Outcome label unification example](assets/cleaning-snapshots/01_trade_fields_before_after.png) (trades table)
 
-### Zero activity and missing values
+[Repeat row flag](assets/cleaning-snapshots/02_repeated_row_flags.png) (trades table)
 
-Sixty-six markets returned no trades during their collected pre-cutoff windows: 64 Sports and two Economics. They remain in the cohort because observed inactivity is relevant to market behavior and their cutoff forecasts are available. These windows do not establish zero lifetime trading. Counts and observed activity are zero; average trade size and wallet concentration are undefined and remain missing.
+[Empty trade history flags](assets/cleaning-snapshots/03_empty_history_flags.png) (markets table)
 
-Historical alternative counts are reconstructed for 459 contracts, unverified for 124, and not applicable to six nonexclusive groups. All sampled contracts themselves have two outcomes. A binary contract can belong to an event with many candidate choices, so binary contract structure and event alternatives are recorded separately.
+## Exploratory Visualizations
 
-### Prices and valid extremes
+### Figure 01 Market pool, replacements and final cohort
 
-Thirty-four markets have an internal hourly-series gap longer than six hours. One market has a valid finer cutoff forecast but no hourly price path. Gaps and unavailable path statistics remain explicit. No interpolation, arbitrary outlier deletion, imputation or model-specific normalization is applied; logarithmic plot axes change only the display.
-
-### Activity definitions and verification
-
-Price multiplied by share size gives account-row notional. Its sum is called gross account activity because it has not been reconciled to exchange turnover. Wallet counts identify observed addresses rather than distinct people. BUY and SELL labels alone do not identify liquidity takers and providers.
-
-The saved tables passed 58 data checks, and the project test suite passed 62 tests at this checkpoint. Source comparisons establish table consistency and provenance; they do not independently certify every external event fact or exchange fill.
-
-## Exploratory findings
-
-### Describe what the data reveal
-
-The final cohort is close to balanced across the three topics, but its contracts differ in event structure, observation duration and trading activity. These differences matter when comparing forecasts or using trading records to describe participation.
-
-Activity is highly uneven. The three largest markets contribute 77.09 percent of total gross account activity under the retained-row convention. A small number of large observations therefore has substantial influence on pooled activity summaries.
-
-The 66 windows with no returned trades and the 198 shortened windows show why activity measures require explicit definitions. An inactive window can still provide an eligible price forecast. Missing concentration in an inactive window has a different meaning from a missing historical count of event alternatives.
-
-| **Figure** | **Topic** |
-| --- | --- |
-| 01 | Sample composition |
-| 02 | Audited event months |
-| 03 | Underlying event structures |
-| 04 | Missingness and its reasons |
-| 05 | Window duration |
-| 06 | Zero-trade windows |
-| 07 | Account activity |
-| 08 | Wallet participation and activity |
-| 11 | Internal price gaps |
-| 12 | Cutoff snapshot freshness |
-
-## Figures
-
-### Figure 01 Sample composition
-
-![The original design selected 200 contracts per topic. The final evidence review omitted one Sports, nine Politics and one Economics contract without replacement, leaving 589 forecasts.](assets/eda_20260916/01_sample_composition.png){fig-alt="Sample composition for the earlier 589-contract cohort."}
+![The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. 2 Sports, 111 Politics and 71 Economics selections required replacements after the audits and event-family review. The final cohort contains 200 Sports, 200 Politics and 165 Economics contracts.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
 
 ### Figure 02 Audited event months
 
-![This chart uses the reviewed event boundary rather than the original catalog end date. Twenty-nine markets have a different audited event month from their saved sampling stratum, which remains preserved separately.](assets/eda_20260916/02_event_month.png){fig-alt="Audited event months for the earlier 589-contract cohort."}
+![Twenty-nine markets have an event month different from their saved sampling month. The original draw was balanced across available months; event-date corrections, event-family replacements and available reserves changed the final distribution.](assets/eda_20260917_final_refresh/02_event_month.png){fig-alt="Stacked monthly counts for the final 565 markets, September 2025 through August 2026. Topic totals are Sports 200, Politics 200 and Economics 165. March 2026 has the largest total, 97 markets."}
 
-### Figure 03 Underlying event structures
+### Figure 03 No returned trades in the collected window
 
-![Every sampled contract has two tokens, but the underlying event can have several alternatives or overlapping questions. Structure and historical count availability must accompany any comparison across topics.](assets/eda_20260916/03_event_structures.png){fig-alt="Underlying event structures for the earlier 589-contract cohort."}
+![The collected windows contain no returned trades for 64 of 200 Sports markets (32.0%), two of 200 Politics markets (1.0%) and one of 165 Economics markets (0.6%): 67 markets in total. A zero count does not mean that a market had no trading before the window or during the final 24 hours.](assets/eda_20260917_final_refresh/06_zero_trade_windows.png){fig-alt="Bar chart of zero-returned-trade windows in the final sample. Sports 64 of 200, 32.0%; Politics 2 of 200, 1.0%; Economics 1 of 165, 0.6%. Total 67 of 565."}
 
-### Figure 04 Missingness and its reasons
+### Figure 04 Number of event options
 
-![Missing values arise from several distinct sources, including incomplete historical menus and undefined activity ratios. These groups overlap and are not additional market exclusions.](assets/eda_20260916/04_missingness.png){fig-alt="Missingness and its reasons for the earlier 589-contract cohort."}
+![All sampled contracts have two outcomes. However, total available options at the forecast cutoff varied: for example, two teams, three match results including a draw, or several election candidates or economic ranges. The saved audit reconstructs two options for 168 markets and three or more for 215. The count could not be verified for 178; four have questions that can overlap, (more than one can resolve *Yes*).](assets/eda_20260917_event_options/03_event_options.png){fig-alt="Heatmap of underlying event options. Sports: 165 two options, 35 three or more, zero unverified or overlapping. Politics: 2 two options, 17 three or more, 177 count not verified, 4 overlapping. Economics: 1 two options, 163 three or more, 1 count not verified, zero overlapping."}
 
-### Figure 05 Window duration
+### Figure 05 Very large trade records
 
-![A total of 198 markets were listed less than seven days before their forecast cutoff, so their history windows are shorter. Activity totals should be interpreted alongside exposure rather than treating every window as a full week.](assets/eda_20260916/05_window_duration.png){fig-alt="Window duration for the earlier 589-contract cohort."}
+![For this descriptive screen, very large means above the pooled 99.9th percentile of shares ($20,539.68). This whale flag returned 156 BUY/SELL records. Economics accounts for 110 of the 113 transactions, including 92 in the April 2026 Fed no-change market and 15 in the July Fed cut market. These observations come from the collected pre-cutoff windows, not full market lifetimes.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
 
-### Figure 06 No returned trades in the collected window
+### Figure 06 Collection window length by topic
 
-![The bounded pre-cutoff histories contain no returned trades for 64 Sports markets and two Economics markets. This does not establish that those markets had no trading earlier in their lifetime or during the final 24 hours before the event.](assets/eda_20260916/06_zero_trade_windows.png){fig-alt="No returned trades in the collected window for the earlier 589-contract cohort."}
+![A full window covers seven days ending at the forecast cutoff, 24 hours before the event boundary. Later-listed markets have shorter windows: 157 of 200 Sports markets (78.5%), 25 of 200 Politics markets (12.5%) and 12 of 165 Economics markets (7.3%).](assets/eda_20260917_window_duration/05_window_duration_solid_shades.png){fig-alt="Three 100-percent stacked bars compare full seven-day and shorter collection windows. Sports: 21.5% full and 78.5% shorter. Politics: 87.5% full and 12.5% shorter. Economics: 92.7% full and 7.3% shorter."}
 
-### Figure 07 Distribution of account activity
+### Figure 07 Trading activity by topic
 
-![Positive account activity spans several orders of magnitude, and the three largest markets contribute 77.09% of the all-row total. The logarithmic axis improves readability while the stored dollar values remain unchanged.](assets/eda_20260916/07_account_activity.png){fig-alt="Distribution of account activity for the earlier 589-contract cohort."}
+![Among markets with activity, 61% of Sports markets recorded less than $1,000, compared with 45% of Politics and 42% of Economics markets. The 67 markets without recorded activity were omitted, leaving 498 of the final 565 markets included above.](assets/eda_20260917_activity_distribution/07_account_activity.png){fig-alt="Three aligned bar charts show the share of markets in six dollar ranges by topic. 61% of Sports markets with activity fall below $1000, compared with 45% of Politics and 42% of Economics. Denominators are 136 Sports, 198 Politics and 164 Economics markets; zero-activity windows are omitted."}
 
-### Figure 08 Wallet participation and activity
+### Figure 08 Distinct wallets per market
 
-![Each point represents one contract with returned trading records in its pre-cutoff window. Wallet addresses are a participation proxy, and differences in duration, topic and record structure limit causal interpretations.](assets/eda_20260916/08_wallets_activity.png){fig-alt="Wallet participation and activity for the earlier 589-contract cohort."}
+![The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a logarithmic scale, with equal area for each topic.  Multiple wallets can be held by a single trader.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
 
-### Figure 11 Internal price gaps
+### Figure 09 Wallets shared across topics
 
-![Thirty-four markets have at least one internal price interval longer than six hours, and the largest gap is about 21 hours. These gaps constrain price-path summaries even when a separate, fresh cutoff forecast is available.](assets/eda_20260916/11_price_gaps.png){fig-alt="Internal price gaps for the earlier 589-contract cohort."}
+![Bars show the percentage of each topic's observed wallet addresses also found in at least one other topic. Across the sample, 20,814 addresses appear in one topic, 1,363 in two and 114 in all three. Politics has the highest shared-wallet percentage (18.7%); the largest overlap is Politics and Economics, with 1,300 shared addresses.](assets/eda_20260917_wallet_overlap/11_wallet_overlap.png){fig-alt="Horizontal bars showing wallets also seen in another topic: Sports 291 of 5009 (5.8%), Politics 1409 of 7536 (18.7%), Economics 1368 of 11337 (12.1%). Overall 1477 of 22291 unique addresses appear in multiple topics (6.6%)."}
 
-### Figure 12 Cutoff snapshot freshness
+### Figure 10 Cutoff snapshot freshness
 
-![All 589 selected forecast observations occur at or before cutoff and are no more than six hours old. Seven forecasts use finer-query recovery observations, which remain separate from the hourly paths.](assets/eda_20260916/12_snapshot_freshness.png){fig-alt="Cutoff snapshot freshness for the earlier 589-contract cohort."}
+![All 565 selected forecast prices were observed at or before the forecast cutoff and no more than six hours earlier. Of these, eight required by-minute request recovery: three Sports, four Politics and one Economics market.](assets/eda_20260917_final_refresh/12_snapshot_freshness.png){fig-alt="Topic-colored points show forecast-price ages for 200 Sports, 200 Politics and 165 Economics markets. Every observation is between 9 seconds and 5 hours 59 minutes 1 second before cutoff. Eight finer-query snapshots are marked with diamonds, and a dashed line marks the six-hour maximum."}
+
+::: {.section-references}
+Linked References: [EDA Visualization Notebook](downloads/current/eda-visualization-notebook.ipynb "Jupyter notebook: current executed EDA; uses project Parquet tables and supporting files") | [Notebook + Data (ZIP)](downloads/current/eda-notebook-and-data.zip "ZIP: current notebook, all required data, supporting evidence, code and run instructions")
+:::

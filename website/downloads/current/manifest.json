@@ -1,0 +1,73 @@
+{
+  "cohort_counts": {
+    "markets": 565,
+    "trades": 155177,
+    "price_history": 75061
+  },
+  "packages": {
+    "raw-market-metadata.zip": {
+      "bytes": 1044436,
+      "sha256": "7e281749a9a4de3a52b62ac17d8beb7f0fa42056ceed456b49b3a1c0c085fc95",
+      "files": 566
+    },
+    "raw-transactions.zip": {
+      "bytes": 8497138,
+      "sha256": "bc597bdad9d2748dec6d7893950d608202a1ea51834e02537313266ab8a093c7",
+      "files": 566
+    },
+    "raw-prices.zip": {
+      "bytes": 429368,
+      "sha256": "dd79a1a27665241d646145f747068f183a97c992d8b909ff2c6ea479fef5f708",
+      "files": 574
+    },
+    "api-requests-and-code.zip": {
+      "bytes": 922819,
+      "sha256": "07d8659a3c0d916c95c6c5350b0721dbea167f076561873aa49213b530fb3511",
+      "files": 21
+    },
+    "sampling-code.zip": {
+      "bytes": 189727,
+      "sha256": "3ebc43368da79e7e07ba1f33525efbe8692ebd7e19cdd8f8dbad9b4743b916cd",
+      "files": 21
+    },
+    "cleaning-code.zip": {
+      "bytes": 467144,
+      "sha256": "d52aafcd06db3e5fb3f2b96087a3d049c7ce9151c818e4936b87acea304ed214",
+      "files": 17
+    },
+    "trade-record-check-code.zip": {
+      "bytes": 6142,
+      "sha256": "9c32b189e4e945d7f711e6feb6127f59afa2240e374b47c604f881525663941d",
+      "files": 3
+    },
+    "cleaned-markets.csv": {
+      "bytes": 1168144,
+      "sha256": "1977f0d4f0808ca765e0516fb853dabf4d02f24eea9d181d45ff108474dc9b83",
+      "files": 1
+    },
+    "cleaned-trades.zip": {
+      "bytes": 14406680,
+      "sha256": "8b776713cc16cbd9838c390eede65b70422b3fc9301f2cce48c22e9fed58f810",
+      "files": 3
+    },
+    "cleaned-price-history.zip": {
+      "bytes": 1972923,
+      "sha256": "3631f0081ccd35610106385ef8a4cc224c57933e9c81964f90abbeb809fae52f",
+      "files": 3
+    },
+    "eda-visualization-notebook.ipynb": {
+      "bytes": 2044999,
+      "sha256": "0d04d0c6a1138b88dd4daa89f7f10ab67b3c3e30f6a711ce1fb5ebeeb3f75b6b",
+      "files": 1
+    },
+    "eda-notebook-and-data.zip": {
+      "bytes": 75768355,
+      "sha256": "5ac356518e360a202341cf8641e74a6d760c94ac32cfa9d5e5b3eb156274e283",
+      "files": 4594
+    },
+    "candidate-ledger-completed-20260916.csv": {
+      "bytes": 2128566,
+      "sha256": "9439fbed4ae98aabc4a28d3309795050df3fdb99d76692df002bc4f54d0c02c9"
+    }
+  }
+}
