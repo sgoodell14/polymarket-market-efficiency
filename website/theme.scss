@@ -105,6 +105,10 @@ blockquote { font-size: 1rem; color: #4c5e55; border-left: 2px solid #b4c3b7; pa
 #TOC .nav-link.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
 .page-navigation { margin-top: 3rem; padding-top: 1.3rem; border-top: 1px solid var(--line); font-size: .85rem; }
 .nav-footer { border-top: 1px solid var(--line); background: var(--paper); color: var(--muted); font-size: .74rem; padding: 1.2rem 1.8rem; }
+.nav-footer { flex-wrap: wrap; }
+.nav-footer .nav-footer-center { flex: 0 0 100%; order: 3; margin-top: .5rem; text-align: center; }
+.nav-footer .nav-footer-center p { margin-bottom: 0; }
+.ai-assistance-note { color: #7b8580; font-size: .7rem; font-weight: 400; }
 
 /* The introduction has a project cover and an easy-to-scan question index. */
 .page-introduction #title-block-header { padding-top: 1.15rem; padding-bottom: 2.5rem; margin-bottom: 2.6rem; }

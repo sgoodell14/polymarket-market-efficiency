@@ -67,6 +67,7 @@ website:
   page-footer:
     left: "Crowd Forecasting"
     right: "Accuracy and Information on Polymarket"
+    center: "<span class='ai-assistance-note'>AI assisted in code and website development</span>"
 format:
   html:
     filters:
