@@ -1,0 +1,143 @@
+{
+  "11": {
+    "placement": "after-overview-first-paragraph",
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-11",
+    "asset": "assets/clustering/11_activity_price_movement.png",
+    "title": "Trading Activity and Price Movement by Market Cluster",
+    "alt": "Market-level recorded trading activity per day versus price movement per hour, both log-transformed and standardized. Colors show the k = 3 assignments fitted using six features. Black X markers show those fitted cluster centroids projected onto the two displayed axes."
+  },
+  "12": {
+    "placement": "after-overview-first-paragraph",
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-12",
+    "asset": "assets/clustering/12_dendrogram.png",
+    "title": "Hierarchical: Clusters = 3",
+    "alt": "Average-linkage hierarchical clustering with cosine distance on six standardized features. A horizontal cut marks the three-group comparison.",
+    "pair_with_previous": "11"
+  },
+  "13": {
+    "placement": "wrap-previous-paragraph",
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-13",
+    "asset": "assets/clustering/13_feature_distributions.png",
+    "title": "Feature Distributions Before and After Preparation",
+    "alt": "Seven rows compare original candidate feature distributions with values after selected log transformations and standardization."
+  },
+  "14": {
+    "placement": "wrap-previous-paragraph",
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-14",
+    "asset": "assets/clustering/14_candidate_correlations.png",
+    "title": "Correlations Between Prepared Candidate Features",
+    "alt": "Pearson correlations among seven prepared candidate features, including the strong positive correlation between distinct wallets and wallet trade count."
+  },
+  "15": {
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-15",
+    "asset": "assets/clustering/15_silhouette_scores.png",
+    "title": "Silhouette Comparison",
+    "alt": "Mean Euclidean silhouette scores for k-means with k from 2 to 8 on six standardized market features; k=1 has no defined silhouette score."
+  },
+  "16": {
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-16",
+    "asset": "assets/clustering/16_elbow_plot.png",
+    "title": "Elbow Method for k",
+    "alt": "Within-cluster sum of squared distances for k-means with k from 1 to 8.",
+    "pair_with_previous": "15"
+  },
+  "17": {
+    "placement": "float-left",
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-17",
+    "asset": "assets/clustering/17_cluster_profiles.png",
+    "title": "K-means Cluster Profiles",
+    "alt": "Mean standardized feature values for the k=2 and k=3 market clusters, with cluster sizes shown beside each row."
+  },
+  "18": {
+    "placement": "wrap-previous-prose",
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-12",
+    "asset": "assets/clustering/18_dendrogram.png",
+    "title": "Hierarchical: Clusters = 3",
+    "alt": "Average-linkage hierarchical clustering with cosine distance on six standardized features. A horizontal cut marks the three-group comparison.",
+    "side": "left"
+  },
+  "19": {
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-figure-19",
+    "asset": "assets/clustering/19_method_agreement.png",
+    "title": "Agreement Between Clustering Methods",
+    "alt": "Counts of markets grouped by k-means and hierarchical cluster. Hierarchical columns are ordered 2, 1, 3 to align the strongest overlaps on the diagonal; adjusted Rand index is 0.487.",
+    "placement": "wrap-previous-prose",
+    "side": "right",
+    "subtitle": "Adjusted Rand Index = 0.487"
+  },
+  "20": {
+    "page": "Clustering.qmd",
+    "notebook": "notebooks/03_clustering.ipynb",
+    "tag": "website-cluster-topic-comparison",
+    "asset": "assets/clustering/20_topic_comparison.png",
+    "title": "Cluster-Topic Correspondence",
+    "placement": "wrap-previous-prose",
+    "side": "right",
+    "alt": "Within-topic percentages and counts for the retained three k-means clusters. Sports: 7.6, 30.5, and 61.8 percent; Politics: 53.8, 39.6, and 6.6 percent; Economics: 39.6, 43.3, and 17.1 percent. Cluster descriptions summarize relative activity, certainty, and price movement."
+  },
+  "21": {
+    "page": "PCA.qmd",
+    "notebook": "notebooks/04_pca.ipynb",
+    "tag": "website-figure-20",
+    "asset": "assets/pca/20_pc_space_overview.png",
+    "title": "Viewing Markets in Principal Component Space",
+    "alt": "PC1-PC2 scatterplot of 492 markets, colored by Sports, Politics and Economics. The axes explain 53.6 and 21.4 percent of total variance, respectively.",
+    "placement": "wrap-previous-prose",
+    "side": "left"
+  },
+  "22": {
+    "page": "PCA.qmd",
+    "source_image": "figures/pca_explanation_fig19.png",
+    "asset": "assets/pca/pca_axes_professor.png",
+    "title": "Principal Component Directions",
+    "alt": "Diagram of observations in two original feature dimensions, with PC1 along the greatest variation and PC2 perpendicular to PC1, intersecting at the data mean. Source: Dr. Osita Onyejekwe, course materials.",
+    "placement": "wrap-previous-prose",
+    "side": "right"
+  },
+  "23": {
+    "page": "PCA.qmd",
+    "notebook": "notebooks/04_pca.ipynb",
+    "tag": "website-figure-22",
+    "asset": "assets/pca/22_cumulative_variance.png",
+    "title": "Cumulative Variance Explained by PCA",
+    "alt": "Cumulative explained variance for one through seven principal components. Four components retain 95.3 percent, exceeding the dashed 90 percent threshold.",
+    "pair_with_table": "8"
+  },
+  "24": {
+    "page": "PCA.qmd",
+    "notebook": "notebooks/04_pca.ipynb",
+    "tag": "website-figure-23",
+    "asset": "assets/pca/23_component_loadings.png",
+    "title": "PCA Component Loadings",
+    "alt": "Loadings of seven market features on PC1 through PC4, computed as component weights multiplied by square roots of eigenvalues. Red denotes positive relationships and blue denotes negative relationships.",
+    "placement": "float-left"
+  },
+  "25": {
+    "page": "PCA.qmd",
+    "notebook": "notebooks/04_pca.ipynb",
+    "tag": "website-figure-24",
+    "output_index": 0,
+    "asset": "assets/pca/24_pc1_pc2_biplot.png",
+    "title": "PCA Biplot: PC1 and PC2",
+    "placement": "float-left",
+    "alt": "Markets projected onto PC1 and PC2, colored by topic, with seven numbered component-weight arrows enlarged for visibility. PC1 and PC2 explain 53.6 and 21.4 percent of variance."
+  }
+}

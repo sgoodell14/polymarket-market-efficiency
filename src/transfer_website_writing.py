@@ -5,6 +5,7 @@ Word supplies editable titles and captions; the figure registry supplies current
 image assets and accessible descriptions.
 """
 import hashlib
+import base64
 import os
 import json
 import re
@@ -36,10 +37,12 @@ ROUTES = {
     'Figure captions one through five': 'captions',
     'Figure captions six through ten': 'captions',
     'Visualization captions': 'captions',
+    'Clustering': 'Clustering.qmd',
+    'PCA': 'PCA.qmd',
     'Conclusions and publication review': 'Conclusions.qmd',
 }
 TITLES = {'index.qmd': 'Introduction', 'DataPrep_EDA.qmd': 'Data Preparation & EDA',
-          'Conclusions.qmd': 'Conclusions'}
+          'Conclusions.qmd': 'Conclusions', 'Clustering.qmd': 'Clustering', 'PCA.qmd': 'PCA'}
 
 
 def text(node):
@@ -124,6 +127,25 @@ def integrate_introduction_media(blocks, design):
     return result
 
 
+def prose_in_heading_style(style, value):
+    """Treat sentence-length inherited headings as prose, regardless of wording."""
+    return style == 'Heading2' and len(value.split()) >= 20
+
+
+def assert_paragraph_coverage(required, pages):
+    """Fail before writing pages if a source prose paragraph was lost in layout."""
+    def normalize(value):
+        return re.sub(r'[\s*_\\]+', '', value)
+    outputs = {name: normalize('\n\n'.join(blocks)) for name, blocks in pages.items()}
+    missing = [item for item in required
+               if normalize(item['markdown']) not in outputs[item['page']]]
+    if missing:
+        details = '; '.join(f"{item['page']} Word paragraph {item['index']}: "
+                            + item['text'][:100] for item in missing)
+        raise ValueError('Word prose missing from website transfer: ' + details)
+    return dict(checked=len(required), missing=0)
+
+
 def main():
     body = read_saved_document(SOURCE)
     digest = hashlib.sha256(body).hexdigest()
@@ -142,8 +164,69 @@ def main():
     excluded, included, local_links, formatting_adjustments = [], [], [], []
     reference_map = json.loads((WEB / 'reference-links.json').read_text(encoding='utf-8'))
     reference_keys = {label.casefold(): label for label in reference_map}
-    reference_prefix = re.compile(r'^(?:Linked\s+)?References:\s*', re.IGNORECASE)
+    reference_prefix = re.compile(r'^(?:(?:Linked\s+)?References|Coding Notebook):\s*', re.IGNORECASE)
     linked_references = []
+    method_registry_path = WEB / 'method-figures.json'
+    method_registry = json.loads(method_registry_path.read_text(encoding='utf-8')) if method_registry_path.exists() else {}
+    method_figures = []
+    method_captions = {}
+    inline_panels = {}
+    rules_path = WEB / 'method-import-rules.json'
+    method_import_rules = json.loads(rules_path.read_text(encoding='utf-8')) if rules_path.exists() else {}
+    skipped_method_captions = {}
+    prior_rule = None
+    for block_index, node in enumerate(document.find('w:body', NS)):
+        value = text(node)
+        if not value:
+            continue
+        figure_title = re.fullmatch(r'INSERT FIGURE (\d+):\s*(.+)', value, re.IGNORECASE)
+        if figure_title and figure_title[1] in method_registry:
+            method_registry[figure_title[1]]['title'] = figure_title[2]
+        if prior_rule and value.startswith(prior_rule.get('skip_following_caption_prefix', '\0')):
+            skipped_method_captions[block_index] = prior_rule['reason']
+        prior_rule = method_import_rules.get(value)
+
+    def method_figure(number, page, index):
+        entry = method_registry[number]
+        if entry['page'] != page:
+            raise ValueError('Method figure on unexpected page: ' + number)
+        source_hash = {}
+        if entry.get('source_image'):
+            image_bytes = (ROOT / entry['source_image']).read_bytes()
+            source_hash['source_sha256'] = hashlib.sha256(image_bytes).hexdigest()
+        else:
+            notebook_path = ROOT / entry['notebook']
+            notebook_bytes = notebook_path.read_bytes()
+            notebook = json.loads(notebook_bytes)
+            cells = [cell for cell in notebook['cells'] if entry['tag'] in cell.get('metadata', {}).get('tags', [])]
+            if len(cells) != 1:
+                raise ValueError('Expected one notebook cell for figure ' + number)
+            images = [output['data']['image/png'] for output in cells[0].get('outputs', [])
+                      if 'image/png' in output.get('data', {})]
+            output_index = entry.get('output_index')
+            if output_index is not None:
+                if not isinstance(output_index, int) or not 0 <= output_index < len(images):
+                    raise ValueError('Invalid PNG output index for figure ' + number)
+            elif len(images) != 1:
+                raise ValueError('Execute notebook to save one PNG for figure ' + number)
+            encoded = images[output_index if output_index is not None else 0]
+            image_bytes = base64.b64decode(''.join(encoded) if isinstance(encoded, list) else encoded)
+            source_hash['notebook_sha256'] = hashlib.sha256(notebook_bytes).hexdigest()
+        target = WEB / entry['asset']
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(image_bytes)
+        method_figures.append(dict(number=number, index=index, **entry, **source_hash,
+                                   image_sha256=hashlib.sha256(image_bytes).hexdigest()))
+        figure_class = '.method-figure'
+        if entry.get('placement') == 'float-left':
+            figure_class += ' .method-figure-float'
+        if entry.get('presentation') == 'overview':
+            figure_class += ' .method-figure-overview'
+        subtitle = f"\n[{entry['subtitle']}]{{.method-figure-subtitle}}  " if entry.get('subtitle') else ''
+        return (f"::: {{{figure_class} #figure-{number}}}\n\n"
+                f"[{entry['title']}]{{.method-figure-title}}  {subtitle}\n"
+                f"[![]({entry['asset']}){{fig-alt={json.dumps(entry['alt'])}}}](#figure-{number}){{.figure-preview aria-haspopup=\"dialog\"}}\n\n"
+                f"[{method_captions.get(number, 'Figure ' + entry.get('display_number', number) + ':')}]{{.method-caption}}\n\n:::")
 
     def reference_line(value, index):
         prefix = reference_prefix.match(value)
@@ -153,6 +236,10 @@ def main():
             if label.casefold() not in reference_keys:
                 raise ValueError('Unmapped reference label: ' + label)
             entry = reference_map[reference_keys[label.casefold()]]
+            if entry.get('source'):
+                destination = WEB / entry['target']
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / entry['source'], destination)
             if not (WEB / entry['target']).is_file():
                 raise FileNotFoundError('Package the reference first: ' + entry['target'])
             links.append(f'[{label}]({entry["target"]} "{entry["title"]}")')
@@ -185,6 +272,7 @@ def main():
                 reference_key = reference_keys.get(label.strip('*_').casefold())
                 if reference_key is not None:
                     # Recognized reference labels always use the current reader download.
+                    label = reference_map[reference_key].get('display_label', label)
                     parts.append(f'[{label}]({reference_map[reference_key]["target"]})')
                 elif target.startswith(('https://', 'http://')):
                     parts.append(f'[{label}]({portable_reference_url(target, reference_map)})')
@@ -194,6 +282,29 @@ def main():
                         local_links.append(dict(label=label, original_target=target))
         return ''.join(parts).strip()
 
+    # Caption fields in Word are separate from image placement instructions.
+    # Read them first so a caption can follow its placeholder in the document.
+    caption_blocks = {}
+    caption_page = None
+    for index, block in enumerate(document.find('w:body', NS)):
+        if block.tag != W + 'p' or index in skipped_method_captions:
+            continue
+        style = block.find('w:pPr/w:pStyle', NS)
+        if style is not None and style.get(W + 'val') == 'Heading1':
+            caption_page = ROUTES.get(text(block))
+        match = re.match(r'^Figure\s+(\d+):\s*(.*)$', text(block))
+        if match and match[1] in method_registry:
+            number, prose = match.groups()
+            candidates = [key for key, entry in method_registry.items()
+                          if entry.get('display_number', key) == number and entry['page'] == caption_page]
+            if len(candidates) == 1:
+                number = candidates[0]
+            if number in method_captions:
+                raise ValueError('Duplicate method caption: ' + number)
+            placeholder = prose == '[Write caption here.]'
+            method_captions[number] = 'Figure ' + number + ':' if placeholder else inline(block)
+            caption_blocks[index] = dict(number=number, placeholder=placeholder)
+
     design_file = WEB / 'site-design.json'
     design = json.loads(design_file.read_text(encoding='utf-8')) if design_file.exists() else {}
     word_figure_ids = design.get('word_figure_ids', {})
@@ -201,6 +312,7 @@ def main():
     route, section, pending_heading, caption = None, None, None, None
     captions = []
     ordered_blocks = []
+    required_prose = []
     for index, block in enumerate(document.find('w:body', NS)):
         if block.tag == W + 'p':
             value = text(block)
@@ -209,10 +321,18 @@ def main():
             ordered_blocks.append(dict(index=index, type='paragraph', style=style, text=value))
             if not value:
                 continue
+            # Independently require authored prose, including long paragraphs
+            # carrying a heading style. Do not infer deletion from styling.
+            if (route in pages and style != 'Heading1'
+                    and (style != 'Heading2' or prose_in_heading_style(style, value))
+                    and not value.startswith(('Author note:', 'Review evidence:', '[WRITE', '[ADD', '[CHOOSE', '[INSERT'))
+                    and not re.match(r'^INSERT FIGURES?\b', value, re.IGNORECASE)
+                    and not reference_prefix.match(value)):
+                required_prose.append(dict(index=index, page=route, text=value, markdown=inline(block)))
             # These saved author edits contain prose despite inherited Word styles.
-            if (style == 'Heading2' and value.startswith('The trading and price history windows cover')):
+            if prose_in_heading_style(style, value):
                 formatting_adjustments.append(dict(index=index, original_style=style,
-                                                   output_style='body', reason='window explanation is prose'))
+                                                   output_style='body', reason='sentence-length prose has inherited heading style'))
                 style = 'Normal'
             if style == 'SourceNote' and not value.startswith('Review evidence:'):
                 formatting_adjustments.append(dict(index=index, original_style=style,
@@ -231,9 +351,102 @@ def main():
             if route is None or style in ('AuthorNote', 'SourceNote') or value.startswith(('Author note:', 'Review evidence:')):
                 excluded.append(dict(index=index, text=value, reason='editorial_or_front_matter'))
                 continue
+            if index in skipped_method_captions:
+                excluded.append(dict(index=index, text=value, reason=skipped_method_captions[index]))
+                continue
+            if index in caption_blocks:
+                entry = caption_blocks[index]
+                if method_registry[entry['number']]['page'] != route:
+                    raise ValueError('Method caption on unexpected page: ' + value)
+                included.append(dict(index=index, page=route, role='method_caption', text=value,
+                                     placeholder=entry['placeholder']))
+                continue
             if route == 'Conclusions.qmd' and value in ('Later method pages', 'Before transferring the writing'):
                 route = None
                 excluded.append(dict(index=index, text=value, reason='publication_checklist'))
+                continue
+            if route in ('Clustering.qmd', 'PCA.qmd') and re.match(r'^\[?INSERT FIGURES?\b', value, re.IGNORECASE):
+                rule = method_import_rules.get(value, {})
+                if rule.get('pending'):
+                    excluded.append(dict(index=index, text=value, reason=rule['reason']))
+                    continue
+                numbers = rule.get('figures') or re.findall(r'\bFig(?:ure)?\s+(\d+)\b', value, re.IGNORECASE)
+                if re.search(r'side.by.side with', value, re.IGNORECASE):
+                    numbers = numbers[:1]
+                if not numbers or any(number not in method_registry for number in numbers):
+                    raise ValueError('Unmapped method figure placeholder: ' + value)
+                if pending_heading:
+                    pages[route].append(pending_heading)
+                    pending_heading = None
+                figure_blocks = [method_figure(number, route, index) for number in numbers]
+                if len(figure_blocks) > 1:
+                    panel = (':::: {.method-figure-pair}\n\n'
+                             + '\n\n'.join(figure_blocks) + '\n\n::::')
+                    if all(method_registry[number].get('placement') == 'after-overview-first-paragraph'
+                           for number in numbers):
+                        overview = pages[route].index('## Overview')
+                        paragraph = overview + 1
+                        if (paragraph >= len(pages[route])
+                                or pages[route][paragraph].startswith(('#', ':::'))):
+                            raise ValueError('Overview needs an opening paragraph before its figures')
+                        pages[route].insert(paragraph + 1, panel)
+                    else:
+                        pages[route].append(panel)
+                elif method_registry[numbers[0]].get('pair_with_table'):
+                    table_number = method_registry[numbers[0]]['pair_with_table']
+                    if (len(pages[route]) < 2
+                            or not pages[route][-1].startswith('Table ' + table_number + ':')
+                            or not pages[route][-2].startswith('|')):
+                        raise ValueError('Expected preceding table ' + table_number)
+                    table_caption = pages[route].pop()
+                    table_block = pages[route].pop()
+                    pages[route].append('::::: {.method-table-figure-pair}\n\n'
+                                        + ':::: {.method-table-panel}\n\n' + table_block
+                                        + '\n\n' + table_caption + '\n\n::::\n\n'
+                                        + figure_blocks[0] + '\n\n:::::')
+                elif method_registry[numbers[0]].get('placement') == 'wrap-previous-prose':
+                    if not pages[route] or pages[route][-1].startswith(('#', ':::')):
+                        raise ValueError('Expected prose before figure ' + numbers[0])
+                    paragraph = pages[route].pop()
+                    side = method_registry[numbers[0]].get('side', 'left')
+                    pages[route].append(':::: {.method-prose .method-prose-' + side + '}\n\n'
+                                        + figure_blocks[0] + '\n\n' + paragraph + '\n\n::::')
+                elif method_registry[numbers[0]].get('pair_with_previous'):
+                    previous = method_registry[numbers[0]]['pair_with_previous']
+                    if (len(method_figures) < 2 or method_figures[-2]['number'] != previous
+                            or not pages[route][-1].startswith('::: {.method-figure')):
+                        raise ValueError('Expected preceding figure ' + previous)
+                    previous_block = pages[route].pop()
+                    overview_pair = all(method_registry[n].get('placement') == 'after-overview-first-paragraph'
+                                        for n in [previous, numbers[0]])
+                    pair_class = '.method-figure-pair' + ('' if overview_pair else ' .method-results-pair')
+                    panel = ':::: {' + pair_class + '}\n\n' + previous_block + '\n\n' + figure_blocks[0] + '\n\n::::'
+                    if overview_pair:
+                        overview = pages[route].index('## Overview')
+                        pages[route].insert(overview + 2, panel)
+                    else:
+                        pages[route].append(panel)
+                elif (method_registry[numbers[0]].get('placement') == 'wrap-previous-paragraph'
+                      and pages[route]
+                      and re.search(r'\bFigure\s+' + re.escape(numbers[0]) + r'\b', pages[route][-1])
+                      and not pages[route][-1].startswith(('#', ':::'))):
+                    paragraph = pages[route].pop()
+                    # Adjacent illustrated paragraphs share one text column so
+                    # a tall thumbnail cannot force a gap between paragraphs.
+                    figures, paragraphs = [], []
+                    if pages[route] and pages[route][-1] in inline_panels:
+                        figures, paragraphs = inline_panels.pop(pages[route].pop())
+                    figures = figures + figure_blocks
+                    paragraphs = paragraphs + [paragraph]
+                    panel = ('::::: {.method-inline}\n\n:::: {.method-inline-figures}\n\n'
+                             + '\n\n'.join(figures) + '\n\n::::\n\n'
+                             + ':::: {.method-inline-copy}\n\n' + '\n\n'.join(paragraphs)
+                             + '\n\n::::\n\n:::::')
+                    inline_panels[panel] = (figures, paragraphs)
+                    pages[route].append(panel)
+                else:
+                    pages[route].extend(figure_blocks)
+                included.append(dict(index=index, page=route, role='method_figure_placeholder', text=value))
                 continue
             if value.startswith('[') and re.match(r'^\[(WRITE|ADD|CHOOSE|INSERT)\b', value):
                 excluded.append(dict(index=index, text=value, reason='unfinished_prompt'))
@@ -280,7 +493,11 @@ def main():
                 pages[route].append(pending_heading)
                 pending_heading = None
             formatted = inline(block)
-            if reference_prefix.match(value):
+            if value in ('Original feature values', 'Prepared model inputs'):
+                formatted = '[' + value + ']{.preparation-table-title}'
+            elif route == 'PCA.qmd' and value == 'Biplot Analysis':
+                formatted = '[**' + value + '**]{.method-subsection-title}'
+            elif reference_prefix.match(value):
                 formatted = reference_line(value, index)
             elif style == 'CodeExample':
                 formatted = '```text\n' + value + '\n```'
@@ -290,7 +507,7 @@ def main():
             included.append(dict(index=index, page=route, role='body', text=value))
         elif block.tag == W + 'tbl':
             rows = [[inline(p) for p in cell.findall('w:p', NS)] for row in block.findall('w:tr', NS) for cell in row.findall('w:tc', NS)]
-            table = [[' '.join(inline(p) for p in cell.findall('w:p', NS)).replace('|', '\\|')
+            table = [[' '.join(inline(p) for p in cell.findall('w:p', NS)).replace('|', '\\|').replace('$', '\\$')
                       for cell in row.findall('w:tc', NS)] for row in block.findall('w:tr', NS)]
             ordered_blocks.append(dict(index=index, type='table', rows=table))
             if route not in pages or not table or table[0][0].strip('*_') == 'Figure':
@@ -335,8 +552,8 @@ def main():
         shutil.copyfile(source, target)
         copied.append(source.relative_to(ROOT).as_posix())
         pages['DataPrep_EDA.qmd'].extend([
-            f"### Figure {display_number:02d} {item['title']}",
-            '![' + ' '.join(item['paragraphs']) + '](' + override['asset'] + '){fig-alt="' + override['alt'] + '"}'
+            '![Figure ' + str(display_number) + ': ' + ' '.join(item['paragraphs']) + ']('
+            + override['asset'] + '){fig-alt="' + override['alt'] + '"}'
         ])
         if design.get('per_figure_references', True):
             pages['DataPrep_EDA.qmd'].extend(item.get('references', []))
@@ -356,6 +573,19 @@ def main():
             pages['DataPrep_EDA.qmd'].append(
                 '::: {.section-references}\nLinked References: '
                 + ' | '.join(links) + '\n:::')
+    # Let subsequent body paragraphs continue beside an embedded figure,
+    # rather than clearing it early and leaving an empty area beside the image.
+    for page_name in ('Clustering.qmd', 'PCA.qmd'):
+        blocks = pages[page_name]
+        for position in range(len(blocks) - 1, -1, -1):
+            if not blocks[position].startswith(':::: {.method-prose '):
+                continue
+            following = []
+            while position + 1 < len(blocks) and not blocks[position + 1].startswith(('#', ':::', '|', '**')):
+                following.append(blocks.pop(position + 1))
+            if following:
+                blocks[position] = (blocks[position].rsplit('\n\n::::', 1)[0]
+                                    + '\n\n' + '\n\n'.join(following) + '\n\n::::')
     module_placeholder = '::: {.eyebrow}\nLater course module\n:::'
     # Keep the author's linked introduction images across future Word transfers.
     if design.get('introduction_media_layout') == 'within_text':
@@ -367,10 +597,14 @@ def main():
         position = next((i for i, block in enumerate(introduction)
                          if block.lstrip('# ').strip().casefold() == 'research questions'), len(introduction))
         introduction.insert(position, '{{< include ' + media_include + ' >}}')
-    if not pages['Conclusions.qmd']:
-        pages['Conclusions.qmd'] = [module_placeholder]
+    for page in ('Conclusions.qmd', 'Clustering.qmd', 'PCA.qmd'):
+        if not pages[page]:
+            pages[page] = [module_placeholder]
+    prose_coverage = assert_paragraph_coverage(required_prose, pages)
     for name, blocks in pages.items():
         page_options = '\ntoc: false' if blocks == [module_placeholder] else ''
+        if any(figure['page'] == name for figure in method_figures):
+            page_options += '\nlightbox:\n  effect: fade'
         page_title = TITLES[name]
         if name == 'index.qmd' and design.get('project_title'):
             page_title = design['project_title']
@@ -389,11 +623,12 @@ def main():
     figures_checkpoint = '20260916_v2'
     marker = dict(source=SOURCE.relative_to(ROOT).as_posix(), source_sha256=digest,
                   transferred_at_utc=datetime.now(timezone.utc).isoformat(),
-                  narrative_source='saved_word_document', figures_checkpoint=figures_checkpoint,
+                  narrative_source='saved_word_document', prose_coverage=prose_coverage, figures_checkpoint=figures_checkpoint,
                   figure_text_source='saved_word_document', word_figure_ids=word_figure_ids,
                   current_data_checkpoint='20260916_v2', counts_reconciliation_deferred_by_user=True,
                   archive=archive.relative_to(ROOT).as_posix(), pages=list(pages), figure_count=len(captions),
                   figure_overrides_applied=overridden_ids,
+                  method_figures=method_figures,
                   figures_section='Exploratory Visualizations')
     (WEB / 'writing-transfer.json').write_text(json.dumps(marker, indent=2) + '\n', encoding='utf-8')
     (archive / 'extracted_blocks.json').write_text(json.dumps(ordered_blocks, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')

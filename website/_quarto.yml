@@ -9,9 +9,10 @@ project:
     - PCA.qmd
     - NaiveBayes.qmd
     - DecTrees.qmd
-    - SVMs.qmd
     - Regression.qmd
-    - NN.qmd
+    - AdaBoost.qmd
+    - GradientBoosting.qmd
+    - XGBoost.qmd
     - Conclusions.qmd
   resources:
     - assets/**
@@ -46,22 +47,24 @@ website:
             href: index.qmd
           - text: "DataPrep_EDA"
             href: DataPrep_EDA.qmd
-      - section: "Later modules"
-        contents:
           - text: "Clustering"
             href: Clustering.qmd
           - text: "PCA"
             href: PCA.qmd
+      - section: "Later modules"
+        contents:
           - text: "NaiveBayes"
             href: NaiveBayes.qmd
           - text: "DecTrees"
             href: DecTrees.qmd
-          - text: "SVMs"
-            href: SVMs.qmd
           - text: "Regression"
             href: Regression.qmd
-          - text: "NN"
-            href: NN.qmd
+          - text: "AdaBoost"
+            href: AdaBoost.qmd
+          - text: "Gradient Boosting"
+            href: GradientBoosting.qmd
+          - text: "XGBoost"
+            href: XGBoost.qmd
           - text: "Conclusions"
             href: Conclusions.qmd
   page-footer:
@@ -71,6 +74,12 @@ format:
   html:
     filters:
       - filters/table-layout.lua
+      - filters/figure-layout.lua
+    include-after-body:
+      text: |
+        <link rel="stylesheet" href="assets/vendor/glightbox.min.css">
+        <script src="assets/vendor/glightbox.min.js" defer></script>
+        <script src="assets/reference-navigation.js?v=20261010-lightbox" defer></script>
     theme: [cosmo, theme.scss]
     grid:
       sidebar-width: 235px

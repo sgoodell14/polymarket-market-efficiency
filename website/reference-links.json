@@ -1,4 +1,14 @@
 {
+  "004_pca": {
+    "source": "notebooks/04_pca.ipynb",
+    "target": "downloads/current/04_pca.ipynb",
+    "title": "Executed Python notebook: PCA preparation, components and figures"
+  },
+  "003_clustering": {
+    "source": "notebooks/03_clustering.ipynb",
+    "target": "downloads/current/03_clustering.ipynb",
+    "title": "Executed Python notebook: clustering preparation, models and figures"
+  },
   "EDA Notebook and Data": {
     "target": "downloads/current/eda-notebook-and-data.zip",
     "title": "ZIP: current notebook, all required data, supporting evidence, code and run instructions"
@@ -137,5 +147,17 @@
     "previous_targets": [
       "assets/cleaning-snapshots/03_empty_history_before_after.png"
     ]
+  },
+  "Original CSV (20 rows)": {
+    "target": "downloads/current/market_features_pre_20.csv",
+    "source": "data/analysis/preparation_samples/market_features_pre_20.csv",
+    "title": "Original CSV (20 rows): matched seven-feature sample; no labels or identifiers",
+    "display_label": "Original CSV"
+  },
+  "Prepared CSV (20 rows)": {
+    "target": "downloads/current/market_features_post_20.csv",
+    "source": "data/analysis/preparation_samples/market_features_post_20.csv",
+    "title": "Prepared CSV (20 rows): matched seven-feature sample; no labels or identifiers",
+    "display_label": "Prepared CSV"
   }
 }

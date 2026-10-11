@@ -49,7 +49,14 @@ def main():
         remove_generated(stage)
     shutil.copytree(ROOT / "website", stage,
                     ignore=shutil.ignore_patterns("dist", ".quarto", "*_files", "site_libs", "*.html"))
-    subprocess.run([executable, "render", str(stage)], cwd=ROOT, check=True)
+    render_env = os.environ.copy()
+    if os.name == 'nt':
+        # Keep Quarto's Sass database writable within the workspace. This only
+        # changes the renderer child process, not the user's environment.
+        cache_root = ROOT / '.artifacts/quarto-user-data'
+        cache_root.mkdir(parents=True, exist_ok=True)
+        render_env['LOCALAPPDATA'] = str(cache_root)
+    subprocess.run([executable, "render", str(stage)], cwd=ROOT, env=render_env, check=True)
     source, target = stage / "dist", ROOT / "dist"
     if not (source / "index.html").exists():
         raise RuntimeError("Quarto did not produce index.html")

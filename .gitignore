@@ -14,3 +14,18 @@ dist/
 website/dist/
 website/.quarto/
 .artifacts/
+
+# Local working notes, drafts, reviews, and audit history.
+# Keep the existing reader-facing documentation eligible for commits.
+/docs/*
+!/docs/assignment_checklist.md
+!/docs/data_dictionary.md
+!/docs/data_feasibility.md
+
+# Local agent configuration, scratch output, and review-only copies.
+/AGENTS.md
+/.openai/
+/tmp/
+/debug.log
+/notebooks/*_checkpoint.ipynb
+/figures/**/review_sheet_*.png

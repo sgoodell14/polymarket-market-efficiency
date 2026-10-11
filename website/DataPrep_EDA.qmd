@@ -26,7 +26,7 @@ The following example request retrieves metadata for market 691922:
 GET https://gamma-api.polymarket.com/markets/691922?
 ```
 
-Market condition IDs and outcome-token IDs were obtained from the Gamma API.  Trades for both outcomes were requested from the Data API using each market's condition ID.  CLOB price history was requested using the first outcome's token ID.  When responses reached the configured 1,000-row limit, requests intervals were split into smaller, non-overlapping windows.
+Market condition IDs and outcome-token IDs were obtained from the Gamma API.  Trades for both outcomes were requested from the Data API using each market's condition ID.  CLOB price history was requested using the first outcome's token ID.  When responses reached the configured 1,000-row limit, request intervals were split into smaller, non-overlapping windows.
 
 ::: {.section-references}
 Linked References: [API Requests](downloads/current/api-requests-and-code.zip "ZIP: current collection code and request index for the current cohort"), [Raw Market Metadata](downloads/current/raw-market-metadata.zip "ZIP: saved Gamma metadata for the 565 current markets"), [Raw Transaction Data](downloads/current/raw-transactions.zip "ZIP: current retained trade windows in original API fields; 155,177 rows"), [Raw Pricing Data](downloads/current/raw-prices.zip "ZIP: current hourly windows and eight separate finer cutoff responses")
@@ -34,7 +34,7 @@ Linked References: [API Requests](downloads/current/api-requests-and-code.zip "Z
 
 ### Forecast Time & Trading Window
 
-Trade and price-history requests covered up to seven days, ending 24 hours before each market’s reviewed event boundary (Table 2).  This historical trading window and cutoff boundary were employed to compare across a consistent lead time and avoid prices that already reflect a known outcome.  For 194 markets, the available history was shorter as markets were listed less than seven days before the cutoff (Figure 6).  The forecast price was identified as the latest price at or no more than 6 hours before the cutoff.  If no hourly price was available within six hours before the forecast cutoff, one-minute requests were made for that same six-hour period (Figure 10).
+Trade and price-history requests covered up to 7 days, ending 24 hours before each market’s reviewed event boundary (Table 2).  This historical trading window and cutoff boundary were employed to compare across a consistent lead time and avoid prices that already reflect a known outcome.  For 194 markets, the available history was shorter as markets were listed less than 7 days before the cutoff (Figure 6).  The forecast price was identified as the latest price at or no more than 6 hours before the cutoff.  If no hourly price was available within 6 hours before the forecast cutoff, 1-minute requests were made for that same 6-hour period (Figure 10).
 
 ## Sampling and Market Selection
 
@@ -72,7 +72,7 @@ The linked candidate ledger records the replacement attempts, decisions and rati
 | --- | --- | --- |
 | Sports | Reds vs Dodgers (580661) | The listed end date on this was September, but the game occurred on August 26, before the study window. |
 | Politics | Will Anamaria Gavrilă win the Romanian presidential election? (519081) | The candidate withdrew before the proposed forecast cutoff. The election also occurred in May 2025, outside the study window. |
-| Economics | Will a dozen eggs cost between $4.00–4.25 in October? (654410) | The specified October 2025 egg-price observation was not published. |
+| Economics | Will a dozen eggs cost between \$4.00–4.25 in October? (654410) | The specified October 2025 egg-price observation was not published. |
 
 Table 3: Examples of excluded markets with rationale
 
@@ -100,11 +100,11 @@ Linked References: [Repeat Test Code](downloads/current/trade-record-check-code.
 
 ### Empty Transaction Histories
 
-67 markets returned no trades in their collected pre-cutoff windows: 64 Sports, two Politics and one Economics (Figure 3).  Each was retained as lack of recent activity is relevant to market behavior.  As a result, however, average trade size and wallet concentration are undefined and therefore not observable in the forecast window for these 67 markets.
+In total, 67 markets returned no trades in their collected pre-cutoff windows: 64 Sports, two Politics and one Economics (Figure 3).  Each was retained as lack of recent activity is relevant to market behavior.  As a result, however, average trade size and wallet concentration are undefined and therefore not observable in the forecast window for these 67 markets.
 
 ### Varying Outcome Alternatives
 
-Every sampled contract had two outcomes (typically *Yes* and *No*).  Many contracts represented one of several bets on the same event family—for example, separate Yes/No contacts on which candidate would win an election.  Some contracts belonged to groups of overlapping questions (for instance, questions asking whether the Conservative Party would win at least 300 seats or at least 400 seats could both resolve Yes).  The number of possible outcomes for each underlying event was recorded where available to provide context when comparing forecasts (Figure 4).
+Every sampled contract had two outcomes (typically *Yes* and *No*).  Many contracts represented one of several bets on the same event family—for example, separate Yes/No contracts on which candidate would win an election.  Some contracts belonged to groups of overlapping questions (for instance, questions asking whether the Conservative Party would win at least 300 seats or at least 400 seats could both resolve Yes).  The number of possible outcomes for each underlying event was recorded where available to provide context when comparing forecasts (Figure 4).
 
 ### Activity Definitions
 
@@ -148,45 +148,25 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 
 ## Exploratory Visualizations
 
-### Figure 01 Market pool, replacements and final cohort
+![Figure 1: The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. Two Sports, 111 Politics and 71 Economics selections required replacements after individual audits. A total of 35 Economic slots remain unfilled.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
 
-![The discovered pools include 144,785 Sports, 30,938 Politics and 3,966 Economics contracts before automated screening. 2 Sports, 111 Politics and 71 Economics selections required replacements after individual audits. 35 Economic slots remain unfilled.](assets/eda_20260917_sample_flow/01_sample_composition.png){fig-alt="Market selection by topic. Sports: pool 144785, initial 200, replacements needed 2, filled 2, final 200. Politics: pool 30938, initial 200, replacements needed 111, filled 111, final 200. Economics: pool 3966, initial 200, replacements needed 71, filled 36, unfilled 35, final 165."}
+![Figure 2: Twenty-nine markets have an event month different from their saved sampling month. The original draw was balanced across available months; event-date corrections, event-family de-duplication and available reserves changed the final distribution.](assets/eda_20260917_final_refresh/02_event_month.png){fig-alt="Stacked monthly counts for the final 565 markets, September 2025 through August 2026. Topic totals are Sports 200, Politics 200 and Economics 165. March 2026 has the largest total, 97 markets."}
 
-### Figure 02 Audited event months
+![Figure 3: The collected windows contain no returned trades for 64 of 200 Sports markets, two of 200 Politics markets and one of 165 Economics markets; 67 markets in total. A zero count does not mean that a market had no trading before the window or during the final 24 hours.](assets/eda_20260917_final_refresh/06_zero_trade_windows.png){fig-alt="Bar chart of zero-returned-trade windows in the final sample. Sports 64 of 200, 32.0%; Politics 2 of 200, 1.0%; Economics 1 of 165, 0.6%. Total 67 of 565."}
 
-![Twenty-nine markets have an event month different from their saved sampling month. The original draw was balanced across available months; event-date corrections, event-family de-duplication and available reserves changed the final distribution.](assets/eda_20260917_final_refresh/02_event_month.png){fig-alt="Stacked monthly counts for the final 565 markets, September 2025 through August 2026. Topic totals are Sports 200, Politics 200 and Economics 165. March 2026 has the largest total, 97 markets."}
+![Figure 4: All sampled contracts have two outcomes. However, total available options at the forecast cutoff varied: for example, two teams, three match results including a draw, or several election candidates or economic ranges. The saved audit reconstructs two options for 168 markets and three or more for 215. The count could not be verified for 178; four have questions that can overlap, (more than one can resolve *Yes*).](assets/eda_20260917_event_options/03_event_options.png){fig-alt="Heatmap of underlying event options. Sports: 165 two options, 35 three or more, zero unverified or overlapping. Politics: 2 two options, 17 three or more, 177 count not verified, 4 overlapping. Economics: 1 two options, 163 three or more, 1 count not verified, zero overlapping."}
 
-### Figure 03 No returned trades in the collected window
+![Figure 5: “Very large” refers to trades above the 99.9th percentile of total dollar value (price x shares). The threshold flagged 156 records across 113 transactions. A single transaction can contain multiple flagged records.  These observations are restricted to the collected pre-cutoff windows.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
 
-![The collected windows contain no returned trades for 64 of 200 Sports markets, two of 200 Politics markets and one of 165 Economics markets; 67 markets in total. A zero count does not mean that a market had no trading before the window or during the final 24 hours.](assets/eda_20260917_final_refresh/06_zero_trade_windows.png){fig-alt="Bar chart of zero-returned-trade windows in the final sample. Sports 64 of 200, 32.0%; Politics 2 of 200, 1.0%; Economics 1 of 165, 0.6%. Total 67 of 565."}
+![Figure 6: A full window covers 7 days ending at the forecast cutoff, 24 hours before the event boundary. Later-listed markets have shorter windows: 157 of 200 Sports markets (78.5%), 25 of 200 Politics markets (12.5%) and 12 of 165 Economics markets (7.3%).](assets/eda_20260917_window_duration/05_window_duration_solid_shades.png){fig-alt="Three 100-percent stacked bars compare full seven-day and shorter collection windows. Sports: 21.5% full and 78.5% shorter. Politics: 87.5% full and 12.5% shorter. Economics: 92.7% full and 7.3% shorter."}
 
-### Figure 04 Number of event options
+![Figure 7: Among markets with activity, 61% of Sports markets recorded less than $1,000, compared with 45% of Politics and 42% of Economics markets. The 67 markets without recorded activity were omitted, leaving 498 of the final 565 markets included above.](assets/eda_20260917_activity_distribution/07_account_activity.png){fig-alt="Three aligned bar charts show the share of markets in six dollar ranges by topic. 61% of Sports markets with activity fall below $1000, compared with 45% of Politics and 42% of Economics. Denominators are 136 Sports, 198 Politics and 164 Economics markets; zero-activity windows are omitted."}
 
-![All sampled contracts have two outcomes. However, total available options at the forecast cutoff varied: for example, two teams, three match results including a draw, or several election candidates or economic ranges. The saved audit reconstructs two options for 168 markets and three or more for 215. The count could not be verified for 178; four have questions that can overlap, (more than one can resolve *Yes*).](assets/eda_20260917_event_options/03_event_options.png){fig-alt="Heatmap of underlying event options. Sports: 165 two options, 35 three or more, zero unverified or overlapping. Politics: 2 two options, 17 three or more, 177 count not verified, 4 overlapping. Economics: 1 two options, 163 three or more, 1 count not verified, zero overlapping."}
+![Figure 8: The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a log scale, with equal area for each topic.  Multiple wallets can be held by a single trader. Markets without returned records are omitted.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
 
-### Figure 05 Very large trade records
+![Figure 9: Bars show the percentage of each topic's observed wallet addresses also found in at least one other topic. Across the sample, 20,814 addresses appear in one topic, 1,363 in two and 114 in all three. Politics has the highest shared-wallet percentage (18.7%); the largest overlap is Politics and Economics, with 1,300 shared addresses.](assets/eda_20260917_wallet_overlap/11_wallet_overlap.png){fig-alt="Horizontal bars showing wallets also seen in another topic: Sports 291 of 5009 (5.8%), Politics 1409 of 7536 (18.7%), Economics 1368 of 11337 (12.1%). Overall 1477 of 22291 unique addresses appear in multiple topics (6.6%)."}
 
-![“Very large” refers to trades above the 99.9th percentile of total dollars value (price x shares). The threshold flagged 156 records across 113 transactions. A single transaction can contain multiple flagged records.  These observations are restricted to the collected pre-cutoff windows.](assets/eda_20260917_large_trades/04_large_trade_records.png){fig-alt="Dot plot of 113 transactions containing records above about $20,540. April Fed no-change: 92; July Fed 25-basis-point cut: 15; September ECB increase: 2; Arsenal, Beaudoin, McKinney and February ECB no-change: 1 each. Maximum record is $2.994 million."}
-
-### Figure 06 Collection window length by topic
-
-![A full window covers seven days ending at the forecast cutoff, 24 hours before the event boundary. Later-listed markets have shorter windows: 157 of 200 Sports markets (78.5%), 25 of 200 Politics markets (12.5%) and 12 of 165 Economics markets (7.3%).](assets/eda_20260917_window_duration/05_window_duration_solid_shades.png){fig-alt="Three 100-percent stacked bars compare full seven-day and shorter collection windows. Sports: 21.5% full and 78.5% shorter. Politics: 87.5% full and 12.5% shorter. Economics: 92.7% full and 7.3% shorter."}
-
-### Figure 07 Trading activity by topic
-
-![Among markets with activity, 61% of Sports markets recorded less than $1,000, compared with 45% of Politics and 42% of Economics markets. The 67 markets without recorded activity were omitted, leaving 498 of the final 565 markets included above.](assets/eda_20260917_activity_distribution/07_account_activity.png){fig-alt="Three aligned bar charts show the share of markets in six dollar ranges by topic. 61% of Sports markets with activity fall below $1000, compared with 45% of Politics and 42% of Economics. Denominators are 136 Sports, 198 Politics and 164 Economics markets; zero-activity windows are omitted."}
-
-### Figure 08 Distinct wallets per market
-
-![The curves show how distinct wallet counts vary across markets in each topic during its collected window.  All topics demonstrate a right skew towards higher distinct wallet counts.  Counts are smoothed on a log scale, with equal area for each topic.  Multiple wallets can be held by a single trader. Markets without returned records are omitted.](assets/eda_20260917_wallet_density/08_wallet_density.png){fig-alt="Density curves for distinct wallet counts per market, with a logarithmic x-axis. Includes 136 Sports, 198 Politics and 164 Economics markets with observed wallets. Median counts among these markets are 13, 33 and 42 respectively. Zero-wallet windows are omitted."}
-
-### Figure 09 Wallets shared across topics
-
-![Bars show the percentage of each topic's observed wallet addresses also found in at least one other topic. Across the sample, 20,814 addresses appear in one topic, 1,363 in two and 114 in all three. Politics has the highest shared-wallet percentage (18.7%); the largest overlap is Politics and Economics, with 1,300 shared addresses.](assets/eda_20260917_wallet_overlap/11_wallet_overlap.png){fig-alt="Horizontal bars showing wallets also seen in another topic: Sports 291 of 5009 (5.8%), Politics 1409 of 7536 (18.7%), Economics 1368 of 11337 (12.1%). Overall 1477 of 22291 unique addresses appear in multiple topics (6.6%)."}
-
-### Figure 10 Cutoff snapshot freshness
-
-![All 565 selected forecast prices were observed at or before the forecast cutoff and no more than six hours earlier. Of these, eight required by-minute request recovery: three Sports, four Politics and one Economics market.](assets/eda_20260917_final_refresh/12_snapshot_freshness.png){fig-alt="Topic-colored points show forecast-price ages for 200 Sports, 200 Politics and 165 Economics markets. Every observation is between 9 seconds and 5 hours 59 minutes 1 second before cutoff. Eight finer-query snapshots are marked with diamonds, and a dashed line marks the six-hour maximum."}
+![Figure 10: All 565 selected forecast prices were observed at or before the forecast cutoff and no more than 6 hours earlier. Of these, eight required by-minute request recovery: three Sports, four Politics and one Economics market.](assets/eda_20260917_final_refresh/12_snapshot_freshness.png){fig-alt="Topic-colored points show forecast-price ages for 200 Sports, 200 Politics and 165 Economics markets. Every observation is between 9 seconds and 5 hours 59 minutes 1 second before cutoff. Eight finer-query snapshots are marked with diamonds, and a dashed line marks the six-hour maximum."}
 
 ::: {.section-references}
 Linked References: [EDA Visualization Notebook](downloads/current/eda-visualization-notebook.ipynb "Jupyter notebook: current executed EDA; uses project Parquet tables and supporting files") | [Notebook + Data (ZIP)](downloads/current/eda-notebook-and-data.zip "ZIP: current notebook, all required data, supporting evidence, code and run instructions")
