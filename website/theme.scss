@@ -164,6 +164,7 @@ pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .method-prose-right > .method-figure { float: right; margin: .2rem 0 .8rem 1.5rem; }
 .method-prose > p { margin-top: 0; }
 .method-prose-copy > p:first-child { margin-top: 0; }
+.method-prose-heading > p { margin: 0 0 .55rem; line-height: 1.35; }
 @media (min-width: 768px) {
   /* Share title/image/caption rows, keeping the prose in one continuous block. */
   .method-prose-image-aligned { --figure-column: 1; --copy-column: 2; display: grid; grid-template-columns: min(44%, 380px) minmax(0, 1fr); grid-template-rows: min-content min-content 1fr; column-gap: 1.5rem; }
@@ -171,6 +172,7 @@ pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
   .method-prose-image-aligned > .method-figure { display: grid; grid-column: var(--figure-column); grid-row: 1 / -1; grid-template-rows: subgrid; float: none; width: 100%; margin: 0; }
   .method-prose-image-aligned > .method-figure > p:first-child { display: contents; }
   .method-prose-image-aligned > .method-prose-copy { grid-column: var(--copy-column); grid-row: 2 / -1; align-self: start; min-width: 0; }
+  .method-prose-image-aligned > .method-prose-heading { grid-column: var(--copy-column); grid-row: 1; align-self: end; }
   .method-prose-image-aligned > .method-figure > p:has(> .method-caption) { align-self: start; }
   .method-prose-image-aligned:has(.method-figure-subtitle) { grid-template-rows: min-content min-content min-content 1fr; }
   .method-prose-image-aligned:has(.method-figure-subtitle) > .method-prose-copy { grid-row: 3 / -1; }

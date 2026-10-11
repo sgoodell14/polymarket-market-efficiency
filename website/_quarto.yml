@@ -75,6 +75,7 @@ format:
     filters:
       - filters/table-layout.lua
       - filters/figure-layout.lua
+      - filters/notebook-links.lua
     include-after-body:
       text: |
         <link rel="stylesheet" href="assets/vendor/glightbox.min.css">
