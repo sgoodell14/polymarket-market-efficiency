@@ -5,6 +5,7 @@ import hashlib
 import io
 import json
 import math
+import os
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -13,15 +14,19 @@ from statistics import median
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from audit_eda_tables import Audit, distribution, effective_cutoff
-from cohort_state import validate_membership
-from eda_tables import DATA, ROOT, VERSION
+from validate_market_sample import validate_membership
+
+ROOT = Path(__file__).resolve().parents[1]
+VERSION = os.environ.get('POLYMARKET_EDA_VERSION', '20260916_v2')
+if VERSION not in ('20260916_v1', '20260916_v2'):
+    raise ValueError('Unknown EDA checkpoint: ' + VERSION)
+DATA = ROOT / 'data/eda' / VERSION
 
 BASE = ROOT / "data/cohort_audit/20260914_sample200"
 AUDIT = BASE / ("eda_audit_20260916" if VERSION.endswith('_v1') else "eda_audit_20260916_v2")
 TYPES = {"text":pa.string(), "integer":pa.int64(), "number":pa.float64(),
          "boolean":pa.bool_(), "utc_datetime":pa.timestamp("us",tz="UTC")}
-# Read column descriptions and storage rules once; calculations are below.
+# read column descriptions and storage rules
 COLUMN_DEFINITIONS_FILE = Path(__file__).with_name("eda_columns.json")
 COLUMN_DEFINITIONS = json.loads(COLUMN_DEFINITIONS_FILE.read_text(encoding="utf-8"))
 PREPARATION_REVISION = "20261024_favorite_purchase_trend"
@@ -41,6 +46,83 @@ FEATURE_PARAMETERS = {
     "max_anchor_age_hours": MAX_ANCHOR_AGE_HOURS,
 }
 PURCHASE_KEYS = ("market_id", "wallet_address", "transaction_hash", "token_id", "side")
+
+
+# Shared input-reading and timing helpers used during preparation.
+def finite_number(value):
+    return type(value) in (int, float) and math.isfinite(value)
+
+
+def stamp(value):
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
+
+
+def effective_cutoff(anchor):
+    """The collector sends integer epoch seconds; floor a positive UTC instant."""
+    return math.floor(stamp(anchor)) - 86400
+
+
+def distribution(values):
+    values = sorted(v for v in values if finite_number(v))
+    if not values:
+        return {"n": 0}
+    def quantile(q):
+        at = (len(values) - 1) * q
+        lo, hi = math.floor(at), math.ceil(at)
+        return values[lo] + (values[hi] - values[lo]) * (at - lo)
+    return dict(n=len(values), min=values[0], p25=quantile(.25), median=quantile(.5),
+                p75=quantile(.75), p90=quantile(.9), p95=quantile(.95),
+                p99=quantile(.99), max=values[-1])
+
+
+class Audit:
+    def __init__(self):
+        self.inputs = {}
+        self.profile = defaultdict(lambda: {"rows": 0, "fields": defaultdict(
+            lambda: {"present": 0, "blank": 0, "types": Counter()})})
+        self.issues = []
+        self.counts = Counter()
+
+    def read(self, path):
+        data = path.read_bytes()
+        self.inputs[path.relative_to(ROOT).as_posix()] = hashlib.sha256(data).hexdigest()
+        return gzip.decompress(data) if path.suffix == ".gz" else data
+
+    def json(self, path):
+        return json.loads(self.read(path))
+
+    def csv(self, path, table):
+        rows = list(csv.DictReader(io.StringIO(self.read(path).decode("utf-8-sig"))))
+        for row in rows:
+            self.observe(table, row)
+        return rows
+
+    def observe(self, table, row):
+        p = self.profile[table]
+        p["rows"] += 1
+        for field, value in row.items():
+            f = p["fields"][field]
+            f["present"] += 1
+            f["blank"] += value is None or value == ""
+            f["types"][type(value).__name__] += 1
+
+    def check(self, ok, code, mid, table="markets", index="", detail="", severity="error"):
+        if not ok:
+            self.counts[code] += 1
+            self.issues.append(dict(market_id=mid, table=table, source_row_index=index,
+                                    issue=code, severity=severity, detail=detail))
+
+
+def audited_input_path(name):
+    """Locate the frozen audit source without depending on the local archive."""
+    path = ROOT / name
+    if name == "src/audit_eda_tables.py" and not path.exists():
+        snapshot = AUDIT / "source_snapshots/audit_eda_tables.py"
+        if snapshot.exists():
+            return snapshot
+        return ROOT / "src/archive/audit_eda_tables.py"
+    return path
+
 
 # format/standardize timestamps 
 def utc(value):
@@ -326,7 +408,7 @@ class TableWriter:
 def main():
     audited=json.loads((AUDIT/"input_manifest.json").read_text(encoding="utf-8"))["sha256"]
     for name,digest in audited.items():
-        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:
+        if hashlib.sha256(audited_input_path(name).read_bytes()).hexdigest()!=digest:
             raise ValueError(f"Audited input changed: {name}. Re-audit and version the build.")
     reader=Audit()
     candidates=reader.csv(BASE/"active_candidates.csv","candidates")
@@ -432,16 +514,15 @@ def main():
         dictionary.extend(f"| `{key}` | {s['type']} | {s['nullable']} | {s['description']} | {s['source']} / {s['information_class']} |" for key,s in fields.items())
     (DATA/"data_dictionary.md").write_text("\n".join(dictionary)+"\n",encoding="utf-8")
     for name,digest in audited.items():
-        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:raise ValueError("Source changed during build: "+name)
+        if hashlib.sha256(audited_input_path(name).read_bytes()).hexdigest()!=digest:raise ValueError("Source changed during build: "+name)
     manifest=dict(version=VERSION,preparation_revision=PREPARATION_REVISION,built_at_utc=datetime.now(timezone.utc).isoformat(),
         row_counts={k:w.count for k,w in writers.items()},audited_input_hashes=audited,
         builder_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         column_definitions_source=COLUMN_DEFINITIONS_FILE.relative_to(ROOT).as_posix(),
         column_definitions_sha256=hashlib.sha256(COLUMN_DEFINITIONS_FILE.read_bytes()).hexdigest(),
-        market_features_source="src/build_eda_tables.py",
+        market_features_source="src/prepare_analysis_data.py",
         market_features_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         market_feature_parameters=FEATURE_PARAMETERS,
-        loader_sha256=hashlib.sha256((ROOT/"src/eda_tables.py").read_bytes()).hexdigest(),
         pyarrow_version=pa.__version__,csv_null="empty cell",primary_format="parquet",source_data_unchanged=True,
         output_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in DATA.iterdir() if p.suffix in (".parquet",".gz") or p.name in ("markets.csv","schema.json","data_dictionary.md")})
     (DATA/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8")

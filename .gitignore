@@ -33,6 +33,7 @@ website/.quarto/
 /figures/
 /notebooks/01_data_exploration.ipynb
 /src/prepare_website.py
+/src/archive/
 /website/downloads/code/
 /website/downloads/*
 !/website/downloads/current/
