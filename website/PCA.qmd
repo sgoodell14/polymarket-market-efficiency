@@ -47,7 +47,7 @@ Candidate features with strong right-skews were log transformed to reduce the im
 ## Coding
 
 ::: {.section-references}
-Coding Notebook: [004_pca](downloads/current/04_pca.ipynb "Executed Python notebook: PCA preparation, components and figures")
+Coding Notebook: [004_pca](downloads/current/04_pca.html "View the saved PCA notebook with code and outputs")
 :::
 
 ## Results

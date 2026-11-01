@@ -17,8 +17,12 @@ The Quarto pages cover data preparation/EDA, clustering, PCA, Naive Bayes, and D
 | `src/build_website.py` | Build the authored pages without recollecting data or fitting models |
 | `src/transfer_website_writing.py`, `word_math.py`, `render_saved_notebook.py` | Local Word import and saved-notebook rendering support |
 
-The EDA source notebook is `notebooks/02_eda.ipynb`; the website's downloadable
-snapshot is `downloads/current/eda-visualization-notebook.ipynb`.
+The EDA source notebook is `notebooks/02_eda.ipynb`; its website link opens
+`downloads/current/02_eda.html`, a readable page of saved code and outputs,
+using the same renderer as Clustering, PCA, Naive Bayes, and Decision Trees. All
+five notebook links open local HTML pages. Regenerate the EDA page with
+`python src/render_saved_notebook.py notebooks/02_eda.ipynb website/downloads/current/02_eda.html`.
+The EDA section no longer shows the Notebook + Data ZIP link.
 The existing `downloads/current/eda-notebook-and-data.zip` contains the EDA notebook
 and shared data. Model notebooks remain linked from their respective study
 sections and available in the repository's `notebooks/` folder. Extract the ZIP

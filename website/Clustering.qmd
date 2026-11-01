@@ -109,7 +109,7 @@ Pairwise correlations between candidates exposed a strong relationship between d
 ## Coding
 
 ::: {.section-references}
-Coding Notebook: [003_clustering](downloads/current/03_clustering.ipynb "Executed Python notebook: clustering preparation, models and figures")
+Coding Notebook: [003_clustering](downloads/current/03_clustering.html "View the saved Clustering notebook with code and outputs")
 :::
 
 ## Results

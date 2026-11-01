@@ -5,13 +5,17 @@
   },
   "004_pca": {
     "source": "notebooks/04_pca.ipynb",
-    "target": "downloads/current/04_pca.ipynb",
-    "title": "Executed Python notebook: PCA preparation, components and figures"
+    "render_notebook": true,
+    "target": "downloads/current/04_pca.html",
+    "title": "View the saved PCA notebook with code and outputs",
+    "previous_targets": ["downloads/current/04_pca.ipynb"]
   },
   "003_clustering": {
     "source": "notebooks/03_clustering.ipynb",
-    "target": "downloads/current/03_clustering.ipynb",
-    "title": "Executed Python notebook: clustering preparation, models and figures"
+    "render_notebook": true,
+    "target": "downloads/current/03_clustering.html",
+    "title": "View the saved Clustering notebook with code and outputs",
+    "previous_targets": ["downloads/current/03_clustering.ipynb"]
   },
   "EDA Notebook and Data": {
     "target": "downloads/current/eda-notebook-and-data.zip",
@@ -128,9 +132,12 @@
     ]
   },
   "EDA Visualization Notebook": {
-    "target": "downloads/current/eda-visualization-notebook.ipynb",
-    "title": "Jupyter notebook: current executed EDA; uses project Parquet tables and supporting files",
+    "source": "notebooks/02_eda.ipynb",
+    "render_notebook": true,
+    "target": "downloads/current/02_eda.html",
+    "title": "View the saved EDA notebook with code and outputs",
     "previous_targets": [
+      "downloads/current/eda-visualization-notebook.ipynb",
       "downloads/references/20260916-v2/eda-visualization-notebook.ipynb"
     ]
   },

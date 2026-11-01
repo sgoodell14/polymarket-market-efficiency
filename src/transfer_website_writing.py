@@ -735,12 +735,8 @@ def main():
         if notebook_refs:
             entry = notebook_refs[0]
             links = [f'[{entry["label"]}]({entry["target"]} "{entry["title"]}")']
-            if bundle := reference_map.get('EDA Notebook and Data'):
-                if not (WEB / bundle['target']).is_file():
-                    raise FileNotFoundError('Package the notebook inputs first: ' + bundle['target'])
-                links.append(f'[Notebook + Data (ZIP)]({bundle["target"]} "{bundle["title"]}")')
             pages['DataPrep_EDA.qmd'].append(
-                '::: {.section-references}\nLinked References: '
+                '::: {.section-references}\nCoding Notebook: '
                 + ' | '.join(links) + '\n:::')
     # Let subsequent body paragraphs continue beside an embedded figure,
     # rather than clearing it early and leaving an empty area beside the image.

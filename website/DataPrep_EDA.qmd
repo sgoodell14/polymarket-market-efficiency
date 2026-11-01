@@ -169,5 +169,5 @@ Linked References: [Cleaned Market Table](downloads/current/cleaned-markets.csv 
 ![Figure 10: All 565 selected forecast prices were observed at or before the forecast cutoff and no more than 6 hours earlier. Of these, eight required by-minute request recovery: three Sports, four Politics and one Economics market.](assets/eda_20260917_final_refresh/12_snapshot_freshness.png){fig-alt="Topic-colored points show forecast-price ages for 200 Sports, 200 Politics and 165 Economics markets. Every observation is between 9 seconds and 5 hours 59 minutes 1 second before cutoff. Eight finer-query snapshots are marked with diamonds, and a dashed line marks the six-hour maximum."}
 
 ::: {.section-references}
-Linked References: [EDA Visualization Notebook](downloads/current/eda-visualization-notebook.ipynb "Jupyter notebook: current executed EDA; uses project Parquet tables and supporting files") | [Notebook + Data (ZIP)](downloads/current/eda-notebook-and-data.zip "ZIP: current notebook, all required data, supporting evidence, code and run instructions")
+Coding Notebook: [EDA Visualization Notebook](downloads/current/02_eda.html "View the saved EDA notebook with code and outputs")
 :::
