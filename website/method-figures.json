@@ -139,5 +139,113 @@
     "title": "PCA Biplot: PC1 and PC2",
     "placement": "float-left",
     "alt": "Markets projected onto PC1 and PC2, colored by topic, with seven numbered component-weight arrows enlarged for visibility. PC1 and PC2 explain 53.6 and 21.4 percent of variance."
+  },
+  "27": {
+    "page": "DecTrees.qmd",
+    "source_image": "website/assets/decision-trees/dec_tree_structure.png",
+    "asset": "assets/decision-trees/dec_tree_structure.png",
+    "title": "Decision Tree Structure",
+    "placement": "wrap-previous-prose",
+    "prose_layout": "columns-first",
+    "side": "right",
+    "source_on_preview": true,
+    "alt": "Diagram labeling the root node, branch, internal node, and leaf node of a decision tree."
+  },
+  "28": {
+    "page": "DecTrees.qmd",
+    "source_image": "website/assets/decision-trees/entropy_vs_gini_scale.png",
+    "asset": "assets/decision-trees/entropy_vs_gini_scale.png",
+    "title": "Entropy vs Gini",
+    "placement": "wrap-previous-prose",
+    "prose_layout": "columns-first",
+    "prose_paragraphs": 2,
+    "side": "left",
+    "size": "large",
+    "source_on_preview": true,
+    "alt": "Entropy and Gini impurity curves plotted against class proportion, with both reaching their maximum at one half."
+  },
+  "29": {
+    "page": "DecTrees.qmd",
+    "source_image": "website/assets/decision-trees/test_vs_training_error.png",
+    "asset": "assets/decision-trees/test_vs_training_error.png",
+    "title": "Balancing Bias and Variance with Depth",
+    "placement": "wrap-previous-prose",
+    "prose_layout": "flow",
+    "side": "right",
+    "source_on_preview": true,
+    "alt": "Illustration of training error decreasing with tree depth while test error falls and then rises, with the minimum marked as best depth."
+  },
+  "30": {
+    "page": "DecTrees.qmd",
+    "title": "Decision Trees at Maximum Depths Two through Five",
+    "panels": [
+      {
+        "title": "Depth 2",
+        "asset": "assets/decision-trees/tree_depth2.png",
+        "alt": "Decision tree with maximum depth two, showing split conditions, Gini impurity, training counts and predicted classes."
+      },
+      {
+        "title": "Depth 3",
+        "asset": "assets/decision-trees/tree_depth3.png",
+        "alt": "Decision tree with maximum depth three, showing split conditions, Gini impurity, training counts and predicted classes."
+      },
+      {
+        "title": "Depth 4",
+        "asset": "assets/decision-trees/tree_depth4.png",
+        "alt": "Decision tree with maximum depth four, showing split conditions, Gini impurity, training counts and predicted classes."
+      },
+      {
+        "title": "Depth 5",
+        "asset": "assets/decision-trees/tree_depth5.png",
+        "alt": "Decision tree with maximum depth five, showing split conditions, Gini impurity, training counts and predicted classes."
+      }
+    ]
+  },
+  "31": {
+    "page": "DecTrees.qmd",
+    "title": "Decision Tree Confusion Matrices",
+    "panels": [
+      {
+        "title": "Depth 2",
+        "asset": "assets/decision-trees/con_matrix_depth2.png",
+        "alt": "Depth two decision tree confusion matrix with actual favorite losses and wins in rows and predicted losses and wins in columns."
+      },
+      {
+        "title": "Depth 3",
+        "asset": "assets/decision-trees/con_matrix_depth3.png",
+        "alt": "Depth three decision tree confusion matrix with actual favorite losses and wins in rows and predicted losses and wins in columns."
+      },
+      {
+        "title": "Depth 4",
+        "asset": "assets/decision-trees/con_matrix_depth4.png",
+        "alt": "Depth four decision tree confusion matrix with actual favorite losses and wins in rows and predicted losses and wins in columns."
+      },
+      {
+        "title": "Depth 5",
+        "asset": "assets/decision-trees/con_matrix_depth5.png",
+        "alt": "Depth five decision tree confusion matrix with actual favorite losses and wins in rows and predicted losses and wins in columns."
+      }
+    ]
+  },
+  "32": {
+    "page": "DecTrees.qmd",
+    "source_image": "website/assets/decision-trees/con_matrix_depth4_adjThreshold.png",
+    "asset": "assets/decision-trees/con_matrix_depth4_adjThreshold.png",
+    "title": "Depth Four Threshold Comparison",
+    "alt": "Depth four decision tree at a 40 percent favorite-loss threshold: 10 actual losses predicted as losses, seven predicted as wins, eight actual wins predicted as losses, and 85 predicted as wins. Test accuracy is 86.4 percent.",
+    "placement": "wrap-previous-prose",
+    "prose_layout": "columns-first",
+    "side": "right"
+  },
+  "26": {
+    "page": "NaiveBayes.qmd",
+    "notebook": "notebooks/05_naive_bayes.ipynb",
+    "cell_id": "a3d4c008",
+    "asset": "assets/naive-bayes/26_confusion_matrix.png",
+    "title": "Multinomial Naive Bayes Confusion Matrix",
+    "alt": "Confusion matrix for 110 test markets. Of 17 favorite losses, 10 were predicted as losses and seven as wins. Of 93 favorite wins, 10 were predicted as losses and 83 as wins.",
+    "placement": "wrap-previous-prose",
+    "prose_layout": "flow",
+    "side": "right"
   }
 }

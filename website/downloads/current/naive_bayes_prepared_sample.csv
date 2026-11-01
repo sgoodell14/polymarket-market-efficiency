@@ -1,0 +1,4 @@
+favorite_probability_higher,favorite_probability_lower,favorite_probability_middle,observed_wallet_count_higher,observed_wallet_count_lower,observed_wallet_count_middle,large_purchase_direction_equal,large_purchase_direction_favorite,large_purchase_direction_no_purchases,large_purchase_direction_no_qualifying_purchases,large_purchase_direction_underdog,price_trend_gaining,price_trend_losing,price_trend_unavailable,price_trend_unchanged,topic_Economics,topic_Politics,topic_Sports
+0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0
+0,0,1,0,1,0,0,1,0,0,0,0,0,0,1,0,1,0
+1,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1,0,0

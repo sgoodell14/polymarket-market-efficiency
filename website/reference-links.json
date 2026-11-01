@@ -1,4 +1,8 @@
 {
+  "Training and testing examples (CSV)": {
+    "target": "downloads/current/decision_tree_train_test_sample.csv",
+    "title": "CSV: two split examples; testing outcome withheld from this preview"
+  },
   "004_pca": {
     "source": "notebooks/04_pca.ipynb",
     "target": "downloads/current/04_pca.ipynb",
@@ -159,5 +163,31 @@
     "source": "data/analysis/preparation_samples/market_features_post_20.csv",
     "title": "Prepared CSV (20 rows): matched seven-feature sample; no labels or identifiers",
     "display_label": "Prepared CSV"
+  },
+  "006_decision_trees": {
+    "related_downloads": ["Model input data"],
+    "source": "notebooks/06_decision_trees.ipynb",
+    "render_notebook": true,
+    "target": "downloads/current/06_decision_trees.html",
+    "title": "View the saved Decision Trees notebook with code and outputs"
+  },
+  "005_naive_bayes": {
+    "related_downloads": ["Model input data"],
+    "source": "notebooks/05_naive_bayes.ipynb",
+    "render_notebook": true,
+    "target": "downloads/current/05_naive_bayes.html",
+    "title": "View the saved Naive Bayes notebook with code and outputs"
+  },
+  "Model input data": {
+    "target": "downloads/current/model-inputs.zip",
+    "title": "ZIP: current 565-market input table, field definitions, and notebook setup instructions"
+  },
+  "Training example (CSV)": {
+    "target": "downloads/current/decision_tree_training_example.csv",
+    "title": "CSV: one training market with all 11 prepared model inputs, market ID, and outcome label"
+  },
+  "Testing example (CSV)": {
+    "target": "downloads/current/decision_tree_testing_example.csv",
+    "title": "CSV: one testing market with all 11 prepared model inputs and market ID; outcome label excluded"
   }
 }

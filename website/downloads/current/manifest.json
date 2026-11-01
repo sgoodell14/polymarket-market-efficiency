@@ -31,8 +31,8 @@
       "files": 21
     },
     "cleaning-code.zip": {
-      "bytes": 467144,
-      "sha256": "d52aafcd06db3e5fb3f2b96087a3d049c7ce9151c818e4936b87acea304ed214",
+      "bytes": 471772,
+      "sha256": "8819eb822360563bc496e0b44a86a33723377b231ff55421b4ed2e648aaa1f8c",
       "files": 17
     },
     "trade-record-check-code.zip": {
@@ -41,8 +41,8 @@
       "files": 3
     },
     "cleaned-markets.csv": {
-      "bytes": 1168144,
-      "sha256": "1977f0d4f0808ca765e0516fb853dabf4d02f24eea9d181d45ff108474dc9b83",
+      "bytes": 1313086,
+      "sha256": "f9c608a4772c1a7c4f30d7735b891418e04e76a772a94a5bd2b1a2828935e198",
       "files": 1
     },
     "cleaned-trades.zip": {
@@ -68,6 +68,11 @@
     "candidate-ledger-completed-20260916.csv": {
       "bytes": 2128566,
       "sha256": "9439fbed4ae98aabc4a28d3309795050df3fdb99d76692df002bc4f54d0c02c9"
+    },
+    "model-inputs.zip": {
+      "bytes": 369255,
+      "sha256": "411dbe8198e2eb51e41b83201c260d2aa5923f81caecdb41e51c40b52e75ed57",
+      "files": 6
     }
   }
 }

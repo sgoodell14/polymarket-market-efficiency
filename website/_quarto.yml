@@ -51,12 +51,12 @@ website:
             href: Clustering.qmd
           - text: "PCA"
             href: PCA.qmd
-      - section: "Later modules"
-        contents:
           - text: "NaiveBayes"
             href: NaiveBayes.qmd
           - text: "DecTrees"
             href: DecTrees.qmd
+      - section: "Later modules"
+        contents:
           - text: "Regression"
             href: Regression.qmd
           - text: "AdaBoost"
@@ -73,6 +73,7 @@ website:
 format:
   html:
     filters:
+      - filters/worked-example.lua
       - filters/table-layout.lua
       - filters/figure-layout.lua
       - filters/notebook-links.lua
@@ -80,7 +81,7 @@ format:
       text: |
         <link rel="stylesheet" href="assets/vendor/glightbox.min.css">
         <script src="assets/vendor/glightbox.min.js" defer></script>
-        <script src="assets/reference-navigation.js?v=20261010-lightbox" defer></script>
+        <script src="assets/reference-navigation.js?v=20261101-csv-titles" defer></script>
     theme: [cosmo, theme.scss]
     grid:
       sidebar-width: 235px

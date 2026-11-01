@@ -19,6 +19,9 @@ local layouts = {
   ["feature|transformation|definition|model inclusion"] = {
     class = "table-features", widths = {21, 16, 45, 18}, label = "Modeling feature definitions"
   },
+  ["predictor|definition|model representation"] = {
+    class = "table-features", widths = {20, 50, 30}, label = "Decision tree predictor definitions"
+  },
   ["component|variance explained (%)|cumulative variance (%)"] = {
     class = "table-pca-variance", widths = {26, 37, 37}, label = "PCA explained variance"
   },
@@ -38,6 +41,14 @@ function Table(tbl)
     headers[#headers + 1] = text:gsub("%s+", " "):match("^%s*(.-)%s*$")
   end
   local layout = layouts[table.concat(headers, "|")]
+  if not layout and #headers == 4 and headers[1] == "feature"
+      and headers[2]:match("^market %d+$") and headers[3]:match("^market %d+$")
+      and headers[4]:match("^market %d+$") then
+    layout = {class = "table-nb-sample", widths = {49, 17, 17, 17}, label = "Naive Bayes market sample"}
+  end
+  if not layout and table.concat(headers, "|") == "feature|categories|definition" then
+    layout = {class = "table-features", widths = {23, 27, 50}, label = "Naive Bayes feature definitions"}
+  end
   if not layout or #tbl.colspecs ~= #layout.widths then return nil end
   local widths = layout.widths
   if layout.class == "table-model-sample" then

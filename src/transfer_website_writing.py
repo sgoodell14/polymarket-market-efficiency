@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 import xml.etree.ElementTree as ET
+from word_math import M, read_equations
 
 ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / 'website'
@@ -39,14 +40,18 @@ ROUTES = {
     'Visualization captions': 'captions',
     'Clustering': 'Clustering.qmd',
     'PCA': 'PCA.qmd',
+    'Naïve Bayes': 'NaiveBayes.qmd',
+    'Naive Bayes': 'NaiveBayes.qmd',
+    'Decision Trees': 'DecTrees.qmd',
     'Conclusions and publication review': 'Conclusions.qmd',
 }
 TITLES = {'index.qmd': 'Introduction', 'DataPrep_EDA.qmd': 'Data Preparation & EDA',
-          'Conclusions.qmd': 'Conclusions', 'Clustering.qmd': 'Clustering', 'PCA.qmd': 'PCA'}
+          'Conclusions.qmd': 'Conclusions', 'Clustering.qmd': 'Clustering', 'PCA.qmd': 'PCA',
+          'NaiveBayes.qmd': 'Naïve Bayes', 'DecTrees.qmd': 'Decision Trees'}
 
 
 def text(node):
-    return ''.join(t.text or '' for t in node.iter(W + 't')).strip()
+    return ''.join(t.text or '' for t in node.iter() if t.tag in (W + 't', M + 't')).strip()
 
 
 def read_saved_document(path):
@@ -160,6 +165,10 @@ def main():
         relationships = {r.attrib['Id']: r.attrib['Target'] for r in ET.fromstring(z.read('word/_rels/document.xml.rels'))}
     if document.findall('.//w:ins', NS) or document.findall('.//w:del', NS):
         raise ValueError('Tracked changes need an explicit accepted/rejected version before transfer.')
+    equations = read_equations(document, archive / 'source.docx', ROOT)
+    used_equations = set()
+    equation_blocks, equation_sources, equation_captions = {}, {}, {}
+    method_equations = []
 
     excluded, included, local_links, formatting_adjustments = [], [], [], []
     reference_map = json.loads((WEB / 'reference-links.json').read_text(encoding='utf-8'))
@@ -175,6 +184,7 @@ def main():
     method_import_rules = json.loads(rules_path.read_text(encoding='utf-8')) if rules_path.exists() else {}
     skipped_method_captions = {}
     prior_rule = None
+    body_blocks = list(document.find('w:body', NS))
     for block_index, node in enumerate(document.find('w:body', NS)):
         value = text(node)
         if not value:
@@ -182,6 +192,58 @@ def main():
         figure_title = re.fullmatch(r'INSERT FIGURE (\d+):\s*(.+)', value, re.IGNORECASE)
         if figure_title and figure_title[1] in method_registry:
             method_registry[figure_title[1]]['title'] = figure_title[2]
+        equation_title = re.fullmatch(r'INSERT EQUATION:\s*(.+)', value, re.IGNORECASE)
+        if equation_title:
+            # Accept both equation/title/caption and title/caption/equation.
+            # Claimed equations belong to the preceding titled block, so an
+            # adjacent new title must not reuse them as its own formula.
+            previous_indices = []
+            for previous_index in range(block_index - 1, -1, -1):
+                previous = body_blocks[previous_index]
+                if not text(previous):
+                    continue
+                previous_math = list(previous.iter(M + 'oMath'))
+                if (previous_index in equation_sources
+                        or previous.tag != W + 'p' or len(previous_math) != 1
+                        or any(t.text for t in previous.iter(W + 't'))):
+                    break
+                previous_indices.insert(0, previous_index)
+            caption_index = next((i for i in range(block_index + 1, len(body_blocks))
+                                  if text(body_blocks[i])), None)
+            if caption_index is None:
+                raise ValueError('Expected an explanation after ' + value)
+            explanation = body_blocks[caption_index]
+            caption_style = explanation.find('w:pPr/w:pStyle', NS)
+            if (explanation.tag != W + 'p' or text(explanation).startswith('INSERT ')
+                    or explanation.find('m:oMathPara', {'m': M[1:-1]}) is not None
+                    or (caption_style is not None and caption_style.get(W + 'val', '').startswith('Heading'))):
+                raise ValueError('Expected a caption paragraph after ' + value)
+            source_indices = previous_indices
+            if not source_indices:
+                for next_index in range(caption_index + 1, len(body_blocks)):
+                    following = body_blocks[next_index]
+                    if not text(following):
+                        continue
+                    following_math = list(following.iter(M + 'oMath'))
+                    if (following.tag != W + 'p' or len(following_math) != 1
+                            or any(t.text for t in following.iter(W + 't'))):
+                        break
+                    source_indices.append(next_index)
+            math_nodes = [math for i in source_indices
+                          for math in body_blocks[i].iter(M + 'oMath')]
+            if not math_nodes:
+                raise ValueError('Expected standalone Word equations adjacent to ' + value)
+            # Preserve blank lines between a formula and its following definition.
+            blank_lines_before = [0] + [
+                sum(body_blocks[j].tag == W + 'p' and not text(body_blocks[j])
+                    for j in range(left + 1, right))
+                for left, right in zip(source_indices, source_indices[1:])]
+            equation_blocks[block_index] = dict(title=equation_title[1], nodes=math_nodes,
+                                               caption_index=caption_index,
+                                               blank_lines_before=blank_lines_before)
+            for source_index in source_indices:
+                equation_sources[source_index] = block_index
+            equation_captions[caption_index] = block_index
         if prior_rule and value.startswith(prior_rule.get('skip_following_caption_prefix', '\0')):
             skipped_method_captions[block_index] = prior_rule['reason']
         prior_rule = method_import_rules.get(value)
@@ -190,6 +252,25 @@ def main():
         entry = method_registry[number]
         if entry['page'] != page:
             raise ValueError('Method figure on unexpected page: ' + number)
+        if entry.get('panels'):
+            panels, panel_images = [], []
+            for panel in entry['panels']:
+                image_bytes = (WEB / panel['asset']).read_bytes()
+                panel_images.append(dict(asset=panel['asset'],
+                                         image_sha256=hashlib.sha256(image_bytes).hexdigest()))
+                panels.append(
+                    '::: {.method-figure-panel}\n\n'
+                    f"[{panel['title']}]{{.method-panel-title}}\n\n"
+                    f"[![]({panel['asset']}){{fig-alt={json.dumps(panel['alt'])}}}](#figure-{number})"
+                    '{.figure-preview aria-haspopup="dialog"}\n\n:::')
+            method_figures.append(dict(number=number, index=index, **entry,
+                                       panel_images=panel_images))
+            return (f'::::: {{.method-figure .method-figure-gallery #figure-{number}}}\n\n'
+                    f"[{entry['title']}]{{.method-figure-title}}\n\n"
+                    ':::: {.method-figure-row}\n\n' + '\n\n'.join(panels)
+                    + '\n\n::::\n\n'
+                    + f"[{method_captions.get(number, 'Figure ' + number + ':')}]{{.method-caption}}"
+                    + '\n\n:::::')
         source_hash = {}
         if entry.get('source_image'):
             image_bytes = (ROOT / entry['source_image']).read_bytes()
@@ -198,7 +279,10 @@ def main():
             notebook_path = ROOT / entry['notebook']
             notebook_bytes = notebook_path.read_bytes()
             notebook = json.loads(notebook_bytes)
-            cells = [cell for cell in notebook['cells'] if entry['tag'] in cell.get('metadata', {}).get('tags', [])]
+            if entry.get('cell_id'):
+                cells = [cell for cell in notebook['cells'] if cell.get('id') == entry['cell_id']]
+            else:
+                cells = [cell for cell in notebook['cells'] if entry['tag'] in cell.get('metadata', {}).get('tags', [])]
             if len(cells) != 1:
                 raise ValueError('Expected one notebook cell for figure ' + number)
             images = [output['data']['image/png'] for output in cells[0].get('outputs', [])
@@ -222,6 +306,10 @@ def main():
             figure_class += ' .method-figure-float'
         if entry.get('presentation') == 'overview':
             figure_class += ' .method-figure-overview'
+        if entry.get('size') == 'large':
+            figure_class += ' .method-figure-large'
+        if entry.get('source_on_preview'):
+            figure_class += ' .source-on-preview'
         subtitle = f"\n[{entry['subtitle']}]{{.method-figure-subtitle}}  " if entry.get('subtitle') else ''
         return (f"::: {{{figure_class} #figure-{number}}}\n\n"
                 f"[{entry['title']}]{{.method-figure-title}}  {subtitle}\n"
@@ -239,11 +327,21 @@ def main():
             if entry.get('source'):
                 destination = WEB / entry['target']
                 destination.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(ROOT / entry['source'], destination)
+                if entry.get('render_notebook'):
+                    from render_saved_notebook import render
+                    render(ROOT / entry['source'], destination)
+                else:
+                    shutil.copyfile(ROOT / entry['source'], destination)
             if not (WEB / entry['target']).is_file():
                 raise FileNotFoundError('Package the reference first: ' + entry['target'])
             links.append(f'[{label}]({entry["target"]} "{entry["title"]}")')
             linked_references.append(dict(index=index, label=label, **entry))
+            for related_label in entry.get('related_downloads', []):
+                related = reference_map[related_label]
+                if not (WEB / related['target']).is_file():
+                    raise FileNotFoundError('Package the reference first: ' + related['target'])
+                links.append(f'[{related_label}]({related["target"]} "{related["title"]}")')
+                linked_references.append(dict(index=index, label=related_label, **related))
         return '::: {.section-references}\n' + value[:prefix.end()] + ', '.join(links) + '\n:::'
 
     def enabled(node):
@@ -280,6 +378,13 @@ def main():
                     parts.append(label)
                     if target:
                         local_links.append(dict(label=label, original_target=target))
+            elif child.tag in (M + 'oMath', M + 'oMathPara'):
+                nodes = [child] if child.tag == M + 'oMath' else list(child.iter(M + 'oMath'))
+                for math in nodes:
+                    equation = equations[math]
+                    delimiter = '$$' if equation['display'] else '$'
+                    parts.append(delimiter + equation['latex'] + delimiter)
+                    used_equations.add(math)
         return ''.join(parts).strip()
 
     # Caption fields in Word are separate from image placement instructions.
@@ -321,12 +426,15 @@ def main():
             ordered_blocks.append(dict(index=index, type='paragraph', style=style, text=value))
             if not value:
                 continue
+            if index in equation_sources:
+                included.append(dict(index=index, page=route, role='equation_source', text=value))
+                continue
             # Independently require authored prose, including long paragraphs
             # carrying a heading style. Do not infer deletion from styling.
-            if (route in pages and style != 'Heading1'
+            if (route in pages and style != 'Heading1' and index not in skipped_method_captions
                     and (style != 'Heading2' or prose_in_heading_style(style, value))
-                    and not value.startswith(('Author note:', 'Review evidence:', '[WRITE', '[ADD', '[CHOOSE', '[INSERT'))
-                    and not re.match(r'^INSERT FIGURES?\b', value, re.IGNORECASE)
+                    and not value.startswith(('Author note:', 'Review evidence:', 'ADD SOMETHING ABOUT ', '[WRITE', '[ADD', '[CHOOSE', '[INSERT'))
+                    and not re.match(r'^INSERT (?:FIGURES?|EQUATION)\b', value, re.IGNORECASE)
                     and not reference_prefix.match(value)):
                 required_prose.append(dict(index=index, page=route, text=value, markdown=inline(block)))
             # These saved author edits contain prose despite inherited Word styles.
@@ -334,13 +442,10 @@ def main():
                 formatting_adjustments.append(dict(index=index, original_style=style,
                                                    output_style='body', reason='sentence-length prose has inherited heading style'))
                 style = 'Normal'
-            if style == 'SourceNote' and not value.startswith('Review evidence:'):
+            if (style in ('SourceNote', 'AuthorNote')
+                    and not value.startswith(('Author note:', 'Review evidence:'))):
                 formatting_adjustments.append(dict(index=index, original_style=style,
-                                                   output_style='body', reason='authored prose, not an evidence-link note'))
-                style = 'Normal'
-            if style == 'AuthorNote' and value.startswith('Trading activity was measured'):
-                formatting_adjustments.append(dict(index=index, original_style=style,
-                                                   output_style='body', reason='authored activity definition, not an editing instruction'))
+                                                   output_style='body', reason='authored prose, not an explicitly labeled editing note'))
                 style = 'Normal'
             if style == 'Heading1':
                 if value not in ROUTES:
@@ -348,11 +453,49 @@ def main():
                 route, section, caption = ROUTES[value], value, None
                 pending_heading = '## ' + value if route == 'DataPrep_EDA.qmd' else None
                 continue
-            if route is None or style in ('AuthorNote', 'SourceNote') or value.startswith(('Author note:', 'Review evidence:')):
+            if route is None or style in ('AuthorNote', 'SourceNote') or value.startswith(('Author note:', 'Review evidence:', 'ADD SOMETHING ABOUT ')):
                 excluded.append(dict(index=index, text=value, reason='editorial_or_front_matter'))
                 continue
             if index in skipped_method_captions:
                 excluded.append(dict(index=index, text=value, reason=skipped_method_captions[index]))
+                continue
+            if index in equation_blocks:
+                entry = equation_blocks[index]
+                latex_parts = [equations[math]['latex'] for math in entry['nodes']]
+                latex = '\n\n'.join(latex_parts)
+                base_size = equations[entry['nodes'][0]]['font_size_points']
+                display_parts = []
+                for math, part, blank_lines in zip(entry['nodes'], latex_parts, entry['blank_lines_before']):
+                    display = '$$\n' + part + '\n$$'
+                    size = equations[math]['font_size_points']
+                    styles = []
+                    if size and base_size and size != base_size:
+                        styles.append(f'font-size: {100 * size / base_size:.4f}%;')
+                    if blank_lines:
+                        styles.append(f'padding-top: {blank_lines}rem;')
+                    if styles:
+                        display = ('::: {.equation-line style="' + ' '.join(styles) + '"}\n\n'
+                                   + display + '\n\n:::')
+                    display_parts.append(display)
+                displays = '\n\n'.join(display_parts)
+                explanation = inline(body_blocks[entry['caption_index']])
+                if pending_heading:
+                    pages[route].append(pending_heading)
+                    pending_heading = None
+                pages[route].append(
+                    '::::: {.method-equation}\n\n'
+                    f"[{entry['title']}]{{.method-figure-title}}\n\n"
+                    f'[{explanation}]{{.method-caption}}\n\n'
+                    ':::: {.equation-display}\n\n'
+                    f'{displays}\n\n::::\n\n:::::')
+                used_equations.update(entry['nodes'])
+                method_equations.append(dict(index=index, page=route, title=entry['title'],
+                                             latex=latex, caption=explanation,
+                                             caption_position='above_equation'))
+                included.append(dict(index=index, page=route, role='equation_placeholder', text=value))
+                continue
+            if index in equation_captions:
+                included.append(dict(index=index, page=route, role='equation_caption', text=value))
                 continue
             if index in caption_blocks:
                 entry = caption_blocks[index]
@@ -365,7 +508,7 @@ def main():
                 route = None
                 excluded.append(dict(index=index, text=value, reason='publication_checklist'))
                 continue
-            if route in ('Clustering.qmd', 'PCA.qmd') and re.match(r'^\[?INSERT FIGURES?\b', value, re.IGNORECASE):
+            if route in ('Clustering.qmd', 'PCA.qmd', 'NaiveBayes.qmd', 'DecTrees.qmd') and re.match(r'^\[?INSERT FIGURES?\b', value, re.IGNORECASE):
                 rule = method_import_rules.get(value, {})
                 if rule.get('pending'):
                     excluded.append(dict(index=index, text=value, reason=rule['reason']))
@@ -407,10 +550,17 @@ def main():
                 elif method_registry[numbers[0]].get('placement') == 'wrap-previous-prose':
                     if not pages[route] or pages[route][-1].startswith(('#', ':::')):
                         raise ValueError('Expected prose before figure ' + numbers[0])
-                    paragraph = pages[route].pop()
+                    paragraphs = []
+                    for _ in range(method_registry[numbers[0]].get('prose_paragraphs', 1)):
+                        if not pages[route] or pages[route][-1].startswith(('#', ':::', '|')):
+                            raise ValueError('Expected adjacent prose before figure ' + numbers[0])
+                        paragraphs.insert(0, pages[route].pop())
                     side = method_registry[numbers[0]].get('side', 'left')
-                    pages[route].append(':::: {.method-prose .method-prose-' + side + '}\n\n'
-                                        + figure_blocks[0] + '\n\n' + paragraph + '\n\n::::')
+                    prose_layout = method_registry[numbers[0]].get('prose_layout')
+                    flow = {'flow': ' .method-prose-flow',
+                            'columns-first': ' .method-prose-first-paragraph'}.get(prose_layout, '')
+                    pages[route].append(':::: {.method-prose .method-prose-' + side + flow + '}\n\n'
+                                        + figure_blocks[0] + '\n\n' + '\n\n'.join(paragraphs) + '\n\n::::')
                 elif method_registry[numbers[0]].get('pair_with_previous'):
                     previous = method_registry[numbers[0]]['pair_with_previous']
                     if (len(method_figures) < 2 or method_figures[-2]['number'] != previous
@@ -493,15 +643,40 @@ def main():
                 pages[route].append(pending_heading)
                 pending_heading = None
             formatted = inline(block)
-            if value in ('Original feature values', 'Prepared model inputs'):
+            preparation_title = re.sub(r'\s*\(CSV\)\s*$', '', value, flags=re.IGNORECASE)
+            if preparation_title in ('Original feature values', 'Prepared model inputs'):
                 formatted = '[' + value + ']{.preparation-table-title}'
+                if route in ('NaiveBayes.qmd', 'DecTrees.qmd'):
+                    is_tree = route == 'DecTrees.qmd'
+                    prefix = 'decision_tree' if is_tree else 'naive_bayes'
+                    samples = {
+                        'Original feature values': ('original_three_markets.csv', prefix + '_original_sample.csv'),
+                        'Prepared model inputs': (
+                            'prepared_three_markets.csv' if is_tree else 'encoded_three_markets.csv',
+                            prefix + '_prepared_sample.csv'),
+                    }
+                    source_name, download_name = samples[preparation_title]
+                    source = ROOT / 'data/analysis' / (prefix + '_sample') / source_name
+                    target = 'downloads/current/' + download_name
+                    shutil.copyfile(source, WEB / target)
+                    formatted = (f'[[{value}]({target}){{download="{download_name}" '
+                                 f'title="Download CSV"}}]{{.preparation-table-title}}')
+            elif route == 'DecTrees.qmd' and value in ('Training example (CSV)', 'Testing example (CSV)'):
+                target = reference_map[value]['target']
+                if not (WEB / target).is_file():
+                    raise FileNotFoundError('Missing split preview CSV: ' + target)
+                download_name = Path(target).name
+                formatted = (f'[[{value}]({target}){{download="{download_name}" '
+                             f'title="Download CSV"}}]{{.preparation-table-title}}')
             elif route == 'PCA.qmd' and value == 'Biplot Analysis':
                 formatted = '[**' + value + '**]{.method-subsection-title}'
             elif reference_prefix.match(value):
                 formatted = reference_line(value, index)
             elif style == 'CodeExample':
                 formatted = '```text\n' + value + '\n```'
-            elif style in ('ListBullet', 'ListParagraph'):
+            elif (style in ('ListBullet', 'ListParagraph')
+                  or (route in ('NaiveBayes.qmd', 'DecTrees.qmd')
+                      and re.fullmatch(r'[01]: the favored outcome at the cutoff (?:won|lost)', value))):
                 formatted = '- ' + formatted
             pages[route].append(formatted)
             included.append(dict(index=index, page=route, role='body', text=value))
@@ -575,7 +750,7 @@ def main():
                 + ' | '.join(links) + '\n:::')
     # Let subsequent body paragraphs continue beside an embedded figure,
     # rather than clearing it early and leaving an empty area beside the image.
-    for page_name in ('Clustering.qmd', 'PCA.qmd'):
+    for page_name in ('Clustering.qmd', 'PCA.qmd', 'NaiveBayes.qmd', 'DecTrees.qmd'):
         blocks = pages[page_name]
         for position in range(len(blocks) - 1, -1, -1):
             if not blocks[position].startswith(':::: {.method-prose '):
@@ -597,10 +772,12 @@ def main():
         position = next((i for i, block in enumerate(introduction)
                          if block.lstrip('# ').strip().casefold() == 'research questions'), len(introduction))
         introduction.insert(position, '{{< include ' + media_include + ' >}}')
-    for page in ('Conclusions.qmd', 'Clustering.qmd', 'PCA.qmd'):
+    for page in ('Conclusions.qmd', 'Clustering.qmd', 'PCA.qmd', 'NaiveBayes.qmd', 'DecTrees.qmd'):
         if not pages[page]:
             pages[page] = [module_placeholder]
     prose_coverage = assert_paragraph_coverage(required_prose, pages)
+    if used_equations != set(equations):
+        raise ValueError('One or more native Word equations were not transferred')
     for name, blocks in pages.items():
         page_options = '\ntoc: false' if blocks == [module_placeholder] else ''
         if any(figure['page'] == name for figure in method_figures):
@@ -624,11 +801,13 @@ def main():
     marker = dict(source=SOURCE.relative_to(ROOT).as_posix(), source_sha256=digest,
                   transferred_at_utc=datetime.now(timezone.utc).isoformat(),
                   narrative_source='saved_word_document', prose_coverage=prose_coverage, figures_checkpoint=figures_checkpoint,
+                  equation_coverage=dict(checked=len(equations), missing=0),
                   figure_text_source='saved_word_document', word_figure_ids=word_figure_ids,
                   current_data_checkpoint='20260916_v2', counts_reconciliation_deferred_by_user=True,
                   archive=archive.relative_to(ROOT).as_posix(), pages=list(pages), figure_count=len(captions),
                   figure_overrides_applied=overridden_ids,
                   method_figures=method_figures,
+                  method_equations=method_equations,
                   figures_section='Exploratory Visualizations')
     (WEB / 'writing-transfer.json').write_text(json.dumps(marker, indent=2) + '\n', encoding='utf-8')
     (archive / 'extracted_blocks.json').write_text(json.dumps(ordered_blocks, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
