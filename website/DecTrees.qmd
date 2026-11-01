@@ -56,7 +56,7 @@ $$
 [Entropy vs Gini]{.method-figure-title}  
 [![](assets/decision-trees/entropy_vs_gini_scale.png){fig-alt="Entropy and Gini impurity curves plotted against class proportion, with both reaching their maximum at one half."}](#figure-28){.figure-preview aria-haspopup="dialog"}
 
-[Figure 28: While their scales differ, entropy and Gini exhibit the same shape as $\mathbf{p}$, the proportion of class k observations, increases towards 1.  With two classes, a perfectly impure node reaches entropy = 1 and Gini = 0.5.]{.method-caption}
+[Figure 28: While their scales differ, entropy and Gini exhibit the same shape as $p$, the proportion of class k observations, increases towards 1.  With two classes, a perfectly impure node reaches entropy = 1 and Gini = 0.5.]{.method-caption}
 
 :::
 

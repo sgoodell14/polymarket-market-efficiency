@@ -19,8 +19,10 @@ The Quarto pages cover data preparation/EDA, clustering, PCA, Naive Bayes, and D
 
 The EDA source notebook is `notebooks/02_eda.ipynb`; the website's downloadable
 snapshot is `downloads/current/eda-visualization-notebook.ipynb`.
-The existing `downloads/current/eda-notebook-and-data.zip` is the shared download
-for EDA and all four models. Extract it into the repository root, preserving
+The existing `downloads/current/eda-notebook-and-data.zip` contains the EDA notebook
+and shared data. Model notebooks remain linked from their respective study
+sections and available in the repository's `notebooks/` folder. Extract the ZIP
+into the repository root, preserving
 `data/eda/20260916_v2/`. With Python 3.11, run
 `python -m pip install -r requirements.txt` before opening the notebooks.
 All five analyses read the same current market table, including the derived

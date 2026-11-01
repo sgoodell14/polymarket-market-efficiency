@@ -4,10 +4,6 @@ lightbox:
   effect: fade
 ---
 
-::: {.section-references}
-Coding Notebook: [003_clustering](downloads/current/03_clustering.ipynb "Executed Python notebook: clustering preparation, models and figures")
-:::
-
 ## Overview
 
 The purpose of clustering is to group class-less observations based on their similarity, or lack thereof.  K-means clustering, a partitional method, groups observations by minimizing the within-cluster sum of squares (WCSS).  The iterative process assigns each observation to its nearest centroid, re-calibrates each centroid, and reassigns until convergence.  Hierarchical clustering, on the other hand, starts with every point acting as a single cluster, merging with the nearest cluster until only one remains.
