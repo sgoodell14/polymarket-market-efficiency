@@ -61,18 +61,13 @@
       "files": 1
     },
     "eda-notebook-and-data.zip": {
-      "bytes": 75768355,
-      "sha256": "5ac356518e360a202341cf8641e74a6d760c94ac32cfa9d5e5b3eb156274e283",
-      "files": 4594
+      "bytes": 77616984,
+      "sha256": "9881eec1716661639b9e3fba5e78dfc0ca4024edba21ad10df2a614c230306a2",
+      "files": 4601
     },
     "candidate-ledger-completed-20260916.csv": {
       "bytes": 2128566,
       "sha256": "9439fbed4ae98aabc4a28d3309795050df3fdb99d76692df002bc4f54d0c02c9"
-    },
-    "model-inputs.zip": {
-      "bytes": 369255,
-      "sha256": "411dbe8198e2eb51e41b83201c260d2aa5923f81caecdb41e51c40b52e75ed57",
-      "files": 6
     }
   }
 }

@@ -140,7 +140,7 @@ Table 10: A sample of three market observations, before and after preparation fo
 ## Coding
 
 ::: {.section-references}
-Coding Notebook: [005_naive_bayes](downloads/current/05_naive_bayes.html "View the saved Naive Bayes notebook with code and outputs"), [Model input data](downloads/current/model-inputs.zip "ZIP: current 565-market input table, field definitions, and notebook setup instructions")
+Coding Notebook: [005_naive_bayes](downloads/current/05_naive_bayes.html "View the saved Naive Bayes notebook with code and outputs")
 :::
 
 ## Results

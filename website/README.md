@@ -16,12 +16,15 @@ The Quarto pages cover data preparation/EDA, clustering, PCA, Naive Bayes, and D
 | `src/transfer_website_writing.py`, `word_math.py`, `render_saved_notebook.py` | Local Word import and saved-notebook rendering support |
 
 The current EDA notebook is `downloads/current/eda-visualization-notebook.ipynb`.
-Its full offline inputs and instructions are in `eda-notebook-and-data.zip`.
-That archive predates the additional favorite/purchase/trend features. For the
-four model notebooks, extract `downloads/current/model-inputs.zip` into the
-repository root, preserving `data/eda/20260916_v2/`. With Python 3.11, run
+The existing `downloads/current/eda-notebook-and-data.zip` is the shared download
+for EDA and all four models. Extract it into the repository root, preserving
+`data/eda/20260916_v2/`. With Python 3.11, run
 `python -m pip install -r requirements.txt` before opening the notebooks.
-When using both archives, extract `model-inputs.zip` last.
+All five analyses read the same current market table, including the derived
+favorite/purchase/trend features. `src/build_eda_tables.py` creates that table
+and the supporting trade/price tables from the included saved inputs.
+CSV downloads are exports of these same tables; each notebook selects its own
+columns and performs its method-specific preparation.
 
 The old pilot captures, pilot cleaned tables, pilot notebook/charts, and
 `clean_data.py` are retired from the current repository tree. Historical commits

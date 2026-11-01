@@ -192,7 +192,7 @@ Table 14: Training/test split included 437 training markets and 110 testing mark
 ## Coding
 
 ::: {.section-references}
-Coding Notebook: [006_decision_trees](downloads/current/06_decision_trees.html "View the saved Decision Trees notebook with code and outputs"), [Model input data](downloads/current/model-inputs.zip "ZIP: current 565-market input table, field definitions, and notebook setup instructions")
+Coding Notebook: [006_decision_trees](downloads/current/06_decision_trees.html "View the saved Decision Trees notebook with code and outputs")
 :::
 
 ## Results

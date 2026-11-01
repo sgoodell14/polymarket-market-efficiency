@@ -336,12 +336,6 @@ def main():
                 raise FileNotFoundError('Package the reference first: ' + entry['target'])
             links.append(f'[{label}]({entry["target"]} "{entry["title"]}")')
             linked_references.append(dict(index=index, label=label, **entry))
-            for related_label in entry.get('related_downloads', []):
-                related = reference_map[related_label]
-                if not (WEB / related['target']).is_file():
-                    raise FileNotFoundError('Package the reference first: ' + related['target'])
-                links.append(f'[{related_label}]({related["target"]} "{related["title"]}")')
-                linked_references.append(dict(index=index, label=related_label, **related))
         return '::: {.section-references}\n' + value[:prefix.end()] + ', '.join(links) + '\n:::'
 
     def enabled(node):
