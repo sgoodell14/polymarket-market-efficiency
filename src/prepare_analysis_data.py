@@ -16,14 +16,21 @@ import pyarrow.parquet as pq
 
 from validate_market_sample import validate_membership
 
+# find the projects main folder
 ROOT = Path(__file__).resolve().parents[1]
+
+# set default eda version and locate data folder 
 VERSION = os.environ.get('POLYMARKET_EDA_VERSION', '20260916_v2')
 if VERSION not in ('20260916_v1', '20260916_v2'):
     raise ValueError('Unknown EDA checkpoint: ' + VERSION)
-DATA = ROOT / 'data/eda' / VERSION
 
+# prepared tables 
+DATA = ROOT / 'data/eda' / VERSION
+# saved collection 
 BASE = ROOT / "data/cohort_audit/20260914_sample200"
+# audit records 
 AUDIT = BASE / ("eda_audit_20260916" if VERSION.endswith('_v1') else "eda_audit_20260916_v2")
+# define types 
 TYPES = {"text":pa.string(), "integer":pa.int64(), "number":pa.float64(),
          "boolean":pa.bool_(), "utc_datetime":pa.timestamp("us",tz="UTC")}
 # read column descriptions and storage rules
@@ -48,41 +55,29 @@ FEATURE_PARAMETERS = {
 PURCHASE_KEYS = ("market_id", "wallet_address", "transaction_hash", "token_id", "side")
 
 
-# Shared input-reading and timing helpers used during preparation.
+# check if val is int or decimal and finite 
 def finite_number(value):
     return type(value) in (int, float) and math.isfinite(value)
 
-
+# convert date
 def stamp(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
 
-
+# establish the cutoff for the market 
 def effective_cutoff(anchor):
     """The collector sends integer epoch seconds; floor a positive UTC instant."""
     return math.floor(stamp(anchor)) - 86400
 
+# median helper 
+def finite_median(values):
+    values = [v for v in values if finite_number(v)]
+    return float(median(values)) if values else None
 
-def distribution(values):
-    values = sorted(v for v in values if finite_number(v))
-    if not values:
-        return {"n": 0}
-    def quantile(q):
-        at = (len(values) - 1) * q
-        lo, hi = math.floor(at), math.ceil(at)
-        return values[lo] + (values[hi] - values[lo]) * (at - lo)
-    return dict(n=len(values), min=values[0], p25=quantile(.25), median=quantile(.5),
-                p75=quantile(.75), p90=quantile(.9), p95=quantile(.95),
-                p99=quantile(.99), max=values[-1])
-
-
-class Audit:
+# track the files read
+class InputReader:
     def __init__(self):
         self.inputs = {}
-        self.profile = defaultdict(lambda: {"rows": 0, "fields": defaultdict(
-            lambda: {"present": 0, "blank": 0, "types": Counter()})})
-        self.issues = []
-        self.counts = Counter()
-
+# read file and track its hash
     def read(self, path):
         data = path.read_bytes()
         self.inputs[path.relative_to(ROOT).as_posix()] = hashlib.sha256(data).hexdigest()
@@ -91,30 +86,12 @@ class Audit:
     def json(self, path):
         return json.loads(self.read(path))
 
-    def csv(self, path, table):
-        rows = list(csv.DictReader(io.StringIO(self.read(path).decode("utf-8-sig"))))
-        for row in rows:
-            self.observe(table, row)
-        return rows
-
-    def observe(self, table, row):
-        p = self.profile[table]
-        p["rows"] += 1
-        for field, value in row.items():
-            f = p["fields"][field]
-            f["present"] += 1
-            f["blank"] += value is None or value == ""
-            f["types"][type(value).__name__] += 1
-
-    def check(self, ok, code, mid, table="markets", index="", detail="", severity="error"):
-        if not ok:
-            self.counts[code] += 1
-            self.issues.append(dict(market_id=mid, table=table, source_row_index=index,
-                                    issue=code, severity=severity, detail=detail))
+    def csv(self, path):
+        return list(csv.DictReader(io.StringIO(self.read(path).decode("utf-8-sig"))))
 
 
 def audited_input_path(name):
-    """Locate the frozen audit source without depending on the local archive."""
+  
     path = ROOT / name
     if name == "src/audit_eda_tables.py" and not path.exists():
         snapshot = AUDIT / "source_snapshots/audit_eda_tables.py"
@@ -410,11 +387,11 @@ def main():
     for name,digest in audited.items():
         if hashlib.sha256(audited_input_path(name).read_bytes()).hexdigest()!=digest:
             raise ValueError(f"Audited input changed: {name}. Re-audit and version the build.")
-    reader=Audit()
-    candidates=reader.csv(BASE/"active_candidates.csv","candidates")
+    reader=InputReader()
+    candidates=reader.csv(BASE/"active_candidates.csv")
     membership=reader.json(BASE/"cohort_membership.json")
     validate_membership(candidates,membership)
-    def by_id(path):return {r["market_id"]:r for r in reader.csv(path,path.name)}
+    def by_id(path):return {r["market_id"]:r for r in reader.csv(path)}
     coverage=by_id(BASE/"active_cohort_coverage.csv")
     register=by_id(BASE/"full_audit_20260915/cohort_audit_register.csv")
     options=by_id(BASE/"active_market_options.csv")
@@ -485,7 +462,7 @@ def main():
                 trade_summary_status="observed_rows" if trades else "no_returned_trades",
                 price_path_status="observed_hourly_path" if intervals else ("single_hourly_observation" if prices else "no_hourly_observations"),
                 max_price_gap_hours=max(intervals)/3600 if intervals else None,
-                median_price_gap_seconds=distribution(intervals).get("median"),
+                median_price_gap_seconds=finite_median(intervals),
                 leading_price_gap_hours=(prices[0]["timestamp_epoch_seconds"]-lo)/3600 if prices else None,
                 trailing_price_gap_hours=(hi-prices[-1]["timestamp_epoch_seconds"])/3600 if prices else None,
                 max_observed_price_step_pp=max(steps) if steps else None,
