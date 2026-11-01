@@ -1,12 +1,16 @@
 __pycache__/
 *.py[cod]
 .venv/
+venv/
+node_modules/
 .ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .env
 .env.*
 !.env.example
 website/_site/
-website/.quarto/
 
 # Local website tools, generated output, and hosting archives
 .tools/
@@ -15,14 +19,40 @@ website/dist/
 website/.quarto/
 .artifacts/
 
+# Local collection/audit archives and derived analysis tables.
+# Reader-facing data samples stay available under website/downloads/.
+/data/cohort_audit/
+/data/analysis/
+/data/eda/
+/data/raw/
+/data/clean/
+
+# Generated figure working copies; website/assets/ stays publishable.
+/figures/eda_*/
+/figures/20261008_wallet_trades/
+/figures/
+/notebooks/01_data_exploration.ipynb
+/src/prepare_website.py
+/website/downloads/code/
+/website/downloads/*
+!/website/downloads/current/
+/website/assets/[0-9][0-9]-*.png
+/website/assets/clean-data-example.png
+/website/assets/information-flow.png
+/website/assets/raw-data-example.png
+
 # Local documentation, tests, drafts, reviews, and audit history.
 /docs/
 /tests/
 /src/prove_data.py
 /website/downloads/code/prove_data.py
+/src/clean_data.py
+/website/downloads/code/clean_data.py
+/website/writing-transfer.json
 
 # Local agent configuration, scratch output, and review-only copies.
 /AGENTS.md
+/.vscode/
 /.openai/
 /tmp/
 /debug.log
